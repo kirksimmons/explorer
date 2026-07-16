@@ -5,6 +5,7 @@ import {
   parseProgress,
   unlockedTier,
   totalStars,
+  dueForReview,
   TIER_2_STARS,
   TIER_3_STARS,
 } from '../src/engine/progress';
@@ -42,6 +43,7 @@ describe('parseProgress', () => {
   it('round-trips', () => {
     let p = progressReducer(EMPTY_PROGRESS, { type: 'visit', iso2: 'JP' });
     p = progressReducer(p, { type: 'earnStars', game: 'dish', stars: 2 });
+    p = progressReducer(p, { type: 'missCountry', iso2: 'PE' });
     expect(parseProgress(JSON.stringify(p))).toEqual(p);
   });
 
@@ -49,6 +51,39 @@ describe('parseProgress', () => {
     expect(parseProgress(null)).toEqual(EMPTY_PROGRESS);
     expect(parseProgress('not json')).toEqual(EMPTY_PROGRESS);
     expect(parseProgress('{"visited": "FR"}')).toEqual(EMPTY_PROGRESS);
+  });
+
+  it('ignores malformed missed entries', () => {
+    expect(parseProgress('{"missed": {"FR": "x", "JP": 2, "BR": -1}}').missed).toEqual({ JP: 2 });
+    expect(parseProgress('{"missed": [1,2]}').missed).toEqual({});
+  });
+});
+
+describe('spaced repetition', () => {
+  it('bumps a missed country up and reviews it back down', () => {
+    let p = progressReducer(EMPTY_PROGRESS, { type: 'missCountry', iso2: 'PE' });
+    expect(p.missed.PE).toBe(2);
+    expect(dueForReview(p)).toEqual(['PE']);
+
+    p = progressReducer(p, { type: 'reviewCountry', iso2: 'PE' });
+    expect(p.missed.PE).toBe(1);
+    p = progressReducer(p, { type: 'reviewCountry', iso2: 'PE' });
+    expect(p.missed.PE).toBeUndefined();
+    expect(dueForReview(p)).toEqual([]);
+  });
+
+  it('caps the review score and orders most-overdue first', () => {
+    let p = EMPTY_PROGRESS;
+    for (let i = 0; i < 5; i++) p = progressReducer(p, { type: 'missCountry', iso2: 'PE' });
+    expect(p.missed.PE).toBe(4);
+    p = progressReducer(p, { type: 'missCountry', iso2: 'BR' });
+    expect(dueForReview(p)).toEqual(['PE', 'BR']);
+  });
+
+  it('reviewCountry on an unmissed country is a no-op', () => {
+    expect(progressReducer(EMPTY_PROGRESS, { type: 'reviewCountry', iso2: 'FR' })).toEqual(
+      EMPTY_PROGRESS,
+    );
   });
 });
 

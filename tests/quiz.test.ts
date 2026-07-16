@@ -39,6 +39,23 @@ describe('makeRound', () => {
     for (const q of round) expect(q.options).toEqual([]);
   });
 
+  it('resurfaces reviewed countries within the tier', () => {
+    for (const seed of [1, 2, 3, 4, 5]) {
+      const round = makeRound('flag', 1, seed, ['US']); // US is a tier-1 country
+      expect(round.map((q) => q.target)).toContain('US');
+      expect(round).toHaveLength(ROUND_LENGTH);
+      expect(new Set(round.map((q) => q.target)).size).toBe(ROUND_LENGTH);
+    }
+  });
+
+  it('ignores review countries outside the unlocked tier', () => {
+    // MC (Monaco) is tier 2, so it must not appear in a tier-1 round
+    for (const seed of [1, 2, 3, 4, 5]) {
+      const round = makeRound('flag', 1, seed, ['MC']);
+      for (const q of round) expect(tierOf(q.target)).toBe(1);
+    }
+  });
+
   it('never asks above the unlocked tier', () => {
     for (const seed of [1, 2, 3, 4, 5, 6, 7, 8]) {
       for (const q of makeRound('flag', 1, seed)) expect(tierOf(q.target)).toBe(1);

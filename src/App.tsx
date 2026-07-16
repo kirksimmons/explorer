@@ -3,6 +3,7 @@ import { ProgressProvider, useProgress } from './state/ProgressContext';
 import ExploreScreen from './screens/ExploreScreen';
 import GamesHub from './screens/GamesHub';
 import PassportScreen from './screens/PassportScreen';
+import Intro from './screens/Intro';
 import { newBadges, type Badge } from './engine/badges';
 import Confetti from './ui/Confetti';
 
@@ -82,6 +83,7 @@ function Shell() {
       </main>
       <BadgeCelebration />
       <StorageNotice />
+      <Intro />
     </div>
   );
 }

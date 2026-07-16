@@ -78,12 +78,26 @@ function poolFor(tier: Tier): string[] {
 }
 
 /** Targets lean toward the newest unlocked tier so progress feels fresh. */
-function pickTargets(tier: Tier, rng: () => number): string[] {
-  const freshPool = tier === 1 ? TIER_1 : tier === 2 ? TIER_2 : TIER_3;
-  const olderPool = tier === 1 ? [] : poolFor((tier - 1) as Tier);
-  const fresh = shuffled(freshPool, rng).slice(0, tier === 1 ? ROUND_LENGTH : 3);
-  const older = shuffled(olderPool, rng).slice(0, ROUND_LENGTH - fresh.length);
-  return shuffled([...fresh, ...older], rng);
+function pickTargets(
+  tier: Tier,
+  rng: () => number,
+  exclude: Set<string>,
+  count: number,
+): string[] {
+  const notExcluded = (c: string) => !exclude.has(c);
+  const freshPool = (tier === 1 ? TIER_1 : tier === 2 ? TIER_2 : TIER_3).filter(notExcluded);
+  const olderPool = (tier === 1 ? [] : poolFor((tier - 1) as Tier)).filter(notExcluded);
+  const freshWanted = tier === 1 ? count : Math.min(count, 3);
+  const fresh = shuffled(freshPool, rng).slice(0, freshWanted);
+  const older = shuffled(olderPool, rng).slice(0, count - fresh.length);
+  let result = [...fresh, ...older];
+  if (result.length < count) {
+    // small pools (e.g. tier 1 minus excluded) — backfill from the whole tier
+    const seen = new Set([...exclude, ...result]);
+    const backfill = shuffled(poolFor(tier).filter((c) => !seen.has(c)), rng);
+    result = [...result, ...backfill.slice(0, count - result.length)];
+  }
+  return shuffled(result, rng);
 }
 
 function pickDistractors(
@@ -123,9 +137,25 @@ function pickDistractors(
   return picked;
 }
 
-export function makeRound(game: GameId, tier: Tier, seed: number): RoundQuestion[] {
+/** How many spaced-repetition review targets a round may resurface. */
+export const REVIEW_PER_ROUND = 2;
+
+export function makeRound(
+  game: GameId,
+  tier: Tier,
+  seed: number,
+  review: string[] = [],
+): RoundQuestion[] {
   const rng = mulberry32(seed);
-  return pickTargets(tier, rng).map((target) => ({
+  // resurface previously-missed countries that are within this tier's pool
+  const pool = poolFor(tier);
+  const reviewTargets = shuffled(
+    review.filter((c) => pool.includes(c)),
+    rng,
+  ).slice(0, Math.min(REVIEW_PER_ROUND, ROUND_LENGTH - 1));
+  const fresh = pickTargets(tier, rng, new Set(reviewTargets), ROUND_LENGTH - reviewTargets.length);
+  const targets = shuffled([...reviewTargets, ...fresh], rng);
+  return targets.map((target) => ({
     target,
     options:
       game === 'find'

@@ -11,6 +11,12 @@ export interface Progress {
   stars: Record<GameId, number>;
   /** Badge ids already celebrated (so confetti fires once per badge). */
   badges: string[];
+  /**
+   * Spaced repetition: iso2 → how "due" it is to be reviewed. A miss bumps it
+   * up; getting it right first-try brings it back down. Countries with a
+   * positive score are resurfaced in future quiz rounds.
+   */
+  missed: Record<string, number>;
 }
 
 export const EMPTY_PROGRESS: Progress = {
@@ -18,13 +24,19 @@ export const EMPTY_PROGRESS: Progress = {
   longAgoViews: [],
   stars: { find: 0, flag: 0, dish: 0 },
   badges: [],
+  missed: {},
 };
+
+/** How high a single country's review score can climb. */
+const MAX_MISS_SCORE = 4;
 
 export type ProgressAction =
   | { type: 'visit'; iso2: string }
   | { type: 'longAgo'; iso2: string }
   | { type: 'earnStars'; game: GameId; stars: number }
-  | { type: 'markBadges'; badges: string[] };
+  | { type: 'markBadges'; badges: string[] }
+  | { type: 'missCountry'; iso2: string }
+  | { type: 'reviewCountry'; iso2: string };
 
 function addUnique(list: string[], item: string): string[] {
   return list.includes(item) ? list : [...list, item];
@@ -46,7 +58,29 @@ export function progressReducer(state: Progress, action: ProgressAction): Progre
       for (const b of action.badges) if (!merged.includes(b)) merged.push(b);
       return { ...state, badges: merged };
     }
+    case 'missCountry': {
+      const current = state.missed[action.iso2] ?? 0;
+      return {
+        ...state,
+        missed: { ...state.missed, [action.iso2]: Math.min(current + 2, MAX_MISS_SCORE) },
+      };
+    }
+    case 'reviewCountry': {
+      const current = state.missed[action.iso2] ?? 0;
+      if (current <= 0) return state;
+      const next = { ...state.missed };
+      if (current - 1 <= 0) delete next[action.iso2];
+      else next[action.iso2] = current - 1;
+      return { ...state, missed: next };
+    }
   }
+}
+
+/** Countries due for spaced review, most-overdue first. */
+export function dueForReview(p: Progress): string[] {
+  return Object.keys(p.missed)
+    .filter((iso2) => p.missed[iso2] > 0)
+    .sort((a, b) => p.missed[b] - p.missed[a]);
 }
 
 export function totalStars(p: Progress): number {
@@ -79,6 +113,15 @@ export function parseProgress(json: string | null): Progress {
         dish: typeof raw.stars?.dish === 'number' ? raw.stars.dish : 0,
       },
       badges: Array.isArray(raw.badges) ? raw.badges.filter((v: unknown) => typeof v === 'string') : [],
+      missed:
+        raw.missed && typeof raw.missed === 'object' && !Array.isArray(raw.missed)
+          ? Object.fromEntries(
+              Object.entries(raw.missed).filter(([, v]) => typeof v === 'number' && v > 0) as [
+                string,
+                number,
+              ][],
+            )
+          : {},
     };
   } catch {
     return EMPTY_PROGRESS;

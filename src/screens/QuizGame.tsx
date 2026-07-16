@@ -1,10 +1,13 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import WorldMap, { type MapSelection } from '../map/WorldMap';
 import { WORLD, boxFromBBox, type Box } from '../map/viewbox';
 import { MAP } from '../map/mapData';
 import { COUNTRIES } from '../data/countries';
+import { CONTINENT_OF } from '../data/continents';
+import type { Continent } from '../data/types';
 import { makeRound, starsForRound, ROUND_LENGTH, tierName } from '../engine/quiz';
 import type { GameId } from '../engine/progress';
+import { dueForReview } from '../engine/progress';
 import type { Tier } from '../data/types';
 import { useProgress } from '../state/ProgressContext';
 import Flag from '../ui/Flag';
@@ -16,6 +19,24 @@ export const GAME_TITLES: Record<GameId, string> = {
   flag: 'Match the Flag',
   dish: 'Guess the Food',
 };
+
+/** Choice games reveal the answer after this many wrong tries (two retries). */
+const REVEAL_AFTER = 3;
+
+const CONTINENT_REGION: Record<Continent, string> = {
+  'North America': 'northAmerica',
+  'South America': 'southAmerica',
+  Europe: 'europe',
+  Africa: 'africa',
+  Asia: 'asia',
+  Oceania: 'oceania',
+};
+
+/** Zoom a map question to the target's continent so small countries are big. */
+function findViewFor(iso2: string): Box {
+  const region = MAP.regions[CONTINENT_REGION[CONTINENT_OF[iso2]]];
+  return region ? boxFromBBox(region, 0.06) : WORLD;
+}
 
 interface QuizGameProps {
   game: GameId;
@@ -29,19 +50,37 @@ interface Feedback {
 }
 
 export default function QuizGame({ game, tier, onExit }: QuizGameProps) {
-  const { dispatch } = useProgress();
+  const { progress, dispatch } = useProgress();
+  const progressRef = useRef(progress);
+  progressRef.current = progress;
+
   const [seed, setSeed] = useState(() => Math.floor(Math.random() * 1e9));
-  const round = useMemo(() => makeRound(game, tier, seed), [game, tier, seed]);
+  // Review pool is snapshotted when the round is created (not mid-round).
+  const round = useMemo(
+    () => makeRound(game, tier, seed, dueForReview(progressRef.current)),
+    [game, tier, seed],
+  );
+
   const [index, setIndex] = useState(0);
   const [firstTry, setFirstTry] = useState(0);
   const [misses, setMisses] = useState(0);
+  const [wrongPicks, setWrongPicks] = useState<Set<string>>(new Set());
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [done, setDone] = useState(false);
   const [starsEarned, setStarsEarned] = useState(0);
-  const [mapView, setMapView] = useState<Box>(WORLD);
+  const [mapView, setMapView] = useState<Box>(() =>
+    game === 'find' ? findViewFor(round[0].target) : WORLD,
+  );
 
   const question = round[index];
-  const target = COUNTRIES[question?.target];
+  const target = COUNTRIES[question.target];
+  const awaitingNext = feedback?.kind === 'correct' || feedback?.kind === 'wrong-reveal';
+  const isLast = index + 1 >= ROUND_LENGTH;
+
+  // Re-centre the map on each new question's continent (find game only).
+  useEffect(() => {
+    if (game === 'find') setMapView(findViewFor(round[index].target));
+  }, [game, round, index]);
 
   const finish = (finalFirstTry: number) => {
     const stars = starsForRound(finalFirstTry);
@@ -50,49 +89,65 @@ export default function QuizGame({ game, tier, onExit }: QuizGameProps) {
     setDone(true);
   };
 
-  const advance = (gotFirstTry: boolean) => {
+  /** The child pressed Next: record the result (spaced repetition) and move on. */
+  const goNext = () => {
+    const gotFirstTry = feedback?.kind === 'correct' && misses === 0;
+    dispatch(
+      gotFirstTry
+        ? { type: 'reviewCountry', iso2: question.target }
+        : { type: 'missCountry', iso2: question.target },
+    );
     const nextFirstTry = firstTry + (gotFirstTry ? 1 : 0);
     setFirstTry(nextFirstTry);
     setMisses(0);
+    setWrongPicks(new Set());
     setFeedback(null);
-    setMapView(WORLD);
-    if (index + 1 >= ROUND_LENGTH) {
-      finish(nextFirstTry);
-    } else {
-      setIndex(index + 1);
-    }
+    if (isLast) finish(nextFirstTry);
+    else setIndex(index + 1);
   };
 
   const answer = (iso2: string) => {
-    if (done || feedback?.kind === 'correct' || feedback?.kind === 'wrong-reveal') return;
+    if (done || awaitingNext) return;
+
     if (iso2 === question.target) {
-      const gotFirstTry = misses === 0;
       setFeedback({
         kind: 'correct',
-        text: gotFirstTry
-          ? ['Yes! Amazing! 🎉', 'You got it! 🌟', 'Super! 🎈', 'Wow, first try! 🏆'][index % 4]
-          : 'You found it! 🎉',
+        text:
+          misses === 0
+            ? ['Yes! Amazing! 🎉', 'You got it! 🌟', 'Super! 🎈', 'Wow, first try! 🏆'][index % 4]
+            : 'You found it! 🎉',
       });
-      setTimeout(() => advance(gotFirstTry), 900);
-    } else if (game === 'find') {
-      // the map game teaches and lets you keep trying — always completable
+      return;
+    }
+
+    const nextMiss = misses + 1;
+    setMisses(nextMiss);
+
+    if (game === 'find') {
+      // the map game always lets you keep trying — it never reveals-and-skips
       const tapped = COUNTRIES[iso2];
-      setMisses(misses + 1);
       setFeedback({
         kind: 'wrong-retry',
-        text: tapped ? `Not quite — that's ${tapped.name}! Try again!` : `Not quite — keep looking!`,
+        text: tapped ? `Not quite — that's ${tapped.name}! Try again!` : 'Not quite — keep looking!',
       });
-    } else {
-      // choice games reveal the answer with a little teach, then move on
-      setMisses(misses + 1);
+      return;
+    }
+
+    // choice games: two guided retries, then reveal
+    setWrongPicks((prev) => new Set(prev).add(iso2));
+    if (nextMiss >= REVEAL_AFTER) {
       setFeedback({
         kind: 'wrong-reveal',
         text:
           game === 'flag'
-            ? `Good try! This is ${target.name}'s flag — remember it for next time!`
-            : `Good try! ${target.name} loves ${target.dish.name}. Yum!`,
+            ? `This is ${target.name}'s flag — now you know it! 💡`
+            : `${target.name} loves ${target.dish.name}. Yum! 💡`,
       });
-      setTimeout(() => advance(false), 2000);
+    } else {
+      setFeedback({
+        kind: 'wrong-retry',
+        text: nextMiss === 1 ? 'Not quite — try again! 🤔' : 'So close — one more try! 💪',
+      });
     }
   };
 
@@ -105,9 +160,9 @@ export default function QuizGame({ game, tier, onExit }: QuizGameProps) {
     setIndex(0);
     setFirstTry(0);
     setMisses(0);
+    setWrongPicks(new Set());
     setFeedback(null);
     setDone(false);
-    setMapView(WORLD);
   };
 
   if (done) {
@@ -137,6 +192,15 @@ export default function QuizGame({ game, tier, onExit }: QuizGameProps) {
     );
   }
 
+  const optionDisabled = (iso2: string) =>
+    wrongPicks.has(iso2) || (feedback?.kind === 'wrong-reveal' && iso2 !== question.target);
+  const optionClass = (iso2: string, base: string) => {
+    const reveal = feedback?.kind === 'wrong-reveal' && iso2 === question.target;
+    const correct = feedback?.kind === 'correct' && iso2 === question.target;
+    const wrong = wrongPicks.has(iso2);
+    return `${base}${reveal || correct ? ' is-right' : ''}${wrong ? ' is-wrong' : ''}`;
+  };
+
   return (
     <div className="game" data-testid={`game-${game}`}>
       <div className="game-top">
@@ -156,15 +220,14 @@ export default function QuizGame({ game, tier, onExit }: QuizGameProps) {
       {game === 'find' && (
         <>
           <div className="game-prompt" data-testid="game-prompt" data-target={question.target}>
-            Find <b>{target.name}</b>!{' '}
-            <span className="hint">({target.famousFor})</span>
+            Find <b>{target.name}</b>! <span className="hint">({target.famousFor})</span>
           </div>
           <div className="map-holder game-map">
             <WorldMap
               view={mapView}
               neutral
-              onSelect={onMapSelect}
-              pulse={misses >= 2 ? question.target : null}
+              onSelect={awaitingNext ? undefined : onMapSelect}
+              pulse={misses >= 2 || awaitingNext ? question.target : null}
             />
             <div className="chips">
               <button className="chip" onClick={() => setMapView(WORLD)}>
@@ -178,7 +241,11 @@ export default function QuizGame({ game, tier, onExit }: QuizGameProps) {
                 asia: 'Asia',
                 oceania: 'Oceania',
               }).map(([key, label]) => (
-                <button key={key} className="chip" onClick={() => setMapView(boxFromBBox(MAP.regions[key], 0.06))}>
+                <button
+                  key={key}
+                  className="chip"
+                  onClick={() => setMapView(boxFromBBox(MAP.regions[key], 0.06))}
+                >
                   {label}
                 </button>
               ))}
@@ -196,10 +263,10 @@ export default function QuizGame({ game, tier, onExit }: QuizGameProps) {
             {question.options.map((iso2) => (
               <button
                 key={iso2}
-                className="option flag-option"
+                className={optionClass(iso2, 'option flag-option')}
                 onClick={() => answer(iso2)}
                 data-testid={`option-${iso2}`}
-                disabled={feedback?.kind === 'wrong-reveal' && iso2 !== question.target}
+                disabled={optionDisabled(iso2)}
               >
                 <Flag code={iso2} className="flag-choice" />
               </button>
@@ -217,10 +284,10 @@ export default function QuizGame({ game, tier, onExit }: QuizGameProps) {
             {question.options.map((iso2) => (
               <button
                 key={iso2}
-                className="option dish-option"
+                className={optionClass(iso2, 'option dish-option')}
                 onClick={() => answer(iso2)}
                 data-testid={`option-${iso2}`}
-                disabled={feedback?.kind === 'wrong-reveal' && iso2 !== question.target}
+                disabled={optionDisabled(iso2)}
               >
                 🍽️ {COUNTRIES[iso2].dish.name}
               </button>
@@ -234,8 +301,15 @@ export default function QuizGame({ game, tier, onExit }: QuizGameProps) {
         data-testid="feedback"
         aria-live="polite"
       >
-        {feedback?.text ?? ' '}
+        {feedback?.text ?? ' '}
       </div>
+
+      {/* Change 1: the child presses Next themselves — time to read, and agency. */}
+      {awaitingNext && (
+        <button className="big-btn next-btn" onClick={goNext} data-testid="next-btn">
+          {isLast ? 'See my stars →' : 'Next →'}
+        </button>
+      )}
     </div>
   );
 }
