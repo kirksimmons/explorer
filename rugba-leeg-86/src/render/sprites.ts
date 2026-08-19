@@ -103,7 +103,7 @@ function drawTorso(g: CanvasRenderingContext2D, cx: number, top: number, k: Kit)
     const y = top + i;
     const x = Math.round(cx - w / 2);
     // Trim hoop across the chest, jersey elsewhere.
-    const hoop = i === 4 || i === 5;
+    const hoop = i === 4;
     const base = hoop ? k.trim : k.jersey;
     g.fillStyle = base;
     g.fillRect(x, y, w, 1);
@@ -120,19 +120,16 @@ function drawTorso(g: CanvasRenderingContext2D, cx: number, top: number, k: Kit)
   g.fillRect(cx - 2, top, 4, 1);
   g.fillStyle = adj(k.jersey, OUTLINE);
   g.fillRect(cx - 1, top + 1, 2, 1);
-  // Club badge.
-  g.fillStyle = adj(k.trim, LIGHT);
-  g.fillRect(cx + 2, top + 2, 2, 2);
   // Shorts.
   const sTop = top + widths.length;
   for (let i = 0; i < 3; i++) {
     const w = (k.wide ? 10 : 9) - i * 2;
     const x = Math.round(cx - w / 2);
-    g.fillStyle = '#e8e8e8';
+    g.fillStyle = '#20242e';
     g.fillRect(x, sTop + i, w, 1);
-    g.fillStyle = '#ffffff';
+    g.fillStyle = '#333846';
     g.fillRect(x + 1, sTop + i, 2, 1);
-    g.fillStyle = '#9a9aa2';
+    g.fillStyle = '#14161c';
     g.fillRect(x + w - 2, sTop + i, 2, 1);
   }
 }
@@ -195,7 +192,7 @@ function drawSock(
   const sx = knee.x + (ankle.x - knee.x) * t;
   const sy = knee.y + (ankle.y - knee.y) * t;
   const dim = back ? 0.88 : 1;
-  segment(g, sx, sy, ankle.x, ankle.y, back ? 3 : 4, adj(k.jersey, 0.55 * dim));
+  segment(g, sx, sy, ankle.x, ankle.y, back ? 3 : 4, adj('#20242e', 1.0 * dim));
   g.fillStyle = adj(k.trim, 0.95 * dim);
   g.fillRect(Math.round(sx) - 2, Math.round(sy), back ? 3 : 4, 1);
 }

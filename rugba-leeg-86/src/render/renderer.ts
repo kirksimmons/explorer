@@ -16,7 +16,7 @@ import type { Input } from '../input.ts';
 import { BTN_KICK, BTN_PASS, BTN_SPRINT, STICK_MAX } from '../input.ts';
 import { kickAvailable } from '../sim/kicking.ts';
 import type { MatchState, SimEvent } from '../types.ts';
-import { AX, AY, fieldTransform, ISO_SQUASH, project, type IsoCam } from './camera.ts';
+import { AX, AY, fieldTransform, project, type IsoCam } from './camera.ts';
 import {
   buildBall,
   buildSprites,
@@ -52,11 +52,11 @@ export class Renderer {
     this.scanlines = buildScanlines();
     this.sprites = buildSprites();
     this.ballSprite = buildBall();
-    let crt = true;
+    let crt = false;
     try {
-      crt = localStorage.getItem('rl86-crt') !== 'off';
+      crt = localStorage.getItem('rl86-crt') === 'on';
     } catch {
-      /* storage unavailable — default on */
+      /* storage unavailable — default off */
     }
     this.crt = crt;
   }
@@ -87,7 +87,7 @@ export class Renderer {
     for (const p of this.popups) p.t -= dt;
     this.popups = this.popups.filter((p) => p.t > 0);
 
-    g.fillStyle = '#141420'; // stadium bowl, so any uncovered edge still reads
+    g.fillStyle = '#16281a'; // treeline beyond the ground, for any uncovered edge
     g.fillRect(0, 0, VIEW_W, VIEW_H);
 
     if (s.phase === 'title') {
@@ -244,44 +244,39 @@ export class Renderer {
   }
 
   private drawHud(s: MatchState, g: CanvasRenderingContext2D): void {
-    // Beveled LCD timer box, top-left, ARL style.
+    // One beveled LCD box, as per the reference — clock, half and score.
     const t = Math.max(0, HALF_LENGTH - s.clock);
     const mm = Math.floor(t / 60);
     const ss = Math.floor(t % 60);
-    bevelBox(g, 4, 4, 62, 18);
-    g.font = 'bold 11px monospace';
-    g.textAlign = 'center';
+    bevelBox(g, 4, 4, 92, 30);
+    g.textAlign = 'left';
+    g.font = 'bold 13px monospace';
     g.fillStyle = '#e8e8d0';
-    g.fillText(`${mm}:${ss < 10 ? '0' : ''}${ss}`, 27, 17);
+    g.fillText(`${mm}:${ss < 10 ? '0' : ''}${ss}`, 9, 19);
     g.font = 'bold 7px monospace';
     g.fillStyle = '#8fd18f';
-    g.fillText(`H${s.half}`, 56, 16);
-    // Tackle pips under the timer.
-    for (let i = 0; i < TACKLES_PER_SET; i++) {
-      g.fillStyle = i < s.tackleCount ? '#ff5a36' : '#333';
-      g.fillRect(6 + i * 10, 25, 8, 3);
-    }
-
-    // Beveled score box, top-right.
-    bevelBox(g, VIEW_W - 96, 4, 92, 18);
-    g.font = 'bold 9px monospace';
-    g.textAlign = 'left';
+    g.fillText(`H${s.half}`, 52, 18);
+    g.font = 'bold 8px monospace';
     g.fillStyle = TEAMS[0].trim;
-    g.fillText(`${TEAMS[0].short} ${pad(s.score[0])}`, VIEW_W - 90, 16);
+    g.fillText(`${TEAMS[0].short} ${s.score[0]}`, 9, 29);
     g.textAlign = 'right';
     g.fillStyle = TEAMS[1].trim;
-    g.fillText(`${pad(s.score[1])} ${TEAMS[1].short}`, VIEW_W - 8, 16);
-
-    // Turbo meter for the controlled player.
+    g.fillText(`${s.score[1]} ${TEAMS[1].short}`, 91, 29);
+    // Tackle count, just under the box.
+    for (let i = 0; i < TACKLES_PER_SET; i++) {
+      g.fillStyle = i < s.tackleCount ? '#ff5a36' : 'rgba(0,0,0,0.45)';
+      g.fillRect(6 + i * 10, 37, 8, 3);
+    }
+    // Turbo, top right and unobtrusive.
     const me = s.players[s.controlledId];
-    g.fillStyle = '#333';
-    g.fillRect(VIEW_W - 60, 26, 54, 5);
+    g.fillStyle = 'rgba(0,0,0,0.45)';
+    g.fillRect(6, 42, 88, 5);
     g.fillStyle = me.onFire ? '#ff7b00' : '#3ec96b';
-    g.fillRect(VIEW_W - 60, 26, (54 * me.turbo) / TURBO_MAX, 5);
+    g.fillRect(7, 43, (86 * me.turbo) / TURBO_MAX, 3);
   }
 
   private drawTouchControls(s: MatchState, input: Input, g: CanvasRenderingContext2D): void {
-    g.globalAlpha = 0.35;
+    g.globalAlpha = 0.22;
     const stick = input.stickPointer();
     if (stick) {
       g.strokeStyle = '#fff';
@@ -299,7 +294,7 @@ export class Renderer {
     drawBtn(g, BTN_PASS.x, BTN_PASS.y, BTN_PASS.r, 'PASS', false);
     drawBtn(g, BTN_SPRINT.x, BTN_SPRINT.y, BTN_SPRINT.r, 'SPR', input.sprintTouchHeld());
     if (s.phase === 'openPlay' && kickAvailable(s) && s.ball.carrier === s.controlledId) {
-      g.globalAlpha = 0.7;
+      g.globalAlpha = 0.55;
       drawBtn(g, BTN_KICK.x, BTN_KICK.y, BTN_KICK.r, 'KICK', true);
     }
     g.globalAlpha = 1;
@@ -369,10 +364,6 @@ function drawBtn(g: CanvasRenderingContext2D, x: number, y: number, r: number, l
   g.fillText(label, x, y + 3);
 }
 
-function pad(n: number): string {
-  return n < 10 ? `0${n}` : `${n}`;
-}
-
 function popupText(e: SimEvent): string | null {
   switch (e.type) {
     case 'bigHit':
@@ -396,153 +387,149 @@ function popupText(e: SimEvent): string | null {
   }
 }
 
-// The whole stadium pre-rendered once, in world space with margin on every
-// side so the rotated blit still covers the viewport corners. Local (0,0) is
-// world (-MARGIN_X, -STAND_H): grandstand above the far touchline, turf, then
-// the near-side stand below.
+// The ground, pre-rendered once in world space with margin on every side so
+// the rotated blit still covers the viewport corners. This is a suburban
+// footy ground, not a stadium: picket fence, grass embankment, a patchy
+// crowd and one modest tin-roof stand on the far side.
 export const MARGIN_X = 520;
-export const STAND_H = 90;
-const NEAR_STAND_H = 70;
+export const STAND_H = 150;
+const NEAR_H = 150;
+
+// Deterministic scatter — the same ground every load, no Math.random.
+function noise(i: number): number {
+  const x = Math.sin(i * 12.9898) * 43758.5453;
+  return x - Math.floor(x);
+}
+
+const CROWD = ['#c8b06a', '#b05050', '#4a6ea8', '#8a8a92', '#5a4a72', '#d8d8cc', '#3f6f4a'];
+
+// Sparse standing spectators. Suburban grounds have gaps — that patchiness is
+// the whole look, so clumps are seeded rather than evenly spaced.
+function drawCrowd(
+  g: CanvasRenderingContext2D,
+  x0: number,
+  x1: number,
+  y: number,
+  rows: number,
+  density: number,
+  seed: number,
+): void {
+  for (let r = 0; r < rows; r++) {
+    for (let x = x0; x < x1; x += 3) {
+      const n = noise(x * 0.7 + r * 31 + seed);
+      if (n > density) continue;
+      g.fillStyle = CROWD[Math.floor(noise(x + r * 7 + seed) * CROWD.length)];
+      g.fillRect(x, y + r * 3, 2, 2);
+      g.fillStyle = 'rgba(0,0,0,0.25)';
+      g.fillRect(x, y + r * 3 + 2, 2, 1);
+    }
+  }
+}
+
+function drawFence(g: CanvasRenderingContext2D, x0: number, x1: number, y: number): void {
+  g.fillStyle = '#6a6a5e';
+  g.fillRect(x0, y + 4, x1 - x0, 1); // shadow line at the base
+  g.fillStyle = '#e4e4d8';
+  for (let x = x0; x < x1; x += 4) g.fillRect(x, y, 2, 5); // pickets
+  g.fillRect(x0, y + 1, x1 - x0, 1); // rail
+}
 
 function buildField(): HTMLCanvasElement {
   const c = document.createElement('canvas');
   c.width = FIELD_W + MARGIN_X * 2;
-  c.height = STAND_H + FIELD_H + NEAR_STAND_H;
+  c.height = STAND_H + FIELD_H + NEAR_H;
   const g = c.getContext('2d')!;
   const left = MARGIN_X;
   const top = STAND_H;
   const W = c.width;
 
-  // Stadium bowl fills everything the pitch does not.
-  g.fillStyle = '#141420';
+  // Beyond the ground: dark treeline/car park.
+  g.fillStyle = '#16281a';
   g.fillRect(0, 0, W, c.height);
 
-  drawStand(g, 0, W, STAND_H, true);
-  drawStand(g, top + FIELD_H, W, NEAR_STAND_H, false);
+  // --- far side: stand, embankment, fence ---
+  const standX0 = left + 210;
+  const standX1 = left + 690;
+  // Grass embankment behind the fence, full length.
+  g.fillStyle = '#2c6630';
+  g.fillRect(0, 96, W, 42);
+  drawCrowd(g, 0, W, 100, 6, 0.28, 11);
+  // The one grandstand: corrugated roof, shaded seating, support posts.
+  g.fillStyle = '#3a3a42';
+  g.fillRect(standX0, 92, standX1 - standX0, 32);
+  drawCrowd(g, standX0 + 4, standX1 - 4, 96, 7, 0.62, 3);
+  g.fillStyle = '#8d9298'; // tin roof
+  g.fillRect(standX0 - 6, 78, standX1 - standX0 + 12, 8);
+  g.fillStyle = '#767b81';
+  for (let x = standX0 - 6; x < standX1 + 6; x += 6) g.fillRect(x, 78, 1, 8); // corrugations
+  g.fillStyle = '#5c6066';
+  g.fillRect(standX0 - 6, 86, standX1 - standX0 + 12, 2); // roof shadow
+  for (let x = standX0; x < standX1; x += 60) g.fillRect(x, 88, 2, 36); // posts
+  drawFence(g, 0, W, 138);
+  g.fillStyle = '#347a38'; // apron between fence and touchline
+  g.fillRect(0, 143, W, top - 143);
 
-  // Surrounding grass apron so the pitch does not end at a hard edge.
-  g.fillStyle = '#1f5c1f';
-  g.fillRect(0, top - 14, W, FIELD_H + 28);
-
-  // Turf: big checkerboard + speckle dither, ARL style.
-  for (let x = 0; x < FIELD_W; x += 40) {
-    for (let y = 0; y < FIELD_H; y += 40) {
-      g.fillStyle = ((x + y) / 40) % 2 ? '#2f8a2f' : '#297b29';
-      g.fillRect(left + x, top + y, 40, Math.min(40, FIELD_H - y));
-    }
+  // --- the pitch ---
+  g.fillStyle = '#419642';
+  g.fillRect(0, top, W, FIELD_H);
+  // Mown bands, only just visible.
+  for (let x = 0; x < W; x += 60) {
+    if ((x / 60) % 2) continue;
+    g.fillStyle = 'rgba(255,255,255,0.025)';
+    g.fillRect(x, top, 60, FIELD_H);
   }
-  for (let i = 0; i < 9000; i++) {
-    g.fillStyle = i % 2 ? '#37993a' : '#226622';
-    g.fillRect(left + ((i * 137) % FIELD_W), ((i * 61) % FIELD_H) + top, 1, 1);
+  // Fine grass speckle — texture, not noise.
+  for (let i = 0; i < 16000; i++) {
+    g.fillStyle = i % 2 ? 'rgba(90,160,90,0.5)' : 'rgba(30,90,35,0.45)';
+    g.fillRect((i * 137) % W, ((i * 61) % FIELD_H) + top, 1, 1);
   }
-  // In-goal areas tinted.
-  g.fillStyle = 'rgba(0,0,0,0.12)';
+  // In-goals sit a shade darker.
+  g.fillStyle = 'rgba(0,0,0,0.10)';
   g.fillRect(left + DEAD_A, top, TRY_LINE_A - DEAD_A, FIELD_H);
   g.fillRect(left + TRY_LINE_B, top, DEAD_B - TRY_LINE_B, FIELD_H);
 
-  // Painted markings are drawn pre-stretched vertically: the camera squashes
-  // y by ISO_SQUASH, so text laid out this way reads correctly on screen.
-  const paint = (text: string, x: number, y: number, size: number, alpha: number) => {
-    g.save();
-    g.translate(left + x, top + y);
-    g.scale(1, 1 / ISO_SQUASH);
-    g.font = `bold ${size}px monospace`;
-    g.textAlign = 'center';
-    g.fillStyle = `rgba(232,232,208,${alpha})`;
-    g.fillText(text, 0, 0);
-    g.restore();
-  };
-
-  // Midfield decal.
-  const mx = FIELD_W / 2;
-  const my = FIELD_H / 2;
-  g.save();
-  g.translate(left + mx, top + my);
-  g.scale(1, 1 / ISO_SQUASH);
-  g.fillStyle = 'rgba(232,185,62,0.85)';
-  g.beginPath();
-  g.ellipse(0, 0, 34, 22, 0, 0, Math.PI * 2);
-  g.fill();
-  g.fillStyle = '#1a1a1a';
-  g.beginPath();
-  g.ellipse(0, 0, 30, 18, 0, 0, Math.PI * 2);
-  g.fill();
-  g.fillStyle = '#e8b93e';
-  g.font = 'bold 10px monospace';
-  g.textAlign = 'center';
-  g.fillText('RUGBA', 0, -3);
-  g.fillText('LEEG 86', 0, 9);
-  g.restore();
-
-  // Lines: dead-ball, try, 10m stripes with big painted numbers.
-  g.fillStyle = '#e8e8d0';
+  // --- markings: thin white lines, no painted numbers ---
+  g.fillStyle = '#eef0e6';
   g.fillRect(left + DEAD_A, top, 2, FIELD_H);
   g.fillRect(left + DEAD_B - 2, top, 2, FIELD_H);
-  g.fillRect(left + TRY_LINE_A, top, 3, FIELD_H);
-  g.fillRect(left + TRY_LINE_B - 3, top, 3, FIELD_H);
-  // Touchlines.
-  g.fillRect(left + DEAD_A, top, DEAD_B - DEAD_A, 2);
+  g.fillRect(left + TRY_LINE_A, top, 2, FIELD_H);
+  g.fillRect(left + TRY_LINE_B - 2, top, 2, FIELD_H);
+  g.fillRect(left + DEAD_A, top, DEAD_B - DEAD_A, 2); // touchlines
   g.fillRect(left + DEAD_A, top + FIELD_H - 2, DEAD_B - DEAD_A, 2);
+  g.fillRect(left + FIELD_W / 2 - 1, top, 2, FIELD_H); // halfway
+  // 10m marks as dashes rather than solid lines.
   for (let i = 1; i < 10; i++) {
-    const x = TRY_LINE_A + i * 80;
-    g.fillStyle = 'rgba(232,232,208,0.8)';
-    g.fillRect(left + x, top, 1, FIELD_H);
-    const label = `${i <= 5 ? i * 10 : (10 - i) * 10}`;
-    paint(label, x, 30, 22, 0.45);
-    paint(label, x, FIELD_H - 14, 22, 0.45);
+    if (i === 5) continue;
+    const x = left + TRY_LINE_A + i * 80;
+    for (let y = 4; y < FIELD_H - 4; y += 12) {
+      g.fillStyle = 'rgba(238,240,230,0.55)';
+      g.fillRect(x, top + y, 1, 6);
+    }
   }
 
-  // Posts at each try line: uprights lean up-screen, crossbar across.
+  // Goal posts.
   for (const px of [TRY_LINE_A, TRY_LINE_B]) {
     const cxp = left + px;
     const cyp = top + FIELD_H / 2;
-    g.fillStyle = '#f0f0f0';
+    g.fillStyle = '#f4f4ee';
     g.fillRect(cxp - 1, cyp - 30, 2, 22);
     g.fillRect(cxp - 1, cyp + 8, 2, 22);
     g.fillRect(cxp - 1, cyp - 9, 2, 18);
   }
-  return c;
-}
 
-// A grandstand band: roofline, dithered crowd, pillars, sponsor hoardings.
-function drawStand(
-  g: CanvasRenderingContext2D,
-  y: number,
-  w: number,
-  h: number,
-  far: boolean,
-): void {
-  const hoard = 11;
-  g.fillStyle = '#23233a';
-  g.fillRect(0, y, w, h);
-  // Roof/edge line on the outer side.
-  g.fillStyle = '#9a9aa6';
-  g.fillRect(0, far ? y : y + h - 4, w, 4);
-  // Crowd speckle.
-  const cy0 = far ? y + 6 : y + hoard + 2;
-  const ch = h - hoard - 8;
-  for (let i = 0; i < 14000; i++) {
-    g.fillStyle = ['#c8b06a', '#b05050', '#5070b0', '#909098', '#6a5a8a', '#d0d0c0'][i % 6];
-    g.fillRect((i * 137) % w, ((i * 61) % ch) + cy0, 1, 1);
-  }
-  // Aisle pillars.
-  g.fillStyle = '#3a3a52';
-  for (let x = 60; x < w; x += 140) g.fillRect(x, cy0, 3, ch);
-  // Sponsor hoardings on the pitch-facing edge.
-  const hy = far ? y + h - hoard : y;
-  g.fillStyle = '#f0f0e8';
-  g.fillRect(0, hy, w, hoard);
-  g.save();
-  g.translate(0, hy + hoard - 3);
-  g.scale(1, 1 / ISO_SQUASH);
-  g.font = 'bold 9px monospace';
-  g.textAlign = 'left';
-  g.fillStyle = '#111';
-  const sponsors = ['LEEG SPORTS', 'JANK COLA', 'BEEF-O-MATIC', 'GRIFT BANK', 'RUGBA 86'];
-  for (let x = 10, i = 0; x < w; x += 150, i++) {
-    g.fillText(sponsors[i % sponsors.length], x, 0);
-  }
-  g.restore();
+  // --- near side: fence, embankment, a thinner crowd ---
+  const nTop = top + FIELD_H;
+  g.fillStyle = '#347a38';
+  g.fillRect(0, nTop, W, 6);
+  drawFence(g, 0, W, nTop + 6);
+  g.fillStyle = '#2c6630';
+  g.fillRect(0, nTop + 12, W, 40);
+  drawCrowd(g, 0, W, nTop + 14, 5, 0.2, 47);
+  g.fillStyle = '#245026'; // grass bank falling away to the car park
+  g.fillRect(0, nTop + 52, W, 30);
+  g.fillStyle = '#1b3a1e';
+  g.fillRect(0, nTop + 82, W, NEAR_H - 82);
+  return c;
 }
 
 function buildScanlines(): HTMLCanvasElement {

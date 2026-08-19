@@ -4,8 +4,8 @@ import type { Vec2 } from '../types.ts';
 // Diagonal iso camera, 16-bit EA style. The sim stays 2D top-down; this is a
 // pure view transform. Rotation + vertical squash is affine, so the whole
 // pre-rendered field blits with one setTransform.
-export const ISO_THETA = (20 * Math.PI) / 180;
-export const ISO_SQUASH = 0.55;
+export const ISO_THETA = (13 * Math.PI) / 180;
+export const ISO_SQUASH = 0.5;
 
 const COS = Math.cos(ISO_THETA);
 const SIN = Math.sin(ISO_THETA);
