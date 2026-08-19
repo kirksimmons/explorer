@@ -4,7 +4,7 @@ export const VIEW_H = 270;
 
 export const FIELD_W = 1000;
 export const FIELD_H = 220;
-export const FIELD_Y = 34; // field strip's top edge within the 270px view
+export const FIELD_Y = 44; // field strip's top edge within the 270px view (grandstand above)
 export const TRY_LINE_A = 100; // team 1 scores here (attacks -x)
 export const TRY_LINE_B = 900; // team 0 scores here (attacks +x)
 export const DEAD_A = 60;

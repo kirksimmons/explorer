@@ -93,44 +93,60 @@ export class Renderer {
     const cx = Math.round(this.camX + shakeX);
     const cy = Math.round(shakeY);
 
-    g.drawImage(this.field, -cx, FIELD_Y - 30 + cy);
+    g.drawImage(this.field, -cx, FIELD_Y - 44 + cy);
 
-    // Players back-to-front, then the ball.
+    // Players back-to-front with a soft depth scale (lower on screen = nearer).
     const byY = [...s.players].sort((a, b) => a.pos.y - b.pos.y);
     for (const p of byY) {
       const set = this.sprites[p.team];
       const flicker = p.onFire && Math.floor(this.anim * 10) % 2 === 0;
       const frames = set[flicker ? 1 : 0];
       const moving = Math.hypot(p.vel.x, p.vel.y) > 10;
-      const frame = moving ? 1 + (Math.floor(this.anim * 8 + p.id) % 2) : 0;
+      const frame = moving ? Math.floor(this.anim * 10 + p.id) % 4 : 0;
       const spr = frames[p.state === 'run' ? frame : 0];
-      const x = Math.round(p.pos.x - cx - SPRITE_W / 2);
-      const y = Math.round(p.pos.y + FIELD_Y + cy - SPRITE_H + 2);
+      const depth = 0.8 + 0.4 * (p.pos.y / FIELD_H);
+      const w = SPRITE_W * depth;
+      const h = SPRITE_H * depth;
+      const fx = p.pos.x - cx; // feet position on screen
+      const fy = p.pos.y + FIELD_Y + cy + 2;
+      // Marker under the controlled player: red ellipse, ARL style.
+      if (p.id === s.controlledId) {
+        g.fillStyle = 'rgba(220,40,40,0.55)';
+        g.beginPath();
+        g.ellipse(fx, fy - 1, 9 * depth, 3.5 * depth, 0, 0, Math.PI * 2);
+        g.fill();
+      }
+      // Shadow.
+      g.fillStyle = 'rgba(0,0,0,0.3)';
+      g.beginPath();
+      g.ellipse(fx, fy - 1, 6 * depth, 2 * depth, 0, 0, Math.PI * 2);
+      g.fill();
+      const x = Math.round(fx - w / 2);
+      const y = Math.round(fy - h);
       if (p.state === 'ragdoll' || p.state === 'gettingUp') {
         g.save();
-        g.translate(x + SPRITE_W / 2, y + SPRITE_H / 2);
+        g.translate(fx, fy - h / 2);
         g.rotate(p.state === 'ragdoll' ? this.anim * 12 : Math.PI / 4);
-        g.drawImage(spr, -SPRITE_W / 2, -SPRITE_H / 2);
+        g.drawImage(spr, -w / 2, -h / 2, w, h);
+        g.restore();
+      } else if (p.vel.x < -5) {
+        g.save();
+        g.translate(x + w, y);
+        g.scale(-1, 1);
+        g.drawImage(spr, 0, 0, w, h);
         g.restore();
       } else {
-        const flip = p.vel.x < -5;
-        if (flip) {
-          g.save();
-          g.translate(x + SPRITE_W, y);
-          g.scale(-1, 1);
-          g.drawImage(spr, 0, 0);
-          g.restore();
-        } else {
-          g.drawImage(spr, x, y);
-        }
+        g.drawImage(spr, x, y, w, h);
       }
       if (p.id === s.controlledId) {
-        g.fillStyle = '#ffd83e';
-        g.beginPath();
-        g.moveTo(x + SPRITE_W / 2 - 3, y - 6);
-        g.lineTo(x + SPRITE_W / 2 + 3, y - 6);
-        g.lineTo(x + SPRITE_W / 2, y - 2);
-        g.fill();
+        g.font = 'bold 8px monospace';
+        g.textAlign = 'center';
+        g.fillStyle = '#fff';
+        g.strokeStyle = '#000';
+        g.lineWidth = 2;
+        const num = `${(p.id % 7) + 1}`;
+        g.strokeText(num, fx, fy + 8);
+        g.fillText(num, fx, fy + 8);
       }
     }
 
@@ -204,32 +220,40 @@ export class Renderer {
   }
 
   private drawHud(s: MatchState, g: CanvasRenderingContext2D): void {
-    g.fillStyle = 'rgba(0,0,0,0.65)';
-    g.fillRect(0, 0, VIEW_W, 16);
-    g.font = 'bold 10px monospace';
-    g.textAlign = 'left';
-    g.fillStyle = TEAMS[0].trim;
-    g.fillText(`${TEAMS[0].short} ${pad(s.score[0])}`, 6, 11);
-    g.textAlign = 'right';
-    g.fillStyle = TEAMS[1].trim;
-    g.fillText(`${pad(s.score[1])} ${TEAMS[1].short}`, VIEW_W - 6, 11);
-    g.textAlign = 'center';
-    g.fillStyle = '#fff';
+    // Beveled LCD timer box, top-left, ARL style.
     const t = Math.max(0, HALF_LENGTH - s.clock);
     const mm = Math.floor(t / 60);
     const ss = Math.floor(t % 60);
-    g.fillText(`H${s.half} ${mm}:${ss < 10 ? '0' : ''}${ss}`, VIEW_W / 2, 11);
-    // Tackle pips.
+    bevelBox(g, 4, 4, 62, 18);
+    g.font = 'bold 11px monospace';
+    g.textAlign = 'center';
+    g.fillStyle = '#e8e8d0';
+    g.fillText(`${mm}:${ss < 10 ? '0' : ''}${ss}`, 27, 17);
+    g.font = 'bold 7px monospace';
+    g.fillStyle = '#8fd18f';
+    g.fillText(`H${s.half}`, 56, 16);
+    // Tackle pips under the timer.
     for (let i = 0; i < TACKLES_PER_SET; i++) {
-      g.fillStyle = i < s.tackleCount ? '#ff5a36' : '#444';
-      g.fillRect(VIEW_W / 2 - 24 + i * 8, 13, 6, 2);
+      g.fillStyle = i < s.tackleCount ? '#ff5a36' : '#333';
+      g.fillRect(6 + i * 10, 25, 8, 3);
     }
+
+    // Beveled score box, top-right.
+    bevelBox(g, VIEW_W - 96, 4, 92, 18);
+    g.font = 'bold 9px monospace';
+    g.textAlign = 'left';
+    g.fillStyle = TEAMS[0].trim;
+    g.fillText(`${TEAMS[0].short} ${pad(s.score[0])}`, VIEW_W - 90, 16);
+    g.textAlign = 'right';
+    g.fillStyle = TEAMS[1].trim;
+    g.fillText(`${pad(s.score[1])} ${TEAMS[1].short}`, VIEW_W - 8, 16);
+
     // Turbo meter for the controlled player.
     const me = s.players[s.controlledId];
     g.fillStyle = '#333';
-    g.fillRect(VIEW_W - 60, 22, 54, 5);
+    g.fillRect(VIEW_W - 60, 26, 54, 5);
     g.fillStyle = me.onFire ? '#ff7b00' : '#3ec96b';
-    g.fillRect(VIEW_W - 60, 22, (54 * me.turbo) / TURBO_MAX, 5);
+    g.fillRect(VIEW_W - 60, 26, (54 * me.turbo) / TURBO_MAX, 5);
   }
 
   private drawTouchControls(s: MatchState, input: Input, g: CanvasRenderingContext2D): void {
@@ -298,6 +322,18 @@ export class Renderer {
   }
 }
 
+// Grey bevel frame around a black LCD screen.
+function bevelBox(g: CanvasRenderingContext2D, x: number, y: number, w: number, h: number): void {
+  g.fillStyle = '#c8c8d0';
+  g.fillRect(x, y, w, h);
+  g.fillStyle = '#55555f';
+  g.fillRect(x + 1, y + 1, w - 1, h - 1);
+  g.fillStyle = '#8a8a94';
+  g.fillRect(x + 1, y + 1, w - 2, h - 2);
+  g.fillStyle = '#000';
+  g.fillRect(x + 2, y + 2, w - 4, h - 4);
+}
+
 function drawBtn(g: CanvasRenderingContext2D, x: number, y: number, r: number, label: string, lit: boolean): void {
   g.fillStyle = lit ? '#ffd83e' : '#fff';
   g.beginPath();
@@ -336,48 +372,86 @@ function popupText(e: SimEvent): string | null {
   }
 }
 
-// The whole field pre-rendered once: stripes, lines, posts, crowd band.
+// The whole scene pre-rendered once: grandstand + hoardings above, EA-style
+// checkerboard/speckle turf, painted 10m numbers, midfield decal, posts.
 function buildField(): HTMLCanvasElement {
   const c = document.createElement('canvas');
   c.width = FIELD_W;
-  c.height = FIELD_H + 60;
+  c.height = FIELD_H + 70;
   const g = c.getContext('2d')!;
-  const top = 30; // crowd band height; field starts here
+  const top = 44; // grandstand band height; turf starts here
 
-  // Crowd: dark band with noise dots.
-  g.fillStyle = '#1a1a2e';
-  g.fillRect(0, 0, FIELD_W, top);
-  for (let i = 0; i < 1200; i++) {
-    g.fillStyle = ['#e8b93e', '#d9534f', '#3ec96b', '#8888aa'][i % 4];
-    g.fillRect((i * 137) % FIELD_W, (i * 61) % (top - 4) + 2, 1, 1);
+  // Grandstand: roof, dithered crowd rows, aisle pillars.
+  g.fillStyle = '#9a9aa6';
+  g.fillRect(0, 0, FIELD_W, 5); // roofline
+  g.fillStyle = '#23233a';
+  g.fillRect(0, 5, FIELD_W, top - 15);
+  for (let i = 0; i < 5200; i++) {
+    g.fillStyle = ['#c8b06a', '#b05050', '#5070b0', '#909098', '#6a5a8a', '#d0d0c0'][i % 6];
+    g.fillRect((i * 137) % FIELD_W, ((i * 61) % (top - 22)) + 6, 1, 1);
+  }
+  g.fillStyle = '#3a3a52';
+  for (let x = 60; x < FIELD_W; x += 120) g.fillRect(x, 5, 3, top - 15);
+
+  // Sponsor hoardings.
+  g.fillStyle = '#f0f0e8';
+  g.fillRect(0, top - 10, FIELD_W, 10);
+  g.font = 'bold 8px monospace';
+  g.textAlign = 'left';
+  g.fillStyle = '#111';
+  const sponsors = ['LEEG SPORTS', 'JANK COLA', 'BEEF-O-MATIC', 'GRIFT BANK', 'RUGBA 86'];
+  for (let x = 8, i = 0; x < FIELD_W; x += 120, i++) {
+    g.fillText(sponsors[i % sponsors.length], x, top - 2.5);
   }
 
-  // Turf with mowing stripes.
-  for (let x = 0; x < FIELD_W; x += 50) {
-    g.fillStyle = (x / 50) % 2 ? '#2d7a2d' : '#256b25';
-    g.fillRect(x, top, 50, FIELD_H);
+  // Turf: big checkerboard + speckle dither, ARL style.
+  for (let x = 0; x < FIELD_W; x += 40) {
+    for (let y = 0; y < FIELD_H; y += 40) {
+      g.fillStyle = ((x + y) / 40) % 2 ? '#2f8a2f' : '#297b29';
+      g.fillRect(x, top + y, 40, Math.min(40, FIELD_H - y));
+    }
+  }
+  for (let i = 0; i < 9000; i++) {
+    g.fillStyle = i % 2 ? '#37993a' : '#226622';
+    g.fillRect((i * 137) % FIELD_W, ((i * 61) % FIELD_H) + top, 1, 1);
   }
   // In-goal areas tinted.
-  g.fillStyle = 'rgba(0,0,0,0.15)';
+  g.fillStyle = 'rgba(0,0,0,0.12)';
   g.fillRect(DEAD_A, top, TRY_LINE_A - DEAD_A, FIELD_H);
   g.fillRect(TRY_LINE_B, top, DEAD_B - TRY_LINE_B, FIELD_H);
 
-  // Lines: dead-ball, try, 10m stripes with numbers.
+  // Midfield decal: gold shield with the ball.
+  const mx = FIELD_W / 2;
+  const my = top + FIELD_H / 2;
+  g.fillStyle = 'rgba(232,185,62,0.85)';
+  g.beginPath();
+  g.ellipse(mx, my, 30, 18, 0, 0, Math.PI * 2);
+  g.fill();
+  g.fillStyle = '#1a1a1a';
+  g.beginPath();
+  g.ellipse(mx, my, 26, 14, 0, 0, Math.PI * 2);
+  g.fill();
+  g.fillStyle = '#e8b93e';
+  g.font = 'bold 9px monospace';
+  g.textAlign = 'center';
+  g.fillText('RUGBA', mx, my - 2);
+  g.fillText('LEEG 86', mx, my + 8);
+
+  // Lines: dead-ball, try, 10m stripes with big painted numbers.
   g.fillStyle = '#e8e8d0';
   g.fillRect(DEAD_A, top, 2, FIELD_H);
   g.fillRect(DEAD_B - 2, top, 2, FIELD_H);
   g.fillRect(TRY_LINE_A, top, 3, FIELD_H);
   g.fillRect(TRY_LINE_B - 3, top, 3, FIELD_H);
-  g.font = 'bold 14px monospace';
-  g.textAlign = 'center';
   for (let i = 1; i < 10; i++) {
     const x = TRY_LINE_A + i * 80;
     g.fillStyle = 'rgba(232,232,208,0.8)';
     g.fillRect(x, top, 1, FIELD_H);
     const label = `${i <= 5 ? i * 10 : (10 - i) * 10}`;
-    g.fillStyle = 'rgba(232,232,208,0.5)';
-    g.fillText(label, x, top + 20);
-    g.fillText(label, x, top + FIELD_H - 8);
+    g.font = 'bold 24px monospace';
+    g.fillStyle = 'rgba(232,232,208,0.4)';
+    g.fillText(label, x, top + 34);
+    g.fillText(label, x, top + FIELD_H - 16);
   }
 
   // Posts at each try line.
