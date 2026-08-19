@@ -1,0 +1,24 @@
+{
+  "name": "rugba-leeg-86",
+  "private": true,
+  "version": "1.0.0",
+  "description": "RUGBA LEEG 86 — retro arcade 7-a-side rugby league. Bargo Beefcakes vs Guildford Grifters.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "verify": "vitest run && npm run build && playwright test && node scripts/check-bundle-size.mjs",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vite-plugin-singlefile": "^2.3.3",
+    "vitest": "^2.1.8",
+    "wrangler": "^4.0.0"
+  }
+}

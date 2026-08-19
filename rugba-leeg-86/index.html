@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"
+    />
+    <title>RUGBA LEEG 86</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        height: 100vh;
+        height: 100dvh;
+        background: #000;
+        overflow: hidden;
+        touch-action: none;
+        overscroll-behavior: none;
+        -webkit-touch-callout: none;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      #wrap {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      canvas {
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+      }
+      #rotate {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        color: #ffd83e;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: monospace;
+        font-size: 22px;
+        text-align: center;
+        z-index: 10;
+      }
+      #rotate .icon { font-size: 60px; margin-bottom: 20px; }
+      @media (orientation: portrait) {
+        #rotate { display: flex; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap"><canvas id="game" width="480" height="270"></canvas></div>
+    <div id="rotate"><div class="icon">&#8635;</div>ROTATE YOUR PHONE</div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

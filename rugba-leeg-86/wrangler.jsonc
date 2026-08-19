@@ -1,0 +1,10 @@
+// RUGBA LEEG 86 — assets-only Worker serving the single-file build.
+// v2 multiplayer adds a "main" script + Durable Object binding here; the
+// *.workers.dev URL stays the same.
+{
+  "name": "rugba-leeg-86",
+  "compatibility_date": "2026-08-19",
+  "assets": {
+    "directory": "./dist"
+  }
+}
