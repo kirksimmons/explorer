@@ -35,6 +35,10 @@ export class Game {
   pressStart(): void {
     this.injectedStart = true;
   }
+  // Debug hook: lets the sprite sheet be inspected at zoom.
+  spriteSets(): unknown {
+    return this.renderer.spriteSets();
+  }
   pressPass(): void {
     this.injectedPass = true;
   }

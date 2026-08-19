@@ -17,7 +17,14 @@ import { BTN_KICK, BTN_PASS, BTN_SPRINT, STICK_MAX } from '../input.ts';
 import { kickAvailable } from '../sim/kicking.ts';
 import type { MatchState, SimEvent } from '../types.ts';
 import { AX, AY, fieldTransform, ISO_SQUASH, project, type IsoCam } from './camera.ts';
-import { buildBall, buildSprites, SPRITE_H, SPRITE_W, type SpriteSet } from './sprites.ts';
+import {
+  buildBall,
+  buildSprites,
+  RUN_FRAMES,
+  SPRITE_H,
+  SPRITE_W,
+  type SpriteSet,
+} from './sprites.ts';
 
 interface Popup {
   text: string;
@@ -30,7 +37,7 @@ export class Renderer {
   private g: CanvasRenderingContext2D;
   private field: HTMLCanvasElement;
   private scanlines: HTMLCanvasElement;
-  private sprites: [SpriteSet, SpriteSet];
+  private sprites: [SpriteSet, SpriteSet][];
   private ballSprite: HTMLCanvasElement;
   private camX = FIELD_W / 2;
   private camY = FIELD_H / 2;
@@ -52,6 +59,10 @@ export class Renderer {
       /* storage unavailable — default on */
     }
     this.crt = crt;
+  }
+
+  spriteSets(): [SpriteSet, SpriteSet][] {
+    return this.sprites;
   }
 
   toggleCrt(): void {
@@ -105,12 +116,12 @@ export class Renderer {
       (a, b) => project(a.pos.x, a.pos.y, cam).y - project(b.pos.x, b.pos.y, cam).y,
     );
     for (const p of byDepth) {
-      const set = this.sprites[p.team];
       const flicker = p.onFire && Math.floor(this.anim * 10) % 2 === 0;
-      const frames = set[flicker ? 1 : 0];
-      const moving = Math.hypot(p.vel.x, p.vel.y) > 10;
-      const frame = moving ? Math.floor(this.anim * 10 + p.id) % 4 : 0;
-      const spr = frames[p.state === 'run' ? frame : 0];
+      const set = this.sprites[p.team][flicker ? 1 : 0];
+      const speed = Math.hypot(p.vel.x, p.vel.y);
+      // Stride rate tracks running speed, so sprinting reads as sprinting.
+      const cycle = Math.floor(this.anim * (6 + speed * 0.09) + p.id) % RUN_FRAMES;
+      const spr = p.state === 'run' ? set.run[speed > 8 ? cycle : 0] : set.down;
       const f = project(p.pos.x, p.pos.y, cam); // feet on screen
       const screenVx = p.vel.x * AX.x + p.vel.y * AY.x; // facing follows the view
       const depth = 0.75 + 0.5 * (f.y / VIEW_H);
@@ -130,12 +141,15 @@ export class Renderer {
       g.fill();
       const x = Math.round(f.x - w / 2);
       const y = Math.round(f.y - h);
-      if (p.state === 'ragdoll' || p.state === 'gettingUp') {
+      if (p.state === 'ragdoll') {
+        // Still tumbling: spin the downed sprite for the comedy.
         g.save();
-        g.translate(f.x, f.y - h / 2);
-        g.rotate(p.state === 'ragdoll' ? this.anim * 12 : Math.PI / 4);
+        g.translate(f.x, f.y - h / 4);
+        g.rotate(this.anim * 9);
         g.drawImage(spr, -w / 2, -h / 2, w, h);
         g.restore();
+      } else if (p.state === 'gettingUp') {
+        g.drawImage(spr, Math.round(f.x - w / 2), Math.round(f.y - h), w, h);
       } else if (screenVx < -5) {
         g.save();
         g.translate(x + w, y);

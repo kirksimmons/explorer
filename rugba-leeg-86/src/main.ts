@@ -37,6 +37,7 @@ declare global {
       score: () => [number, number];
       pressStart: () => void;
       pressPass: () => void;
+      sprites: () => unknown;
     };
   }
 }
@@ -46,4 +47,5 @@ window.__RL86__ = {
   score: () => [...game.state.score] as [number, number],
   pressStart: () => game.pressStart(),
   pressPass: () => game.pressPass(),
+  sprites: () => game.spriteSets(),
 };
