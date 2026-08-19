@@ -3,7 +3,6 @@ import {
   DEAD_B,
   FIELD_H,
   FIELD_W,
-  FIELD_Y,
   HALF_LENGTH,
   TACKLES_PER_SET,
   TRY_LINE_A,
@@ -17,6 +16,7 @@ import type { Input } from '../input.ts';
 import { BTN_KICK, BTN_PASS, BTN_SPRINT, STICK_MAX } from '../input.ts';
 import { kickAvailable } from '../sim/kicking.ts';
 import type { MatchState, SimEvent } from '../types.ts';
+import { AX, AY, fieldTransform, ISO_SQUASH, project, type IsoCam } from './camera.ts';
 import { buildBall, buildSprites, SPRITE_H, SPRITE_W, type SpriteSet } from './sprites.ts';
 
 interface Popup {
@@ -32,7 +32,8 @@ export class Renderer {
   private scanlines: HTMLCanvasElement;
   private sprites: [SpriteSet, SpriteSet];
   private ballSprite: HTMLCanvasElement;
-  private camX = 0;
+  private camX = FIELD_W / 2;
+  private camY = FIELD_H / 2;
   private popups: Popup[] = [];
   private anim = 0;
   crt: boolean;
@@ -75,7 +76,7 @@ export class Renderer {
     for (const p of this.popups) p.t -= dt;
     this.popups = this.popups.filter((p) => p.t > 0);
 
-    g.fillStyle = '#101018';
+    g.fillStyle = '#141420'; // stadium bowl, so any uncovered edge still reads
     g.fillRect(0, 0, VIEW_W, VIEW_H);
 
     if (s.phase === 'title') {
@@ -84,52 +85,58 @@ export class Renderer {
       return;
     }
 
-    // Camera follows the ball; shake on top.
-    const targetX = Math.max(0, Math.min(FIELD_W - VIEW_W, s.ball.pos.x - VIEW_W / 2));
-    this.camX += (targetX - this.camX) * Math.min(1, 5 * dt);
+    // Camera tracks the ball in world space; shake jitters the whole view.
+    this.camX += (s.ball.pos.x - this.camX) * Math.min(1, 5 * dt);
+    this.camY += (s.ball.pos.y - this.camY) * Math.min(1, 5 * dt);
     // Visual-only randomness — never the sim's seeded RNG.
     const shakeX = s.shake ? (Math.random() - 0.5) * 2 * s.shake : 0;
     const shakeY = s.shake ? (Math.random() - 0.5) * 2 * s.shake : 0;
-    const cx = Math.round(this.camX + shakeX);
-    const cy = Math.round(shakeY);
+    const cam: IsoCam = { x: this.camX + shakeX, y: this.camY + shakeY };
 
-    g.drawImage(this.field, -cx, FIELD_Y - 44 + cy);
+    // One affine blit puts the whole pre-rendered stadium on screen, diagonal.
+    g.save();
+    g.setTransform(...fieldTransform(cam, MARGIN_X, STAND_H));
+    g.drawImage(this.field, 0, 0);
+    g.setTransform(1, 0, 0, 1, 0, 0);
+    g.restore();
 
-    // Players back-to-front with a soft depth scale (lower on screen = nearer).
-    const byY = [...s.players].sort((a, b) => a.pos.y - b.pos.y);
-    for (const p of byY) {
+    // Billboard sprites, sorted back-to-front by projected screen y.
+    const byDepth = [...s.players].sort(
+      (a, b) => project(a.pos.x, a.pos.y, cam).y - project(b.pos.x, b.pos.y, cam).y,
+    );
+    for (const p of byDepth) {
       const set = this.sprites[p.team];
       const flicker = p.onFire && Math.floor(this.anim * 10) % 2 === 0;
       const frames = set[flicker ? 1 : 0];
       const moving = Math.hypot(p.vel.x, p.vel.y) > 10;
       const frame = moving ? Math.floor(this.anim * 10 + p.id) % 4 : 0;
       const spr = frames[p.state === 'run' ? frame : 0];
-      const depth = 0.8 + 0.4 * (p.pos.y / FIELD_H);
+      const f = project(p.pos.x, p.pos.y, cam); // feet on screen
+      const screenVx = p.vel.x * AX.x + p.vel.y * AY.x; // facing follows the view
+      const depth = 0.75 + 0.5 * (f.y / VIEW_H);
       const w = SPRITE_W * depth;
       const h = SPRITE_H * depth;
-      const fx = p.pos.x - cx; // feet position on screen
-      const fy = p.pos.y + FIELD_Y + cy + 2;
       // Marker under the controlled player: red ellipse, ARL style.
       if (p.id === s.controlledId) {
         g.fillStyle = 'rgba(220,40,40,0.55)';
         g.beginPath();
-        g.ellipse(fx, fy - 1, 9 * depth, 3.5 * depth, 0, 0, Math.PI * 2);
+        g.ellipse(f.x, f.y - 1, 9 * depth, 3.5 * depth, 0, 0, Math.PI * 2);
         g.fill();
       }
       // Shadow.
       g.fillStyle = 'rgba(0,0,0,0.3)';
       g.beginPath();
-      g.ellipse(fx, fy - 1, 6 * depth, 2 * depth, 0, 0, Math.PI * 2);
+      g.ellipse(f.x, f.y - 1, 6 * depth, 2 * depth, 0, 0, Math.PI * 2);
       g.fill();
-      const x = Math.round(fx - w / 2);
-      const y = Math.round(fy - h);
+      const x = Math.round(f.x - w / 2);
+      const y = Math.round(f.y - h);
       if (p.state === 'ragdoll' || p.state === 'gettingUp') {
         g.save();
-        g.translate(fx, fy - h / 2);
+        g.translate(f.x, f.y - h / 2);
         g.rotate(p.state === 'ragdoll' ? this.anim * 12 : Math.PI / 4);
         g.drawImage(spr, -w / 2, -h / 2, w, h);
         g.restore();
-      } else if (p.vel.x < -5) {
+      } else if (screenVx < -5) {
         g.save();
         g.translate(x + w, y);
         g.scale(-1, 1);
@@ -145,25 +152,28 @@ export class Renderer {
         g.strokeStyle = '#000';
         g.lineWidth = 2;
         const num = `${(p.id % 7) + 1}`;
-        g.strokeText(num, fx, fy + 8);
-        g.fillText(num, fx, fy + 8);
+        g.strokeText(num, f.x, f.y + 8);
+        g.fillText(num, f.x, f.y + 8);
       }
     }
 
     // Ball: tucked under the carrier's arm, or loose with a shadow.
     if (s.ball.carrier !== null) {
       const c = s.players[s.ball.carrier];
+      const b = project(c.pos.x, c.pos.y, cam);
+      const carrierVx = c.vel.x * AX.x + c.vel.y * AY.x;
       g.drawImage(
         this.ballSprite,
-        Math.round(c.pos.x - cx + (c.vel.x < -5 ? -7 : 2)),
-        Math.round(c.pos.y + FIELD_Y + cy - 7),
+        Math.round(b.x + (carrierVx < -5 ? -7 : 2)),
+        Math.round(b.y - 7),
       );
     } else {
-      const bx = Math.round(s.ball.pos.x - cx - 3);
-      const by = Math.round(s.ball.pos.y + FIELD_Y + cy - 2);
+      const b = project(s.ball.pos.x, s.ball.pos.y, cam);
       g.fillStyle = 'rgba(0,0,0,0.4)';
-      g.fillRect(bx + 1, by + 1, 4, 2);
-      g.drawImage(this.ballSprite, bx, by - Math.round(s.ball.z * 0.4));
+      g.beginPath();
+      g.ellipse(b.x, b.y, 3, 1.5, 0, 0, Math.PI * 2);
+      g.fill();
+      g.drawImage(this.ballSprite, Math.round(b.x - 3), Math.round(b.y - 2 - s.ball.z * 0.4));
     }
 
     this.drawHud(s, g);
@@ -372,100 +382,153 @@ function popupText(e: SimEvent): string | null {
   }
 }
 
-// The whole scene pre-rendered once: grandstand + hoardings above, EA-style
-// checkerboard/speckle turf, painted 10m numbers, midfield decal, posts.
+// The whole stadium pre-rendered once, in world space with margin on every
+// side so the rotated blit still covers the viewport corners. Local (0,0) is
+// world (-MARGIN_X, -STAND_H): grandstand above the far touchline, turf, then
+// the near-side stand below.
+export const MARGIN_X = 520;
+export const STAND_H = 90;
+const NEAR_STAND_H = 70;
+
 function buildField(): HTMLCanvasElement {
   const c = document.createElement('canvas');
-  c.width = FIELD_W;
-  c.height = FIELD_H + 70;
+  c.width = FIELD_W + MARGIN_X * 2;
+  c.height = STAND_H + FIELD_H + NEAR_STAND_H;
   const g = c.getContext('2d')!;
-  const top = 44; // grandstand band height; turf starts here
+  const left = MARGIN_X;
+  const top = STAND_H;
+  const W = c.width;
 
-  // Grandstand: roof, dithered crowd rows, aisle pillars.
-  g.fillStyle = '#9a9aa6';
-  g.fillRect(0, 0, FIELD_W, 5); // roofline
-  g.fillStyle = '#23233a';
-  g.fillRect(0, 5, FIELD_W, top - 15);
-  for (let i = 0; i < 5200; i++) {
-    g.fillStyle = ['#c8b06a', '#b05050', '#5070b0', '#909098', '#6a5a8a', '#d0d0c0'][i % 6];
-    g.fillRect((i * 137) % FIELD_W, ((i * 61) % (top - 22)) + 6, 1, 1);
-  }
-  g.fillStyle = '#3a3a52';
-  for (let x = 60; x < FIELD_W; x += 120) g.fillRect(x, 5, 3, top - 15);
+  // Stadium bowl fills everything the pitch does not.
+  g.fillStyle = '#141420';
+  g.fillRect(0, 0, W, c.height);
 
-  // Sponsor hoardings.
-  g.fillStyle = '#f0f0e8';
-  g.fillRect(0, top - 10, FIELD_W, 10);
-  g.font = 'bold 8px monospace';
-  g.textAlign = 'left';
-  g.fillStyle = '#111';
-  const sponsors = ['LEEG SPORTS', 'JANK COLA', 'BEEF-O-MATIC', 'GRIFT BANK', 'RUGBA 86'];
-  for (let x = 8, i = 0; x < FIELD_W; x += 120, i++) {
-    g.fillText(sponsors[i % sponsors.length], x, top - 2.5);
-  }
+  drawStand(g, 0, W, STAND_H, true);
+  drawStand(g, top + FIELD_H, W, NEAR_STAND_H, false);
+
+  // Surrounding grass apron so the pitch does not end at a hard edge.
+  g.fillStyle = '#1f5c1f';
+  g.fillRect(0, top - 14, W, FIELD_H + 28);
 
   // Turf: big checkerboard + speckle dither, ARL style.
   for (let x = 0; x < FIELD_W; x += 40) {
     for (let y = 0; y < FIELD_H; y += 40) {
       g.fillStyle = ((x + y) / 40) % 2 ? '#2f8a2f' : '#297b29';
-      g.fillRect(x, top + y, 40, Math.min(40, FIELD_H - y));
+      g.fillRect(left + x, top + y, 40, Math.min(40, FIELD_H - y));
     }
   }
   for (let i = 0; i < 9000; i++) {
     g.fillStyle = i % 2 ? '#37993a' : '#226622';
-    g.fillRect((i * 137) % FIELD_W, ((i * 61) % FIELD_H) + top, 1, 1);
+    g.fillRect(left + ((i * 137) % FIELD_W), ((i * 61) % FIELD_H) + top, 1, 1);
   }
   // In-goal areas tinted.
   g.fillStyle = 'rgba(0,0,0,0.12)';
-  g.fillRect(DEAD_A, top, TRY_LINE_A - DEAD_A, FIELD_H);
-  g.fillRect(TRY_LINE_B, top, DEAD_B - TRY_LINE_B, FIELD_H);
+  g.fillRect(left + DEAD_A, top, TRY_LINE_A - DEAD_A, FIELD_H);
+  g.fillRect(left + TRY_LINE_B, top, DEAD_B - TRY_LINE_B, FIELD_H);
 
-  // Midfield decal: gold shield with the ball.
+  // Painted markings are drawn pre-stretched vertically: the camera squashes
+  // y by ISO_SQUASH, so text laid out this way reads correctly on screen.
+  const paint = (text: string, x: number, y: number, size: number, alpha: number) => {
+    g.save();
+    g.translate(left + x, top + y);
+    g.scale(1, 1 / ISO_SQUASH);
+    g.font = `bold ${size}px monospace`;
+    g.textAlign = 'center';
+    g.fillStyle = `rgba(232,232,208,${alpha})`;
+    g.fillText(text, 0, 0);
+    g.restore();
+  };
+
+  // Midfield decal.
   const mx = FIELD_W / 2;
-  const my = top + FIELD_H / 2;
+  const my = FIELD_H / 2;
+  g.save();
+  g.translate(left + mx, top + my);
+  g.scale(1, 1 / ISO_SQUASH);
   g.fillStyle = 'rgba(232,185,62,0.85)';
   g.beginPath();
-  g.ellipse(mx, my, 30, 18, 0, 0, Math.PI * 2);
+  g.ellipse(0, 0, 34, 22, 0, 0, Math.PI * 2);
   g.fill();
   g.fillStyle = '#1a1a1a';
   g.beginPath();
-  g.ellipse(mx, my, 26, 14, 0, 0, Math.PI * 2);
+  g.ellipse(0, 0, 30, 18, 0, 0, Math.PI * 2);
   g.fill();
   g.fillStyle = '#e8b93e';
-  g.font = 'bold 9px monospace';
+  g.font = 'bold 10px monospace';
   g.textAlign = 'center';
-  g.fillText('RUGBA', mx, my - 2);
-  g.fillText('LEEG 86', mx, my + 8);
+  g.fillText('RUGBA', 0, -3);
+  g.fillText('LEEG 86', 0, 9);
+  g.restore();
 
   // Lines: dead-ball, try, 10m stripes with big painted numbers.
   g.fillStyle = '#e8e8d0';
-  g.fillRect(DEAD_A, top, 2, FIELD_H);
-  g.fillRect(DEAD_B - 2, top, 2, FIELD_H);
-  g.fillRect(TRY_LINE_A, top, 3, FIELD_H);
-  g.fillRect(TRY_LINE_B - 3, top, 3, FIELD_H);
+  g.fillRect(left + DEAD_A, top, 2, FIELD_H);
+  g.fillRect(left + DEAD_B - 2, top, 2, FIELD_H);
+  g.fillRect(left + TRY_LINE_A, top, 3, FIELD_H);
+  g.fillRect(left + TRY_LINE_B - 3, top, 3, FIELD_H);
+  // Touchlines.
+  g.fillRect(left + DEAD_A, top, DEAD_B - DEAD_A, 2);
+  g.fillRect(left + DEAD_A, top + FIELD_H - 2, DEAD_B - DEAD_A, 2);
   for (let i = 1; i < 10; i++) {
     const x = TRY_LINE_A + i * 80;
     g.fillStyle = 'rgba(232,232,208,0.8)';
-    g.fillRect(x, top, 1, FIELD_H);
+    g.fillRect(left + x, top, 1, FIELD_H);
     const label = `${i <= 5 ? i * 10 : (10 - i) * 10}`;
-    g.font = 'bold 24px monospace';
-    g.fillStyle = 'rgba(232,232,208,0.4)';
-    g.fillText(label, x, top + 34);
-    g.fillText(label, x, top + FIELD_H - 16);
+    paint(label, x, 30, 22, 0.45);
+    paint(label, x, FIELD_H - 14, 22, 0.45);
   }
 
-  // Posts at each try line.
+  // Posts at each try line: uprights lean up-screen, crossbar across.
   for (const px of [TRY_LINE_A, TRY_LINE_B]) {
+    const cxp = left + px;
+    const cyp = top + FIELD_H / 2;
     g.fillStyle = '#f0f0f0';
-    g.fillRect(px - 1, top + FIELD_H / 2 - 26, 2, 20);
-    g.fillRect(px - 1, top + FIELD_H / 2 + 6, 2, 20);
-    g.fillRect(px - 1, top + FIELD_H / 2 - 8, 2, 16);
+    g.fillRect(cxp - 1, cyp - 30, 2, 22);
+    g.fillRect(cxp - 1, cyp + 8, 2, 22);
+    g.fillRect(cxp - 1, cyp - 9, 2, 18);
   }
-
-  // Below-field apron.
-  g.fillStyle = '#14141c';
-  g.fillRect(0, top + FIELD_H, FIELD_W, 30);
   return c;
+}
+
+// A grandstand band: roofline, dithered crowd, pillars, sponsor hoardings.
+function drawStand(
+  g: CanvasRenderingContext2D,
+  y: number,
+  w: number,
+  h: number,
+  far: boolean,
+): void {
+  const hoard = 11;
+  g.fillStyle = '#23233a';
+  g.fillRect(0, y, w, h);
+  // Roof/edge line on the outer side.
+  g.fillStyle = '#9a9aa6';
+  g.fillRect(0, far ? y : y + h - 4, w, 4);
+  // Crowd speckle.
+  const cy0 = far ? y + 6 : y + hoard + 2;
+  const ch = h - hoard - 8;
+  for (let i = 0; i < 14000; i++) {
+    g.fillStyle = ['#c8b06a', '#b05050', '#5070b0', '#909098', '#6a5a8a', '#d0d0c0'][i % 6];
+    g.fillRect((i * 137) % w, ((i * 61) % ch) + cy0, 1, 1);
+  }
+  // Aisle pillars.
+  g.fillStyle = '#3a3a52';
+  for (let x = 60; x < w; x += 140) g.fillRect(x, cy0, 3, ch);
+  // Sponsor hoardings on the pitch-facing edge.
+  const hy = far ? y + h - hoard : y;
+  g.fillStyle = '#f0f0e8';
+  g.fillRect(0, hy, w, hoard);
+  g.save();
+  g.translate(0, hy + hoard - 3);
+  g.scale(1, 1 / ISO_SQUASH);
+  g.font = 'bold 9px monospace';
+  g.textAlign = 'left';
+  g.fillStyle = '#111';
+  const sponsors = ['LEEG SPORTS', 'JANK COLA', 'BEEF-O-MATIC', 'GRIFT BANK', 'RUGBA 86'];
+  for (let x = 10, i = 0; x < w; x += 150, i++) {
+    g.fillText(sponsors[i % sponsors.length], x, 0);
+  }
+  g.restore();
 }
 
 function buildScanlines(): HTMLCanvasElement {

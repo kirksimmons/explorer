@@ -1,6 +1,7 @@
 import { Audio86 } from './audio.ts';
 import { SIM_DT } from './constants.ts';
 import { Input } from './input.ts';
+import { screenDirToWorld } from './render/camera.ts';
 import { Renderer } from './render/renderer.ts';
 import { createMatch, step } from './sim/match.ts';
 import type { MatchState } from './types.ts';
@@ -51,6 +52,16 @@ export class Game {
     if (this.injectedPass) {
       inp.passPressed = true;
       this.injectedPass = false;
+    }
+
+    // The stick is screen-relative: under the iso camera "up" must mean up the
+    // screen, so rotate it into world space here. The sim only ever sees plain
+    // world-space input, which keeps it deterministic and camera-agnostic.
+    if (inp.moveX || inp.moveY) {
+      const mag = Math.min(1, Math.hypot(inp.moveX, inp.moveY));
+      const w = screenDirToWorld(inp.moveX, inp.moveY);
+      inp.moveX = w.x * mag;
+      inp.moveY = w.y * mag;
     }
 
     while (this.acc >= SIM_DT) {
