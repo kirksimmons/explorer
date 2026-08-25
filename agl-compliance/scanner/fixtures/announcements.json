@@ -1,0 +1,13 @@
+[
+  {
+    "id": "fixture-001",
+    "date": "2026-08-12",
+    "header": "FY26 Results Example",
+    "market_sensitive": true,
+    "pages": 1,
+    "url": null,
+    "fixture_pdf": "2026-08-12_fy26-results-example.pdf",
+    "pdf_file": null,
+    "text_file": null
+  }
+]

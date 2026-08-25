@@ -1,0 +1,5 @@
+requests>=2.31
+pypdf>=4.0
+# Optional: only needed for the automated review stage (scan.py review).
+# Without it (or without credentials) the scanner writes a manual review pack.
+anthropic
