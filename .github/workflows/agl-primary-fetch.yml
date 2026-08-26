@@ -91,6 +91,16 @@ jobs:
           fi
           ls -laR agl-compliance/primary || true
 
+      - name: Fail if nothing was actually fetched
+        run: |
+          count=$(find agl-compliance/primary -name '*.txt' 2>/dev/null | wc -l)
+          echo "extracted text files: $count"
+          if [ "$count" -eq 0 ]; then
+            echo "::error::No announcement text was extracted — every source failed."
+            echo "A green run with no documents is worse than a red one; failing loudly."
+            exit 1
+          fi
+
       - name: Commit extracted text back to the branch
         run: |
           git config user.name "github-actions[bot]"

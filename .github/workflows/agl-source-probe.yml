@@ -69,8 +69,10 @@ jobs:
           try:
               r = S.get("https://www.listcorp.com/asx/agl/agl-energy-limited/news", timeout=45)
               items = re.findall(r'href="(/asx/agl/[^"]*/news/[^"]+)"[^>]*>(.{0,120}?)<', r.text)[:20]
-              show(f"Listcorp -> {r.status_code}; {len(items)} items",
-                   "\n".join(f"{h}  ::  {re.sub(r'\s+',' ',t).strip()}" for h, t in items) or r.text[:500])
+              clean = lambda t: re.sub(r"\s+", " ", t).strip()
+              lines = [h + "  ::  " + clean(t) for h, t in items]
+              show("Listcorp -> " + str(r.status_code) + "; " + str(len(items)) + " items",
+                   "\n".join(lines) or r.text[:500])
           except Exception as e:
               show("Listcorp FAILED", str(e))
           EOF

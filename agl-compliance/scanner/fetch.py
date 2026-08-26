@@ -1,12 +1,14 @@
 """Fetch ASX announcement metadata and PDFs for a listed company.
 
-Uses the public ASX JSON API:
-    https://www.asx.com.au/asx/1/company/{TICKER}/announcements?count=N&market_sensitive=false
+The legacy endpoint (www.asx.com.au/asx/1/company/{TICKER}/announcements) has
+been retired and now returns 404, so the index comes from the MarkitDigital
+research API that backs the ASX website:
 
-Each entry's "url" points at a PDF on announcements.asx.com.au. Direct GETs
-usually work with a browser User-Agent; when ASX serves its terms-acceptance
-interstitial instead, we retry through the same session so the acceptance
-cookie is carried.
+    https://asx.api.markitdigital.com/asx-research/1.0/companies/{TICKER}/announcements
+
+Announcement PDFs live on announcements.asx.com.au and download directly with a
+browser User-Agent; when ASX serves its terms-acceptance interstitial instead,
+we retry through the same session so the acceptance cookie is carried.
 
 NOTE: Claude Code remote environments commonly block asx.com.au at the egress
 proxy. Run this from a normal machine, or allow-list www.asx.com.au and
