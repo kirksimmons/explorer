@@ -1,0 +1,2122 @@
+--- page 1 ---
+AGL Energy Limited 
+ABN: 74 115 061 375 
+Locked Bag 3013 
+Australia Square NSW 1215 
+Australia 
+Level 24, 200 George St 
+Sydney NSW 2000 
+Australia 
+T: +61 2 9921 2999 
+F: +61 2 9921 2552 
+www.agl.com.au 
+ 
+ 1 
+ASX & Media Release 
+Appendix 4G and 2026 Corporate Governance Statement 
+12 August 2026 
+Attached is the Appendix 4G and 2026 Corporate Governance Statement for AGL Energy Limited.   
+ 
+Authorised for release by AGL’s Board of Directors. 
+Investor enquiries Media enquiries 
+James Thompson 
+Head of Investor Relations  
+M: +61 403 183 563 
+E: jthompson5@agl.com.au 
+Paul Hitchins  
+Head of Media  
+M: +61 419 315 001  
+E: media@agl.com.au 
+ 
+ 
+ 
+ 
+About AGL Energy 
+At AGL, we believe energy makes life better and are passionate about powering the way Australians live, move 
+and work. Proudly Australian for more than 185 years, AGL supplies around 4.6 million 1 customer services. 
+AGL operates Australia’s largest private electricity generation portfolio within the National Electricity Market, 
+comprising coal and gas-fired generation, renewable energy sources such as wind, hydro and solar, and 
+batteries and other firming and storage technology. We are building on our history as one of Australia’s 
+leading private investors in renewable energy to be a leader in the transition to a lower emissions and smart 
+energy future in line with the goals of our Climate Transition Action Plan.  
+For more information visit agl.com.au 
+ 
+ 
+1 Services to customers number is as at 30 June 2026. 
+For personal use only
+
+--- page 2 ---
+Rules 4.7.3 and 4.10.3 
+ASX Listing Rules Appendix 4G Page 1 
+Appendix 4G 
+Key to Disclosures 
+Corporate Governance Council Principles and Recommendations 
+Name of entity 
+AGL Energy Limited 
+ 
+ABN/ARBN  Financial year ended: 
+74 115 061 375  30 June 2026 
+Our corporate governance statement1 for the period above can be found at:2 
+☐ These pages of our 
+annual report:  
+☒ This URL on our 
+website: Corporate Governance | AGL 
+The Corporate Governance Statement is accurate and up to date as at 12 August 2026 and has been 
+approved by the Board. 
+The annexure includes a key to where our corporate governance disclosures can be located. 3 
+Date: 12 August 2026 
+Name of authorised officer 
+authorising lodgement: Melinda Hunter, Company Secretary 
+ 
+ 
+1 “Corporate governance statement” is defined in Listing Rule 19.12 to mean the statement referred to in Listing Rule 4.10.3 which 
+discloses the extent to which an entity has followed the recommendations set by the ASX Corporate Governance Council during 
+a particular reporting period. 
+Listing Rule 4.10.3 requires an entity that is included in the official list as an ASX Listing to include in its annual report either a 
+corporate governance statement that meets the requirements of that rule or the URL of the page on its website where such a 
+statement is located. The corporate governance statement must disclose the extent to which the entity has followed the 
+recommendations set by the ASX Corporate Governance Council during the reporting period. If the entity has not followed a 
+recommendation for any part of the reporting period, its corporate governance statement must separately identify that 
+recommendation and the period during which it was not followed and state its reasons for not following the recommendation and 
+what (if any) alternative governance practices it adopted in lieu of the recommendation during that period. 
+Under Listing Rule 4.7.4, if an entity chooses to include its corporate governance statement on its website rather than in its annual 
+report, it must lodge a copy of the corporate governance statement with ASX at the same time as it lodges its annual report with 
+ASX. The corporate governance statement must be current as at the effective date specified in that statement for the purposes of 
+Listing Rule 4.10.3. 
+Under Listing Rule 4.7.3, an entity must also lodge with ASX a completed Appendix 4G at the same time as it lodges its annual 
+report with ASX. The Appendix 4G serves a dual purpose. It acts as a key designed to assist readers to locate the governance 
+disclosures made by a listed entity under Listing Rule 4.10.3 and under the ASX Corporate Governance Council’s 
+recommendations. It also acts as a verification tool for listed entities to confirm that they have met the disclosure requirements of 
+Listing Rule 4.10.3. 
+The Appendix 4G is not a substitute for, and is not to be confused with, the entity's corporate governance statement. They serve 
+different purposes and an entity must produce each of them separately. 
+2 Tick whichever option is correct and then complete the page number(s) of the annual report, or the URL of the web page, where 
+your corporate governance statement can be found. You can, if you wish, delete the option which is not applicable. 
+3 Throughout this form, where you are given two or more options to select, you can, if you wish, delete any option which is not 
+applicable and just retain the option that is applicable. If you select an option that includes “OR” at the end of the selection and 
+you delete the other options, you can also, if you wish, delete the “OR” at the end of the selection. 
+See notes 4 and 5 below for further instructions on how to complete this form. 
+For personal use only
+
+--- page 3 ---
+Appendix 4G 
+Key to Disclosures Corporate Governance Council Principles and Recommendations 
+ASX Listing Rules Appendix 4G Page 2 
+ANNEXURE – KEY TO CORPORATE GOVERNANCE DISCLOSURES 
+ 
+Corporate Governance Council recommendation Where a box below is ticked,4 we have followed the 
+recommendation in full for the whole of the period above. We 
+have disclosed this in our Corporate Governance Statement: 
+Where a box below is ticked, we have NOT followed the 
+recommendation in full for the whole of the period above. Our 
+reasons for not doing so are:5 
+PRINCIPLE 1 – LAY SOLID FOUNDATIONS FOR MANAGEMENT AND OVERSIGHT 
+1.1 A listed entity should have and disclose a board charter setting 
+out: 
+(a) the respective roles and responsibilities of its board and 
+management; and 
+(b) those matters expressly reserved to the board and those 
+delegated to management. 
+☒ 
+and we have disclosed a copy of our board charter on AGL’s 
+website. 
+☐ set out in our Corporate Governance Statement OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+1.2 A listed entity should: 
+(a) undertake appropriate checks before appointing a director or 
+senior executive or putting someone forward for election as 
+a director; and 
+(b) provide security holders with all material information in its 
+possession relevant to a decision on whether or not to elect 
+or re-elect a director. 
+☒ ☐ set out in our Corporate Governance Statement OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+1.3 A listed entity should have a written agreement with each director 
+and senior executive setting out the terms of their appointment. 
+☒ ☐ set out in our Corporate Governance Statement OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+1.4 The company secretary of a listed entity should be accountable 
+directly to the board, through the chair, on all matters to do with 
+the proper functioning of the board. 
+☒ ☐ set out in our Corporate Governance Statement OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+ 
+4 Tick the box in this column only if you have followed the relevant recommendation in full for the whole of the period above. Where the recommendation has a disclosure obligation attached, you must insert 
+the location where that disclosure has been made, where indicated by the line with “insert location” underneath. If the disclosure in question has been made in your corporate governance statement, you 
+need only insert “our corporate governance statement”. If the disclosure has been made in your annual report, you should insert the page number(s) of your annual report (eg “pages 10-12 of our annual 
+report”). If the disclosure has been made on your website, you should insert the URL of the web page where the disclosure has been made or can be accessed (eg “www.entityname.com.au/corporate 
+governance/charters/”). 
+5 If you have followed all of the Council’s recommendations in full for the whole of the period above, you can, if you wish, delete this column from the form and re-format it. 
+For personal use only
+
+--- page 4 ---
+Appendix 4G 
+Key to Disclosures Corporate Governance Council Principles and Recommendations 
+ASX Listing Rules Appendix 4G Page 3 
+Corporate Governance Council recommendation Where a box below is ticked,4 we have followed the 
+recommendation in full for the whole of the period above. We 
+have disclosed this in our Corporate Governance Statement: 
+Where a box below is ticked, we have NOT followed the 
+recommendation in full for the whole of the period above. Our 
+reasons for not doing so are:5 
+1.5 A listed entity should: 
+(a) have and disclose a diversity policy; 
+(b) through its board or a committee of the board set 
+measurable objectives for achieving gender diversity in the 
+composition of its board, senior executives and workforce 
+generally; and 
+(c) disclose in relation to each reporting period: 
+(1) the measurable objectives set for that period to 
+achieve gender diversity; 
+(2) the entity’s progress towards achieving those 
+objectives; and 
+(3) either: 
+(A) the respective proportions of men and women 
+on the board, in senior executive positions and 
+across the whole workforce (including how the 
+entity has defined “senior executive” for these 
+purposes); or 
+(B) if the entity is a “relevant employer” under the 
+Workplace Gender Equality Act, the entity’s 
+most recent “Gender Equality Indicators”, as 
+defined in and published under that Act. 
+If the entity was in the S&P / ASX 300 Index at the 
+commencement of the reporting period, the measurable objective 
+for achieving gender diversity in the composition of its board 
+should be to have not less than 30% of its directors of each 
+gender within a specified period. 
+☒ 
+and we have disclosed a copy of our diversity policy at: 
+AGL’s website. 
+ 
+and we have disclosed the information referred to in paragraph (c) in 
+our Corporate Governance Statement, at pages 17-19.  
+ 
+and if we were included in the S&P / ASX 300 Index at the 
+commencement of the reporting period our measurable objective for 
+achieving gender diversity in the composition of its board of not less 
+than 30% of its directors of each gender within a specified period. 
+☐ set out in our Corporate Governance Statement OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+1.6 A listed entity should: 
+(a) have and disclose a process for periodically evaluating the 
+performance of the board, its committees and individual 
+directors; and 
+(b) disclose for each reporting period whether a performance 
+evaluation has been undertaken in accordance with that 
+process during or in respect of that period. 
+☒ 
+and we have disclosed the evaluation process referred to in 
+paragraph (a) and whether a performance evaluation was 
+undertaken for the reporting period in accordance with that process 
+in our Corporate Governance Statement, on pages 11 and 15. 
+☐ set out in our Corporate Governance Statement OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+For personal use only
+
+--- page 5 ---
+Appendix 4G 
+Key to Disclosures Corporate Governance Council Principles and Recommendations 
+ASX Listing Rules Appendix 4G Page 4 
+Corporate Governance Council recommendation Where a box below is ticked,4 we have followed the 
+recommendation in full for the whole of the period above. We 
+have disclosed this in our Corporate Governance Statement: 
+Where a box below is ticked, we have NOT followed the 
+recommendation in full for the whole of the period above. Our 
+reasons for not doing so are:5 
+1.7 A listed entity should: 
+(a) have and disclose a process for evaluating the performance 
+of its senior executives at least once every reporting period; 
+and 
+(b) disclose for each reporting period whether a performance 
+evaluation has been undertaken in accordance with that 
+process during or in respect of that period. 
+☒ 
+and we have disclosed the evaluation process referred to in 
+paragraph (a) and whether a performance evaluation was 
+undertaken for the reporting period in accordance with that process 
+in our Corporate Governance Statement, at page 16 and in our 
+Remuneration Report, at pages 80-102 in AGL’s 2026 Annual 
+Report, which is available on AGL’s website. 
+☐ set out in our Corporate Governance Statement OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+For personal use only
+
+--- page 6 ---
+Appendix 4G 
+Key to Disclosures Corporate Governance Council Principles and Recommendations 
+ASX Listing Rules Appendix 4G Page 5 
+Corporate Governance Council recommendation Where a box below is ticked,4 we have followed the 
+recommendation in full for the whole of the period above. We 
+have disclosed this in our Corporate Governance Statement: 
+Where a box below is ticked, we have NOT followed the 
+recommendation in full for the whole of the period above. Our 
+reasons for not doing so are:5 
+PRINCIPLE 2 - STRUCTURE THE BOARD TO BE EFFECTIVE AND ADD VALUE 
+2.1 The board of a listed entity should: 
+(a) have a nomination committee which: 
+(1) has at least three members, a majority of whom are 
+independent directors; and 
+(2) is chaired by an independent director, 
+and disclose: 
+(3) the charter of the committee; 
+(4) the members of the committee; and 
+(5) as at the end of each reporting period, the number 
+of times the committee met throughout the period 
+and the individual attendances of the members at 
+those meetings; or 
+(b) if it does not have a nomination committee, disclose that 
+fact and the processes it employs to address board 
+succession issues and to ensure that the board has the 
+appropriate balance of skills, knowledge, experience, 
+independence and diversity to enable it to discharge its 
+duties and responsibilities effectively. 
+☒ 
+and we have disclosed a copy of the charter of the committee on 
+AGL’s website 
+ 
+and the information referred to in paragraphs (4) and (5) in our 
+Corporate Governance Statement on pages 12-15 “Board 
+Committees” and in AGL’s 2026 Annual Report on pages 76-77, 
+which is available on AGL’s website. 
+ 
+☐ set out in our Corporate Governance Statement OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+2.2 A listed entity should have and disclose a board skills matrix 
+setting out the mix of skills that the board currently has or is 
+looking to achieve in its membership. 
+☒ 
+and we have disclosed our board skills matrix in our Corporate 
+Governance Statement, on pages 8-10, and in AGL’s 2026 Annual 
+Report on pages 68-70, which is available on AGL’s website. 
+ 
+☐ set out in our Corporate Governance Statement OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+2.3 A listed entity should disclose: 
+(a) the names of the directors considered by the board to be 
+independent directors; 
+(b) if a director has an interest, position, affiliation or 
+relationship of the type described in Box 2.3 but the board 
+is of the opinion that it does not compromise the 
+independence of the director, the nature of the interest, 
+position or relationship in question and an explanation of 
+why the board is of that opinion; and 
+(c) the length of service of each director. 
+☒ 
+and we have disclosed the names of the directors considered by the 
+board to be independent directors in our Corporate Governance 
+Statement and AGL’s 2026 Annual Report on page 76, which is 
+available on AGL’s website 
+ 
+and the length of service of each director in AGL’s 2026 Annual 
+Report on pages 73-75, which is available on AGL’s website.  
+☐ set out in our Corporate Governance Statement  
+For personal use only
+
+--- page 7 ---
+Appendix 4G 
+Key to Disclosures Corporate Governance Council Principles and Recommendations 
+ASX Listing Rules Appendix 4G Page 6 
+Corporate Governance Council recommendation Where a box below is ticked,4 we have followed the 
+recommendation in full for the whole of the period above. We 
+have disclosed this in our Corporate Governance Statement: 
+Where a box below is ticked, we have NOT followed the 
+recommendation in full for the whole of the period above. Our 
+reasons for not doing so are:5 
+2.4 A majority of the board of a listed entity should be independent 
+directors. 
+☒ ☐ set out in our Corporate Governance Statement OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+2.5 The chair of the board of a listed entity should be an 
+independent director and, in particular, should not be the same 
+person as the CEO of the entity. 
+☒ ☐ set out in our Corporate Governance Statement OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+2.6 A listed entity should have a program for inducting new 
+directors and for periodically reviewing whether there is a need 
+for existing directors to undertake professional development to 
+maintain the skills and knowledge needed to perform their role 
+as directors effectively. 
+☒ ☐ set out in our Corporate Governance Statement OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+PRINCIPLE 3 – INSTIL A CULTURE OF ACTING LAWFULLY, ETHICALLY AND RESPONSIBLY 
+3.1 A listed entity should articulate and disclose its values. ☒ 
+and we have disclosed our values in our Corporate Governance 
+Statement at page 4 and also on AGL’s website. 
+☐ set out in our Corporate Governance Statement  
+3.2 A listed entity should: 
+(a) have and disclose a code of conduct for its directors, 
+senior executives and employees; and 
+(b) ensure that the board or a committee of the board is 
+informed of any material breaches of that code. 
+☒ 
+and we have disclosed our code of conduct on AGL’s website. 
+☐ set out in our Corporate Governance Statement  
+3.3 A listed entity should: 
+(a) have and disclose a whistleblower policy; and 
+(b) ensure that the board or a committee of the board is 
+informed of any material incidents reported under that 
+policy. 
+☒ 
+and we have disclosed our whistleblower policy on AGL’s website. 
+☐ set out in our Corporate Governance Statement  
+3.4 A listed entity should: 
+(a) have and disclose an anti-bribery and corruption policy; 
+and 
+(b) ensure that the board or committee of the board is 
+informed of any material breaches of that policy. 
+☒ 
+and we have disclosed our anti-bribery and corruption policy on 
+AGL’s website. 
+☐ set out in our Corporate Governance Statement  
+For personal use only
+
+--- page 8 ---
+Appendix 4G 
+Key to Disclosures Corporate Governance Council Principles and Recommendations 
+ASX Listing Rules Appendix 4G Page 7 
+Corporate Governance Council recommendation Where a box below is ticked,4 we have followed the 
+recommendation in full for the whole of the period above. We 
+have disclosed this in our Corporate Governance Statement: 
+Where a box below is ticked, we have NOT followed the 
+recommendation in full for the whole of the period above. Our 
+reasons for not doing so are:5 
+PRINCIPLE 4 – SAFEGUARD THE INTEGRITY OF CORPORATE REPORTS 
+4.1 The board of a listed entity should: 
+(a) have an audit committee which: 
+(1) has at least three members, all of whom are non-
+executive directors and a majority of whom are 
+independent directors; and 
+(2) is chaired by an independent director, who is not 
+the chair of the board, 
+and disclose: 
+(3) the charter of the committee; 
+(4) the relevant qualifications and experience of the 
+members of the committee; and 
+(5) in relation to each reporting period, the number of 
+times the committee met throughout the period and 
+the individual attendances of the members at those 
+meetings; or 
+(b) if it does not have an audit committee, disclose that fact 
+and the processes it employs that independently verify 
+and safeguard the integrity of its corporate reporting, 
+including the processes for the appointment and removal 
+of the external auditor and the rotation of the audit 
+engagement partner. 
+☒ 
+and we have disclosed a copy of the charter of the committee on 
+AGL’s website 
+ 
+and the information referred to in paragraphs (4) and (5) in AGL’s 
+2026 Annual Report on pages 73-77, which is available on AGL’s 
+website.  
+☐ set out in our Corporate Governance Statement  
+4.2 The board of a listed entity should, before it approves the 
+entity’s financial statements for a financial period, receive from 
+its CEO and CFO a declaration that, in their opinion, the 
+financial records of the entity have been properly maintained 
+and that the financial statements comply with the appropriate 
+accounting standards and give a true and fair view of the 
+financial position and performance of the entity and that the 
+opinion has been formed on the basis of a sound system of risk 
+management and internal control which is operating effectively. 
+☒ ☐ set out in our Corporate Governance Statement  
+4.3 A listed entity should disclose its process to verify the integrity 
+of any periodic corporate report it releases to the market that is 
+not audited or reviewed by an external auditor. 
+☒ ☐ set out in our Corporate Governance Statement  
+For personal use only
+
+--- page 9 ---
+Appendix 4G 
+Key to Disclosures Corporate Governance Council Principles and Recommendations 
+ASX Listing Rules Appendix 4G Page 8 
+Corporate Governance Council recommendation Where a box below is ticked,4 we have followed the 
+recommendation in full for the whole of the period above. We 
+have disclosed this in our Corporate Governance Statement: 
+Where a box below is ticked, we have NOT followed the 
+recommendation in full for the whole of the period above. Our 
+reasons for not doing so are:5 
+PRINCIPLE 5 – MAKE TIMELY AND BALANCED DISCLOSURE 
+5.1 A listed entity should have and disclose a written policy for 
+complying with its continuous disclosure obligations under 
+listing rule 3.1. 
+☒ 
+and we have disclosed our continuous disclosure compliance policy 
+(entitled AGL Market Disclosure Policy) on AGL’s website. 
+☐ set out in our Corporate Governance Statement  
+5.2 A listed entity should ensure that its board receives copies of all 
+material market announcements promptly after they have been 
+made. 
+☒ ☐ set out in our Corporate Governance Statement  
+5.3 A listed entity that gives a new and substantive investor or 
+analyst presentation should release a copy of the presentation 
+materials on the ASX Market Announcements Platform ahead 
+of the presentation. 
+☒ ☐ set out in our Corporate Governance Statement  
+PRINCIPLE 6 – RESPECT THE RIGHTS OF SECURITY HOLDERS 
+6.1 A listed entity should provide information about itself and its 
+governance to investors via its website. 
+☒ 
+and we have disclosed information about us and our governance on 
+our website. 
+ 
+☐ set out in our Corporate Governance Statement  
+6.2 A listed entity should have an investor relations program that 
+facilitates effective two-way communication with investors. 
+☒ ☐ set out in our Corporate Governance Statement  
+6.3 A listed entity should disclose how it facilitates and encourages 
+participation at meetings of security holders. 
+☒ 
+and we have disclosed how we facilitate and encourage participation 
+at meetings of security holders in our Corporate Governance 
+Statement on page 24 “Stakeholder Engagement”. 
+☐ set out in our Corporate Governance Statement  
+6.4 A listed entity should ensure that all substantive resolutions at a 
+meeting of security holders are decided by a poll rather than by 
+a show of hands. 
+☒ ☐ set out in our Corporate Governance Statement  
+6.5 A listed entity should give security holders the option to receive 
+communications from, and send communications to, the entity 
+and its security registry electronically. 
+☒ ☐ set out in our Corporate Governance Statement  
+For personal use only
+
+--- page 10 ---
+Appendix 4G 
+Key to Disclosures Corporate Governance Council Principles and Recommendations 
+ASX Listing Rules Appendix 4G Page 9 
+Corporate Governance Council recommendation Where a box below is ticked,4 we have followed the 
+recommendation in full for the whole of the period above. We 
+have disclosed this in our Corporate Governance Statement: 
+Where a box below is ticked, we have NOT followed the 
+recommendation in full for the whole of the period above. Our 
+reasons for not doing so are:5 
+PRINCIPLE 7 – RECOGNISE AND MANAGE RISK 
+7.1 The board of a listed entity should: 
+(a) have a committee or committees to oversee risk, each of 
+which: 
+(1) has at least three members, a majority of whom are 
+independent directors; and 
+(2) is chaired by an independent director, 
+and disclose: 
+(3) the charter of the committee; 
+(4) the members of the committee; and 
+(5) as at the end of each reporting period, the number 
+of times the committee met throughout the period 
+and the individual attendances of the members at 
+those meetings; or 
+(b) if it does not have a risk committee or committees that 
+satisfy (a) above, disclose that fact and the processes it 
+employs for overseeing the entity’s risk management 
+framework. 
+☒ 
+and we have disclosed a copy of the charter of the committee on 
+AGL’s website 
+ 
+and the information referred to in paragraphs (4) and (5) in our 
+Corporate Governance Statement, on pages 12-15 “Board 
+Committees” and in AGL’s 2026 Annual Report on pages 76-77, 
+which is available on AGL’s website.  
+ 
+☐ set out in our Corporate Governance Statement  
+7.2 The board or a committee of the board should: 
+(a) review the entity’s risk management framework at least 
+annually to satisfy itself that it continues to be sound and 
+that the entity is operating with due regard to the risk 
+appetite set by the board; and 
+(b) disclose, in relation to each reporting period, whether 
+such a review has taken place. 
+☒ 
+and we have disclosed whether a review of the entity’s risk 
+management framework was undertaken during the reporting period 
+in our Corporate Governance Statement, on page 21. 
+☐ set out in our Corporate Governance Statement  
+7.3 A listed entity should disclose: 
+(a) if it has an internal audit function, how the function is 
+structured and what role it performs; or 
+(b) if it does not have an internal audit function, that fact and 
+the processes it employs for evaluating and continually 
+improving the effectiveness of its governance, risk 
+management and internal control processes. 
+☒ 
+and we have disclosed how our internal audit function is structured 
+and what role it performs in our Corporate Governance Statement, 
+on page 22. 
+☐ set out in our Corporate Governance Statement  
+For personal use only
+
+--- page 11 ---
+Appendix 4G 
+Key to Disclosures Corporate Governance Council Principles and Recommendations 
+ASX Listing Rules Appendix 4G Page 10 
+Corporate Governance Council recommendation Where a box below is ticked,4 we have followed the 
+recommendation in full for the whole of the period above. We 
+have disclosed this in our Corporate Governance Statement: 
+Where a box below is ticked, we have NOT followed the 
+recommendation in full for the whole of the period above. Our 
+reasons for not doing so are:5 
+7.4 A listed entity should disclose whether it has any material 
+exposure to environmental or social risks and, if it does, how it 
+manages or intends to manage those risks. 
+☒ 
+and we have disclosed whether we have any material exposure to 
+environmental and social risks in AGL’s 2026 Annual Report on 
+pages 19-23 and 116-135, and how we manage or intend to manage 
+those risks in AGL’s 2026 Annual Report on pages 14-67 and 105-
+158, which is available on AGL’s website. 
+☐ set out in our Corporate Governance Statement  
+For personal use only
+
+--- page 12 ---
+Appendix 4G 
+Key to Disclosures Corporate Governance Council Principles and Recommendations 
+ASX Listing Rules Appendix 4G Page 11 
+Corporate Governance Council recommendation Where a box below is ticked,4 we have followed the 
+recommendation in full for the whole of the period above. We 
+have disclosed this in our Corporate Governance Statement: 
+Where a box below is ticked, we have NOT followed the 
+recommendation in full for the whole of the period above. Our 
+reasons for not doing so are:5 
+PRINCIPLE 8 – REMUNERATE FAIRLY AND RESPONSIBLY 
+8.1 The board of a listed entity should: 
+(a) have a remuneration committee which: 
+(1) has at least three members, a majority of whom are 
+independent directors; and 
+(2) is chaired by an independent director, 
+and disclose: 
+(3) the charter of the committee; 
+(4) the members of the committee; and 
+(5) as at the end of each reporting period, the number 
+of times the committee met throughout the period 
+and the individual attendances of the members at 
+those meetings; or 
+(b) if it does not have a remuneration committee, disclose 
+that fact and the processes it employs for setting the level 
+and composition of remuneration for directors and senior 
+executives and ensuring that such remuneration is 
+appropriate and not excessive. 
+☒ 
+and we have disclosed a copy of the charter of the committee on 
+AGL’s website 
+ 
+and the information referred to in paragraphs (4) and (5) in our 
+Corporate Governance Statement, on pages 12-15 “Board 
+Committees” and in AGL’s 2026 Annual Report on pages 76-77, 
+which is available on AGL’s website.  
+ 
+☐ set out in our Corporate Governance Statement OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+8.2 A listed entity should separately disclose its policies and 
+practices regarding the remuneration of non-executive directors 
+and the remuneration of executive directors and other senior 
+executives. 
+☒ 
+and we have disclosed separately our remuneration policies and 
+practices regarding the remuneration of non-executive directors and 
+the remuneration of executive directors and other senior executives 
+on pages 80-102 in AGL’s 2026 Annual Report (Remuneration 
+Report), which is available on AGL’s website. 
+☐ set out in our Corporate Governance Statement OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+8.3 A listed entity which has an equity-based remuneration scheme 
+should: 
+(a) have a policy on whether participants are permitted to 
+enter into transactions (whether through the use of 
+derivatives or otherwise) which limit the economic risk of 
+participating in the scheme; and 
+(b) disclose that policy or a summary of it. 
+☒ 
+and we have disclosed our policy on this issue on AGL’s website 
+and a summary of it in our Corporate Governance Statement, on 
+page 23 “Dealings in AGL Shares”.  
+☐ set out in our Corporate Governance Statement OR 
+☐ we do not have an equity-based remuneration scheme and 
+this recommendation is therefore not applicable OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+For personal use only
+
+--- page 13 ---
+Appendix 4G 
+Key to Disclosures Corporate Governance Council Principles and Recommendations 
+ASX Listing Rules Appendix 4G Page 12 
+Corporate Governance Council recommendation Where a box below is ticked,4 we have followed the 
+recommendation in full for the whole of the period above. We 
+have disclosed this in our Corporate Governance Statement: 
+Where a box below is ticked, we have NOT followed the 
+recommendation in full for the whole of the period above. Our 
+reasons for not doing so are:5 
+ADDITIONAL RECOMMENDATIONS THAT APPLY ONLY IN CERTAIN CASES 
+9.1 A listed entity with a director who does not speak the language 
+in which board or security holder meetings are held or key 
+corporate documents are written should disclose the processes 
+it has in place to ensure the director understands and can 
+contribute to the discussions at those meetings and 
+understands and can discharge their obligations in relation to 
+those documents. 
+Not applicable ☐ set out in our Corporate Governance Statement OR 
+☒ we do not have a director in this position and this 
+recommendation is therefore not applicable OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+9.2 A listed entity established outside Australia should ensure that 
+meetings of security holders are held at a reasonable place and 
+time. 
+Not applicable ☐ set out in our Corporate Governance Statement OR 
+☒ we are established in Australia and this recommendation is 
+therefore not applicable OR 
+☐ we are an externally managed entity and this recommendation 
+is therefore not applicable 
+9.3 A listed entity established outside Australia, and an externally 
+managed listed entity that has an AGM, should ensure that its 
+external auditor attends its AGM and is available to answer 
+questions from security holders relevant to the audit. 
+Not applicable ☐ set out in our Corporate Governance Statement OR 
+☒ we are established in Australia and not an externally managed 
+listed entity and this recommendation is therefore not 
+applicable 
+☐ we are an externally managed entity that does not hold an 
+AGM and this recommendation is therefore not applicable 
+ADDITIONAL DISCLOSURES APPLICABLE TO EXTERNALLY MANAGED LISTED ENTITIES 
+- Alternative to Recommendation 1.1 for externally managed 
+listed entities: 
+The responsible entity of an externally managed listed entity 
+should disclose: 
+(a) the arrangements between the responsible entity and the 
+listed entity for managing the affairs of the listed entity; 
+and 
+(b) the role and responsibility of the board of the responsible 
+entity for overseeing those arrangements. 
+Not applicable ☐ set out in our Corporate Governance Statement  
+- Alternative to Recommendations 8.1, 8.2 and 8.3 for externally 
+managed listed entities: 
+An externally managed listed entity should clearly disclose the 
+terms governing the remuneration of the manager. 
+Not applicable 
+ 
+☐ set out in our Corporate Governance Statement  
+ 
+For personal use only
+
+--- page 14 ---
+Corporate 
+Governance 
+Statement 
+2026
+For personal use only
+
+--- page 15 ---
+Acknowledgement of Country
+AGL recognises the First Nations people as 
+the Traditional Custodians of the lands on 
+which we work, and acknowledges those 
+communities’ continuing connections to 
+their lands, waters and cultures. We pay our 
+respects to their Elders, past and present.
+Contents
+AGL Energy Corporate Governance 
+Statement 2026
+Corporate Governance Framework 3
+AGL’s Purpose and Values 4
+AGL’s Board 5
+Board Committees 12
+AGL’s Executive Team 16
+Diversity and Inclusion 17
+Risk Management Framework and 
+Financial Reporting
+20
+AGL’s Key Corporate Governance Policies 23
+Stakeholder Engagement 24
+For personal use only
+
+--- page 16 ---
+This corporate governance statement describes the corporate governance framework, 
+policies and practices of AGL Energy Limited (AGL). This statement has been approved by 
+the Board and is current as at 12 August 2026.
+Throughout FY26, AGL's corporate governance arrangements were consistent with the fourth edition of the Corporate Governance Principles 
+and Recommendations published by the ASX Corporate Governance Council (ASX Principles). Our Appendix 4G, which is a checklist cross 
+referencing the ASX Principles to the relevant disclosures in this Corporate Governance Statement, the 2026 Annual Report and the AGL 
+website, has been lodged with the ASX.
+AGL is committed to ensuring that its corporate governance framework, policies and practices reflect a high standard of corporate 
+governance, which underpins and supports the delivery of our strategy and long-term shareholder value.
+AGL's governance framework is summarised below.
+Company Secretary
+People & 
+Performance 
+Committee 
+Audit & Risk 
+Management 
+Committee  
+Safety & 
+Sustainability 
+Committee
+Nominations 
+Committee 
+Group Audit
+External Auditor
+Reporting/ 
+accountability of 
+corporate governance
+ and Board matters  
+Reporting/ 
+accountability of 
+management 
+matters 
+Managing Director & CEO
+Executive Team
+Employees
+Manage strategy, 
+business plans and 
+policies approved 
+by Board 
+Management 
+and oversight 
+Reporting 
+Reporting 
+Accountable for overall 
+management and performance 
+Delegate management of 
+day-to-day aﬀairs
+Board
+Miles George (Chair) 
+Mark Bloom 
+Graham Cockroft 
+Betsy Donaghey 
+Christine Holman 
+Damien Nicks (CEO)  
+John Pollaers  
+Vanessa Sullivan  
+Mark Twidell 
+AGL has adopted a number of corporate governance policies and documents. The corporate governance policies and documents referred to 
+in this Corporate Governance Statement are published on the AGL website.
+AGL Energy Corporate Governance Statement 2026 3
+Corporate Governance Framework
+For personal use only
+
+--- page 17 ---
+AGL's Purpose
+AGL's Purpose - Powering Australian Life - reflects AGL's passion to power the way Australians live, work and move and our critical role in 
+Australia's energy transition.
+At an enterprise level, AGL's Purpose provides AGL and its Directors, employees and contractors with the foundations for actions and, 
+together with AGL's Values, guides AGL's decision making. Further information about AGL's Purpose can be found on AGL's website.
+AGL's Values
+AGL's three core Values are:
+• Bring on tomorrow
+• Can do. Will do
+• Be safe. Be supportive
+They are disclosed on AGL's website and described below.
+These Values underpin AGL's operations and the Board and senior management are guided by these core Values when making decisions 
+for AGL.
+AGL's Values were developed after substantial consultation with AGL's people. The Executive Team is responsible for instilling AGL's Values 
+across AGL and continually references and reinforces AGL's Values with AGL's people, including through Values campaigns.
+Senior management oversees the provision of training to employees about AGL's Values. The Board engages with senior management 
+regularly to get comfort that AGL's Values align with the “lived experience” of the business. The Board recognises the need for continuous 
+improvement in this area and looks for new ways to build its understanding of how AGL's Values are lived in practice (including detailed 
+reporting on employee, customer and stakeholder feedback).
+AGL Energy Corporate Governance Statement 20264
+AGL’s Purpose and Values
+For personal use only
+
+--- page 18 ---
+As at 12 August 2026, AGL's Board comprised eight Non-Executive Directors and AGL's Managing Director & CEO, Damien Nicks. An overview 
+of the qualifications, appointment date, experience and special responsibilities of each Director is set out on pages 73 to 76 of AGL's 2026 
+Annual Report.
+Roles and Responsibilities of the Board
+The Board is responsible for the overall governance of AGL. The role of the Board is to safeguard AGL's interests and to protect and foster 
+sustainable value creation while taking into account the reasonable interests of shareholders, employees, customers, the communities in 
+which AGL operates and other relevant stakeholders.
+The Board reviews and approves AGL's strategic direction and provides oversight of management. Additionally, the Board is responsible for 
+guiding AGL's company culture by establishing the “tone from the top” and by monitoring the implementation of, and broader adherence 
+to, AGL's Values, policies and related processes. This includes approving AGL's Purpose and Values and monitoring AGL's approach to the 
+management of both financial and non-financial risks, such as its exposure to environmental risks, health and safety risks, potential damage 
+to AGL's reputation and the interests of broader stakeholders.
+Responsibilities reserved to the Board are set out in a formal Board Charter, which the Board reviews at least every two years. The Board 
+Charter was reviewed and updated in FY25. Key aspects of the Board's roles and responsibilities, and how they were relevant during FY26, are 
+set out below.
+Board’s role Relevance during FY26
+Strategy
+Reviewing and approving 
+AGL's strategic direction, 
+identification of risks and 
+opportunities, resource 
+allocation, business 
+plan and budget, 
+and significant strategic 
+initiatives and plans.
+Key focus areas for the Board in FY26 in relation to the delivery of AGL's strategy included:
+• Connecting every customer to a sustainable future - monitoring the progress of the retail 
+transformation program, including AGL's strategic partnership and equity interest in Kaluza, and 
+overseeing initiatives to support our customers to decarbonise the way they live, work and move 
+including initiatives to drive the uptake of electrification.
+• Transitioning our energy portfolio - growing AGL's development pipeline through various 
+investments, including approving the Final Investment Decision (FID) on the Tomago Battery and the 
+Kwinana Swift Gas 2 project, and entry into power purchase agreements with Tilt Renewables (Tilt) for 
+Palmer and Waddi Wind Farms.
+• Embracing ESG - the release of AGL's 2025 Climate Transition Action Plan (CTAP), endorsed by 
+AGL's shareholders at the 2025 Annual General Meeting (AGM), monitoring AGL's ESG Framework and 
+overseeing and providing guidance in relation to AGL's approach to disclosures made under AASB S2 
+Climate-related Disclosures.
+• Technology at the Core - monitoring progress on the implementation of AGL's technology strategy, 
+including management of AGL's cybersecurity environment and posture and the use of Artificial 
+Intelligence (AI) and the associated risks and opportunities.
+• Future-fit people and culture - Board renewal and succession planning including a change in the 
+Chairs of the Board Committees, approval of AGL's FY27-29 Diversity and Inclusion Strategy and various 
+capability and talent initiatives in key areas required to deliver AGL's strategy.
+• Shareholder Value - reviewing AGL's capital allocation framework and considering ways to optimise the 
+management of AGL's portfolio to deliver AGL's strategy and long term shareholder value, with AGL's 
+commitment to disciplined use of the balance sheet and recycling capital to support future growth 
+demonstrated through the divestment of 19.9% of AGL's 20% equity interest in Tilt.
+AGL Energy Corporate Governance Statement 2026 5
+AGL’s Board
+For personal use only
+
+--- page 19 ---
+Board’s role Relevance during FY26
+Customers
+Monitoring AGL's 
+relationship with key 
+stakeholders including 
+the communities in 
+which AGL operates and 
+AGL's customers.
+The Board had significant oversight over AGL's relationship with customers and other key stakeholders 
+during FY26, including:
+• progress on AGL's retail transformation program, aimed at simplifying AGL's products, processes and the 
+operating model to deliver sustainable benefits in the form of lower costs of operation and enhanced 
+customer and agent experience.
+• AGL's strategy to Lead in Electrification, whereby AGL aims to be the partner of choice on the 
+electrification journey of customers, including through offerings such as electric vehicle services.
+• AGL's Commercial & Industrial customer strategy, and opportunities to further grow and scale 
+this business.
+• AGL's pricing strategy and oversight of the implementation of customer affordability measures, customer 
+advocacy and other support afforded to customers.
+• oversight of AGL's relationships with the local communities in which we operate, including AGL's 
+approach to responsible transition as the energy transition progresses.
+Finance, operations and capital management
+Oversight of financial 
+and operating results 
+on an ongoing 
+basis and approving 
+decisions affecting 
+AGL's capital, including 
+capital structure, 
+resource allocation, 
+capital management 
+initiatives and major 
+financing arrangements.
+During FY26, the Board:
+• provided significant oversight of AGL's financing arrangements, including approving AGL's capital 
+management plan and debt refinancing program.
+• monitored AGL's operating performance, including maintenance programs and unplanned outages.
+• monitored AGL's financial results on an ongoing basis, including close oversight of financial performance 
+against FY26 guidance.
+• approved the allocation of capital to a number of projects including the FID on the Tomago Battery and 
+the Kwinana Swift Gas 2 project.
+• approved and monitored a number of other transactions, including the divestment of 19.9% of AGL's 
+20% equity interest in Tilt, and entry into a strategic, long-term partnership with Aussie Broadband 
+Limited (ABB) involving the divestment of AGL's telecommunications business in exchange for proceeds 
+of approximately $115 million of shares in ABB.
+Risk Management and Compliance
+Approving and monitoring 
+AGL's risk management 
+framework and Risk 
+Appetite Statement 
+and monitoring the 
+effectiveness of AGL's 
+systems of risk 
+management and 
+control and overseeing 
+AGL's systems for 
+managing compliance.
+During FY26, the Board:
+• approved the risk management framework, revised Risk Appetite Statement and updated Tier 1 Risks.
+• reviewed AGL's cyber resilience capabilities, including incident response plans.
+• considered AGL's business resilience capabilities, including business continuity plans and crisis 
+management activities.
+• monitored the impact of the global fuel crisis, including impact on AGL's operations and risk 
+management plans.
+• oversaw AGL's compliance with key legal requirements and regulations, including AGL's readiness for 
+compliance with the new climate-related disclosure regime.
+• reviewed the effectiveness of a number of AGL group policies and approved various amendments to 
+those policies.
+Social and ethical impact of AGL's activities
+Considering the social 
+and ethical impact of 
+AGL's activities.
+During FY26, the Board:
+• oversaw rehabilitation plans for the Liddell Power Station for its re-use as an integrated energy hub.
+• approved AGL's Modern Slavery Statement and considered AGL's supply chain risks and mitigations 
+in place.
+• received regular updates on the social and ethical impact of AGL's activities, including meeting regularly 
+with external stakeholders to discuss and understand their perspectives.
+• oversaw the launch and expansion of "Community Power", designed to enable customers and 
+communities to participate in and benefit from the energy transition.
+• actively considered ESG factors using AGL's ESG decision making framework when making decisions in 
+relation to AGL's strategy.
+AGL Energy Corporate Governance Statement 20266
+AGL’s BoardFor personal use only
+
+--- page 20 ---
+Board’s role Relevance during FY26
+Culture and ethical and responsible decision making
+Approving AGL's purpose 
+and values and 
+monitoring standards 
+of behaviour and 
+culture. Promoting 
+ethical and responsible 
+decision making.
+During FY26, the Board:
+• received updates on results from employee engagement surveys and initiatives to enhance AGL's 
+employee value proposition.
+• monitored the effectiveness of AGL's conduct, culture and whistleblower programs, including trends 
+identified through these programs and initiatives to enhance AGL's culture.
+Health, safety and environment
+Considering the 
+environmental impact 
+of AGL's activities and 
+approving and monitoring 
+management’s 
+implementation 
+of environmental, 
+employment and work, 
+health and safety policies 
+and compliance with 
+applicable laws.
+During FY26, the Board:
+• monitored progress against AGL's sustainability targets as set out in AGL's 2025 CTAP , including in relation 
+to the reduction of greenhouse gas emissions.
+• reviewed progress on the safe demolition of the Liddell Power Station.
+• received regular updates on AGL's safety and environmental performance and compliance programs, 
+including oversight of initiatives to prevent significant injury or fatality events.
+• participated in critical control checks and safety walks at various sites.
+• met with groups of employees across AGL's operations to discuss safety and other issues impacting 
+AGL's people.
+• oversaw the implementation of AGL's health and wellbeing programs, including psychological risk 
+workshops focused on mental health.
+• monitored various Enterprise Agreements.
+• approved AGL's Health, Safety and Environment (HSE) Policy.
+Responsibilities of the Chair
+Under AGL's Constitution, the Board elects a Chair from amongst the Non‑Executive Directors. This means that the roles of the Chair and the 
+CEO are not exercised by the same individual. It is also a requirement of AGL's Board Charter that the Chair be independent.
+The Chair presides over AGL's Board meetings and shareholder meetings. Some of the key responsibilities of the Chair include:
+• leading the Board in reviewing and discussing Board matters;
+• facilitating effective contributions by all Directors and monitoring Board performance;
+• reviewing corporate governance matters with the Company Secretary and reporting on those matters to the Board; and
+• maintaining a regular dialogue with the CEO, and being the principal communication channel between the Board and management.
+Our current Chair is Miles George. The Board is satisfied that Miles George is, and has been throughout the financial year, an 
+independent Director.
+Board Meetings
+The Board met 10 times during the financial year. Directors’ attendances are set out on page 77 of the 2026 Annual Report. The Board held 
+9 regular scheduled meetings throughout FY26, and 1 additional meeting.
+Strategic matters were considered by the Board at each Board meeting. A separate full day session to discuss AGL's ongoing strategy is 
+held annually.
+It is usual for the Non-Executive Directors to confer, without management being present, at the start of each scheduled Board meeting. 
+Otherwise, the Executive Team is invited to participate in Board meetings as required.
+AGL Energy Corporate Governance Statement 2026 7
+For personal use only
+
+--- page 21 ---
+Independence
+The Board regularly assesses the independence of each Director and has determined that each Non-Executive Director is, and was 
+throughout the entirety of the financial year, independent. In accordance with the ASX Principles, the Board has determined that Damien 
+Nicks' role as CEO means that he is not considered to be an independent Director.
+AGL considers a Director to be independent if the Director is independent of management and is free of any interest, position or relationship 
+that might influence, or reasonably be perceived to influence, in a material respect their capacity to bring an independent judgement to bear 
+on issues before the Board and to act in the best interests of AGL as a whole rather than in the interests of an individual shareholder or 
+other party.
+When assessing the independence of a Director, the Board considers the matters potentially affecting the independence status of a Director 
+as described in Box 2.3 of the ASX Principles. Materiality is assessed on a case by case basis by reference to each Director's individual 
+circumstances rather than by applying general materiality thresholds. As at the date of this statement and throughout the year, there were 
+no relationships or associations of the kind referred to in Box 2.3 of the ASX Principles in relation to AGL's Non-Executive Directors.
+Board Composition
+Skills and capabilities
+AGL seeks to maintain a Board with a broad range of skills, knowledge and experience necessary to provide effective oversight over 
+management and guide the strategic direction of the company. The Board uses a skills matrix to identify the key skills and experience 
+the Board is seeking to achieve in its membership. During FY26, AGL's Board skills matrix was updated, following review by a professional 
+consultant. The core competencies and skills in the Board skills matrix have been updated to reflect the key risks and opportunities facing 
+AGL. The following definitions, approved by the Board, supported the ratings applied for each Director.
+Significant Experience – High level of proficiency, knowledge and experience in the subject matter, including through significant tenure in a 
+Director, executive or advisory capacity.
+Developed Understanding – Sound knowledge of the subject matter, including through tenure in a relevant Director, executive or advisory 
+capacity or through relevant education.
+The skills matrix as at 12 August 2026 is set out in the table below. Individual Board member assessments have been aggregated to inform 
+an assessment of the overall level of capability represented on the Board in each of the identified competencies.
+Key
+Significant Experience
+Developed Understanding
+Table 1: Board Skills Matrix
+Category Description Why it matters to AGL Competency Level
+Operations and 
+project delivery
+Experience in managing large-
+scale energy generation, storage 
+and infrastructure assets, 
+including operational efficiency, 
+major project delivery and 
+project governance.
+AGL's strategy is to transition its energy 
+portfolio, and it has an ambition to add 
+12 GW of new renewable and firming 
+capacity by the end of 2035, including an 
+interim target to add 6 GW by FY30. Skills 
+and experience in operations and project 
+delivery is therefore important to overseeing 
+the delivery of long-term projects, including 
+assessing the risks and opportunities.
+5
+4
+Customer markets Experience in industries with 
+large and diverse customer 
+bases, including strategies to 
+enhance customer experience, 
+product innovation and 
+responding to new market 
+entrants and disruption
+One of AGL’s strategic pillars is to connect 
+every customer to a sustainable future. 
+Skills and experience in customer markets is 
+important to supporting AGL to continue to 
+meet the evolving needs of its customers.
+7
+2
+AGL Energy Corporate Governance Statement 20268
+AGL’s BoardFor personal use only
+
+--- page 22 ---
+Category Description Why it matters to AGL Competency Level
+Stakeholder 
+management 
+and communications
+Experience in building 
+and maintaining effective 
+relationships with governments, 
+regulators, investors, community 
+groups, First Nations people and 
+other key stakeholders
+The role of the Board is to safeguard 
+AGL's interests and to protect and foster 
+sustainable value creation while taking 
+into account the reasonable interests of 
+shareholders, employees, customers, the 
+communities in which AGL operates and 
+other relevant stakeholders. Therefore, it is 
+important that AGL’s Board oversees that 
+our approach to stakeholder management 
+and communications supports long-term 
+value creation.
+6
+3
+Strategy and growth Experience in developing, 
+setting and executing 
+strategic objectives, including 
+identifying and capitalising on 
+growth opportunities, mergers 
+and acquisitions
+AGL has an ambitious strategy and growth 
+agenda to transition its energy portfolio, 
+while continuing to meet the needs of 
+our customers. The Board oversees the 
+development, execution and delivery of AGL’s 
+strategy, including that capital allocation is 
+undertaken in line with our strategy.
+9
+Transformation 
+and change
+Experience in leading and 
+governing organisations through 
+significant transformation 
+and change, including 
+industry disruption, 
+business restructuring, or 
+major operational and 
+cultural transitions
+The energy industry is undergoing significant 
+change, which includes both people and 
+technology changes. Therefore, Directors 
+with knowledge and experience of the 
+risks and opportunities associated with 
+transformation and change is essential.
+8
+1
+People and Culture Understanding of organisational 
+culture, large and 
+transitioning workforce 
+management, succession 
+planning, remuneration 
+frameworks and the 
+development of new capabilities 
+to support strategy
+People are integral to AGL’s success, and AGL 
+needs to attract and retain the right talent to 
+deliver its long-term strategy, while fostering 
+a collaborative and performance culture. 
+AGL’s Board oversees the remuneration 
+and culture frameworks in place to drive 
+the delivery of AGL’s strategy. Additionally, 
+the Board is responsible for guiding AGL's 
+company culture by establishing the “tone 
+from the top”.
+8
+1
+Energy assets 
+and markets
+Experience in and knowledge 
+of energy generation assets, 
+renewables, energy trading 
+and wholesale and retail 
+energy markets
+AGL’s core business includes the operation 
+of energy businesses and investments, 
+including electricity generation, energy 
+storage and the sale of electricity and 
+gas to residential, business and wholesale 
+customers. Therefore, it is essential that 
+the Board as a whole understands the 
+energy industry and the markets in which 
+we operate.
+6
+3
+AGL Energy Corporate Governance Statement 2026 9
+For personal use only
+
+--- page 23 ---
+Category Description Why it matters to AGL Competency Level
+Technology, 
+digitalisation and AI
+Experience in technology 
+strategy, cyber security, 
+digital transformation and 
+emerging technologies including 
+artificial intelligence and digital 
+customer solutions
+“Technology at the core” is a key part of 
+AGL’s strategy, particularly as to how growth 
+and customer experience can be unlocked 
+through technology, digitalisation and AI. 
+Directors with knowledge of the risks and 
+opportunities of technology support the 
+Board in assessing how we can leverage 
+related developments to implement change, 
+manage risk and realise opportunities.
+4
+5
+Financial/
+Capital Markets
+Proficiency in financial 
+accounting and reporting, 
+internal financial controls and 
+capital management, including 
+experience with equity and debt 
+funding, credit markets and 
+corporate transactions
+AGL’s Board must be able to understand the 
+financial drivers of our business and evaluate 
+our financial statements and other periodic 
+reports. Furthermore, given AGL’s ambitious 
+strategy, experience with capital markets and 
+corporate transactions is imperative in the 
+delivery of AGL’s strategy.
+6
+3
+Energy transition 
+and ESG
+Understanding of the risks and 
+opportunities associated with 
+decarbonisation and the energy 
+transition, including climate-
+related risks and opportunities, 
+and broader ESG considerations
+Embracing ESG is another key part of AGL’s 
+strategy, and it is essential that AGL factors 
+ESG considerations into the work we do and 
+the decisions we make. The Board oversees 
+that ESG considerations are embedded 
+across the enterprise, and the risks and 
+opportunities are appropriately considered.
+7
+2
+Governance Experience implementing or 
+overseeing high standards of 
+corporate governance in a large, 
+complex organisation
+Demonstrating leadership and overseeing 
+our corporate governance practices are key 
+responsibilities of AGL’s Board.
+9
+Safety, risk 
+and compliance
+Experience in identifying, 
+assessing and monitoring 
+risk, including HSE risks 
+and other non-financial 
+risks, and overseeing risk 
+and compliance management 
+frameworks in regulated 
+operating environments
+AGL’s Board oversees our internal controls 
+and systems for monitoring risks and 
+compliance. The Board needs to be aware 
+of, and anticipate, the material risks that 
+may impact our operations, performance 
+or reputation. In particular, AGL operates 
+a large, complex business and the Board 
+oversees our approach to maintain the 
+health, safety and wellbeing of our people.
+7
+2
+AGL Energy Corporate Governance Statement 202610
+AGL’s BoardFor personal use only
+
+--- page 24 ---
+Nominations and Appointment
+The Nominations Committee oversees matters related to the composition of the Board, including arrangements for the selection and 
+appointment of new Directors. When considering the appointment of a new Director, the Nominations Committee typically engages the 
+services of a recruitment firm to assist in identifying suitable candidates to be shortlisted for consideration for appointment to the Board 
+and to carry out appropriate reference checks (including due diligence of a person's character, experience, education, criminal record and 
+bankruptcy history) before the Board makes an offer to a preferred candidate.
+Newly appointed Directors must stand for election at the next AGM after their appointment. The Notice of Meeting for the AGM provides 
+shareholders with material information about each Director standing for election or re-election, including details of their relevant skills, 
+independence, experience, other directorships and whether the Board supports the election or re-election of the Director. Directors seeking 
+election and re-election are also given the opportunity to address the AGM and to answer questions from shareholders.
+New Directors receive a formal letter of appointment that sets out their duties, responsibilities, rights and remuneration entitlements, 
+together with an induction pack.
+Board Effectiveness
+Building director capability
+The formal letter of appointment and induction program provided to a newly appointed Director includes detailed information to allow the 
+new Director to gain an understanding of:
+• AGL, its operations and governance systems;
+• the rights, duties and responsibilities of Directors;
+• the role of each Board Committee;
+• the roles and responsibilities of the Executive Team; and
+• AGL's financial, strategic, and operational risk management position.
+AGL's Director induction program includes a series of meetings with members of AGL's Executive Team and deep dives on AGL's key 
+business areas.
+Directors also undertake a program of ongoing Director education, including presentations on a range of topics relevant to AGL's business 
+activities, including compliance training and presentations by industry and subject matter specialists. This year, Directors were given the 
+opportunity to have discussions with a range of external presenters, including the Chair of the Productivity Commission, senior executives 
+from Tesla Energy APAC and another ASX listed entity, the Chair of the independent review of the National Electricity Market, Chair of 
+the Australian Energy Market Commission, senior representatives from the Department of Home Affairs and the Chair of the Board 
+safety committee of a key contractor. Professional experts provided presentations on the energy industry, the Australian Competition and 
+Consumer Commission's new merger regime, Director's Duties in relation to workplace health and safety and the new reporting regime for 
+climate-related disclosures. In addition, "fireside chats" with management are held regularly to facilitate deep dives on key and emerging 
+issues affecting the business.
+The Board also periodically reviews whether there is a need for existing Directors to undertake professional development to maintain the 
+skills and knowledge needed to perform their role as Directors effectively.
+Performance and Evaluation
+The Board regularly reviews its own performance, the performance of Board Committees and the performance of individual Directors. An 
+externally facilitated Board Review was undertaken in FY26, having regard to:
+• the responsibilities of the Board; and
+• a number of other matters including oversight of strategy, culture, risk and compliance, operational and financial performance, governance 
+structure and roles and relationships.
+Overall, the FY26 review concluded that the Board is continuing to function effectively in the discharge of its responsibilities. A number of 
+continual improvement opportunities were discussed to further strengthen oversight of key areas and ensure the Board continues to be well 
+equipped to guide and govern AGL through its next strategic stage.
+AGL Energy Corporate Governance Statement 2026 11
+For personal use only
+
+--- page 25 ---
+The Board has established four standing Committees as follows:
+• Audit & Risk Management Committee (ARMC);
+• Nominations Committee;
+• People & Performance Committee (P&PC); and
+• Safety & Sustainability Committee (SSC).
+Each standing Committee's roles and responsibilities and membership requirements are set out in its Charter. The Board and Committee 
+Charters were reviewed and updated during FY25. Details of the number of Committee meetings held in FY26, and each member's 
+attendance at those meetings, are set out on page 77 of the 2026 Annual Report. An overview of the purpose and responsibilities, 
+composition and membership of each standing Committee as at 12 August 2026 is set out in the table below. Each Committee reports to the 
+Board and makes recommendations to the Board for its consideration as appropriate.
+Composition Membership Purpose and Responsibilities
+Audit & Risk Management Committee (ARMC)
+• Comprises at least three 
+members, all of whom 
+must be independent Non-
+Executive Directors.
+• Chair must be a member of the 
+Committee who is not Chair of 
+the Board.
+• There must be at least one 
+member from each of P&PC 
+and SSC to allow for effective 
+coordination and communication 
+between the Committees.
+• Committee members must have 
+working familiarity with basic 
+accounting and finance practices 
+with at least one member having 
+financial expertise. Members 
+between them must have 
+sufficient understanding of the 
+industry in which AGL operates.
+Current members:
+• Mark Bloom (Chair)*
+• Graham Cockroft
+• Betsy Donaghey
+• Christine Holman
+• John Pollaers
+*As part of an orderly 
+succession process, Graham 
+Cockroft will commence 
+as Chair of the ARMC 
+following the conclusion of 
+the 2026 AGM.
+The ARMC assists the Board to fulfil its responsibilities 
+through the effective identification, assessment, monitoring 
+and management of risks and compliance with legal and 
+regulatory requirements.
+Specifically, the ARMC’s primary responsibilities 
+include overseeing:
+• the integrity of statutory reporting in relation to the 
+preparation of the Group's financial and sustainability 
+reports, including reporting and disclosure on financial and 
+sustainability-related risks and opportunities;
+• the external audit engagement, independence and quality of 
+the audit;
+• the independence, objectivity, strategy and overall 
+performance of AGL's internal audit function;
+• AGL's risk management framework, including controls, 
+policies and procedures; and
+• policies and procedures for ensuring AGL's compliance with 
+laws and regulations.
+Nominations Committee
+• Comprises all independent 
+Non-Executive Directors of 
+AGL (unless the Board 
+determines otherwise).
+• Chair is the Chair of the Board.
+Current members:
+• Miles George (Chair)
+• Mark Bloom
+• Graham Cockroft
+• Betsy Donaghey
+• Christine Holman
+• John Pollaers
+• Vanessa Sullivan
+• Mark Twidell
+The Nominations Committee assists the Board in 
+fulfilling its responsibilities to shareholders through making 
+recommendations to the Board in relation to the optimal 
+composition of the Board.
+The Committee's purpose is to review and recommend to the 
+Board matters relating to:
+• the performance of the Board, its Committees and the Non-
+Executive Directors;
+• optimal Board composition;
+• Director independence; and
+• succession planning for the Board.
+AGL Energy Corporate Governance Statement 202612
+Board Committees
+For personal use only
+
+--- page 26 ---
+Composition Membership Purpose and Responsibilities
+People & Performance Committee (P&PC)
+• Comprises at least three 
+members, all of whom 
+must be independent Non-
+Executive Directors.
+• Chair must be a member of the 
+Committee who is not Chair of 
+the Board.
+• There must be at least one 
+member from each of ARMC 
+and SSC to allow for effective 
+coordination and communication 
+between the Committees.
+Current members:
+• Graham Cockroft (Chair)*
+• Christine Holman
+• John Pollaers
+• Vanessa Sullivan
+• Mark Twidell
+*As part of an orderly 
+succession process, Vanessa 
+Sullivan will commence as 
+Chair of the P&PC following 
+the conclusion of the 
+2026 AGM.
+The primary function of the P&PC is to assist the Board in 
+fulfilling its responsibilities through the appropriate recruitment, 
+retention and remuneration of senior managers and other 
+employees with the capabilities and skills necessary to execute 
+AGL's business strategy.
+Specifically, the primary responsibilities of the P&PC include:
+• recommendations to the Board in respect of AGL's 
+remuneration practices and framework to ensure 
+alignment with AGL's Values, risk appetite and strategy;
+• the performance and remuneration of 
+senior management;
+• monitoring remuneration policies and practices to 
+effectively manage people related risks;
+• recommendations to the Board in relation to Director 
+and CEO remuneration and employment-related policies 
+applicable to AGL's senior management;
+• talent management and succession planning for key 
+management roles;
+• recommendations to the Board in respect of measurable 
+diversity objectives; and
+• reviewing reports on conduct and culture to identify any 
+material risks and the effectiveness of processes to address 
+behaviours not aligned with AGL's Values and Code of Conduct.
+Safety & Sustainability Committee (SSC)
+• Comprises at least three 
+members, all of whom 
+must be independent Non-
+Executive Directors.
+• Chair must be a member of the 
+Committee who is not Chair of 
+the Board.
+• There must be at least one 
+member from each of P&PC 
+and ARMC to allow for effective 
+coordination and communication 
+between the Committees.
+Current members:
+• Vanessa Sullivan (Chair)*
+• Mark Bloom
+• Betsy Donaghey
+• Mark Twidell
+*As part of an orderly 
+succession process, Betsy 
+Donaghey will commence as 
+Chair of the SSC following the 
+conclusion of the 2026 AGM.
+The SSC reviews and oversees, on behalf of the Board, the 
+development and implementation of policies and procedures 
+that enable AGL to operate its business safely and sustainably.
+Specifically, the SSC's primary responsibilities include:
+• overseeing AGL’s actions to meet its obligation to maintain the 
+health, wellbeing and safety of its people;
+• monitoring AGL's compliance with relevant HSE legislation and 
+regulations and the culture that management is promoting 
+within AGL to facilitate compliance with, and responsibility 
+for, HSE;
+• overseeing the processes for identifying, assessing, prioritising, 
+monitoring and managing AGL’s material sustainability and 
+climate-related risks and opportunities;
+• reviewing and recommending to the Board for approval, 
+material public sustainability and climate-related targets and 
+monitoring progress against those targets;
+• monitoring the reputational impacts of AGL's business 
+strategies and external developments that are likely to impact 
+AGL's reputation; and
+• reviewing AGL's initiatives and practices in relation 
+to community engagement, environmental and 
+social responsibility.
+AGL Energy Corporate Governance Statement 2026 13
+For personal use only
+
+--- page 27 ---
+A summary of the key focus areas for the standing Board Committees during FY26 is set out below:
+Nominations Committee People & Performance Committee
+• Arranging an externally facilitated Board Review.
+• Overseeing the process to update the Board Skills 
+Matrix, including review and benchmarking by an 
+independent consultant.
+• Board and Committee succession planning including 
+recommending changes to the Chairs of the Board Committees.
+• Overseeing the preparation of AGL’s FY26 
+Remuneration Report.
+• Executive talent and succession planning.
+• Consideration of AGL’s Diversity & Inclusion Targets.
+• Consideration of the FY27 remuneration framework.
+• Monitoring organisational culture, engagement and conduct.
+Audit & Risk Management Committee Safety & Sustainability Committee
+• Overseeing AGL’s financial reporting processes, including 
+consideration of AGL’s half-year and full-year reports.
+• Reviewing financial disclosures to be made by AGL in relation to 
+climate-related risks and opportunities.
+• Overseeing the issues, incidents and risks identified by 
+management in Group Audit, compliance and risk reports and 
+ensuring there is clear accountability for, and effective closure 
+of, relevant issues.
+• Overseeing AGL’s funding and debt strategy.
+• Overseeing the management of AGL's trading and portfolio 
+risks, including consideration of fuel supply risks.
+• Reviewing AGL’s insurance renewal options and strategy.
+• Reviewing the effectiveness of AGL’s governance and risk 
+management systems and identifying ways to further 
+strengthen governance, accountability and culture within AGL.
+• Overseeing AGL's business resilience and cyber resilience 
+programs and the management of other technology 
+related risks.
+• Overseeing AGL’s preparedness for peak period operations.
+• Post-implementation reviews of major projects, including 
+processes to improve the delivery of major projects generally.
+• Reviewing reports from management on emerging sources of 
+risk and controls in place to address those risks, including in 
+relation to cyber security.
+• Committee education, including meeting with senior 
+representatives of the Department of Home Affairs to discuss 
+the national cyber threat landscape and the Security of 
+Critical Infrastructure legislative framework and Systems of 
+National Significance.
+• Oversight of AGL’s safety culture, systems, capability and risk, 
+including overseeing initiatives to improve health, wellbeing, 
+safety and environmental performance and participation in site 
+critical control checks.
+• Site visits to AGL's Adelaide Call Centre and Newcastle Office, 
+the Newcastle Gas Storage Facility, the Tomago Battery site, and 
+Consumer & Industrial customer sites in Western Sydney.
+• Reviewing non-financial disclosures to be made by AGL in 
+relation to climate-related risks and opportunities, including the 
+Sustainability Report.
+• Overseeing planning activities for the safe demolition of Liddell 
+Power Station and the proposed future use of the Liddell site.
+• Meeting with groups of employees across AGL's operations to 
+discuss safety and other issues affecting AGL's people.
+• Meeting with community representatives in Adelaide and 
+Newcastle to discuss key issues and areas of focus for the 
+communities in which AGL operates.
+• Oversight of AGL’s engagement with First Nations peoples and 
+the implementation of AGL's Reconciliation Action Plan.
+• Deep dives on stakeholder perceptions and social licence and 
+AGL's environmental risks and opportunities.
+• Oversight of AGL's ESG Framework, ESG metrics and 
+sustainability opportunities.
+• Overseeing the HSE Audit program.
+• Committee education, including meeting with the Chair of 
+the safety committee of a key AGL contractor to share 
+safety learnings.
+AGL Energy Corporate Governance Statement 202614
+Board CommitteesFor personal use only
+
+--- page 28 ---
+In September 2025, the SSC visited the Adelaide Call Centre.
+Evaluation of Board Committees
+The Charters for each of the standing Board Committees require that each Committee annually review its own performance. During FY26, 
+each Board Committee discussed its performance over the past 12 months and potential improvement opportunities having regard to 
+the outcomes of the externally facilitated Board Review. Each Committee considered, together with relevant members of management, 
+whether it had achieved its objectives for the financial year and reviewed the effectiveness of the Committee and how its members had 
+worked together, including with management. Following this review, each Committee was satisfied that it had been effective in performing its 
+responsibilities under its Charter.
+In November 2025, the Safety & Sustainability Committee visited the Tomago Battery site.
+AGL Energy Corporate Governance Statement 2026 15
+For personal use only
+
+--- page 29 ---
+The Board has delegated to the CEO, Damien Nicks, the authority to manage AGL's day‑to-day affairs and the authority to manage AGL's 
+affairs in relation to all matters, other than those responsibilities reserved by the Board to itself or to its standing Board Committees, 
+including in the Board and Board Committee Charters.
+The CEO’s role includes:
+• leading AGL's Executive Team;
+• being accountable to the Board for AGL's overall management and performance; and
+• management of AGL in accordance with the strategy, business plans and policies approved by the Board.
+The CEO has authority to sub-delegate to the Executive Team. The Executive Team comprises the CEO and senior managers who report 
+directly to the CEO.
+Specific limits on the authority delegated to the CEO and the Executive Team are set out in a Delegations of Authority Policy approved by 
+the Board.
+Each member of AGL's Executive Team (including the CEO) is employed under a Service Agreement that sets out the terms on which 
+the Executive is employed including details of the Executive's duties, responsibilities, rights and remuneration entitlements. The Service 
+Agreement also sets out the circumstances in which the employment of the Executive may be terminated by either AGL or the Executive, 
+including details of notice periods and the amounts payable to the Executive as a consequence of the termination by AGL of the 
+Executive's employment.
+When considering the appointment of a new Executive, AGL carries out appropriate reference checks (including due-diligence in respect 
+of the candidate's character, experience, education, criminal record and bankruptcy status) before AGL makes an offer of employment to 
+the candidate.
+While Executive Team members have individual accountability for their respective business functions, the Executive Team has collective 
+accountability for management of risk across AGL. This is supported by, among other things, regular results and priorities meetings where 
+emerging risks and key decisions affecting the business are discussed and agreed by Executive Team members.
+The CEO and other members of the Executive Team regularly attend Board and Committee meetings to report on and discuss key issues 
+and the existing and emerging risks of the business. The Directors have the opportunity, where required, to question the Executive Team and 
+hold Executives to account in relation to particular issues that may arise.
+Remuneration
+The Remuneration Report on pages 80 to 102 of the 2026 Annual Report sets out AGL's policies and practices for remunerating 
+Non-Executive Directors and Executives. The arrangements that apply to the CEO and Executive Team are different to those of Non-
+Executive Directors.
+Performance Evaluation
+The Board reviews the CEO’s and Executive Team's performance annually against agreed performance objectives and other relevant factors. 
+The CEO and Executive Team performance evaluations were conducted for FY26 in accordance with this process. Details of the evaluation 
+process and the linkages between the result of performance evaluations and remuneration are disclosed in the Remuneration Report on 
+pages 80 to 102 of the 2026 Annual Report.
+Company Secretary
+The Board is responsible for the appointment of AGL's Company Secretary.
+AGL's General Counsel & Company Secretary, Melinda Hunter, acts as secretary of the Board and each Board Committee, attending all 
+meetings of the Board and Board Committees. Melinda Hunter fulfils other management responsibilities in addition to company secretarial 
+duties in her role as General Counsel. The formal reporting line of Melinda Hunter is to the CEO.
+In her capacity as Company Secretary, Melinda Hunter is accountable to the Board through the Chair on all corporate governance matters 
+and all matters to do with the proper functioning of the Board.
+AGL Energy Corporate Governance Statement 202616
+AGL’s Executive Team
+For personal use only
+
+--- page 30 ---
+AGL recognises that a diverse workforce enhances its ability to engage with and serve its customers and the communities in which it 
+operates. In FY26, AGL continued to strengthen workplace foundations that enable people to contribute fully, drawing on a breadth of 
+experience and perspective to respond to the challenges and opportunities of the energy transition.
+The Board, through the P&PC, oversees AGL’s diversity and inclusion strategy, metrics and outcomes. Management is accountable for 
+delivery, with the Executive Team owning enterprise outcomes and leaders responsible for embedding inclusive practices. This governance 
+supports a disciplined focus on outcomes, including how AGL listens to employee experience, holds leaders accountable for inclusive 
+practices, and tracks progress over time. Throughout FY26, AGL continued to embed inclusion expectations into leadership capability 
+through targeted learning, strengthened employee listening and insight, and maintaining a focus on measurable objectives for diversity and 
+inclusion outcomes.
+AGL's Diversity and Inclusion Policy outlines our commitment and approach to embedding these principles throughout our workplaces. 
+During FY26, AGL’s Diversity & Inclusion Council (Council), chaired by the CEO, evolved to further embed leadership accountability across 
+the enterprise. Executive Leadership Team members were incorporated into the Council, strengthening its role in shaping strategy, elevating 
+insights and driving coordinated action across the business.
+The Council brings together AGL's Diversity Employee Network Groups, acting as an advisory body to elevate insights, identify systemic 
+barriers, and support coordinated action across the enterprise. The focus of these Employee Network Groups is detailed below.
+AGL Carers Support our people to thrive in integrating their personal, work, family and caring lives.
+AGL Ability Create an accessible and inclusive workplace for people with disability.
+AGL Equality Achieve gender diversity and equality at all levels of our organisation.
+Reconciliation 
+Engagement Network
+Understand and respect the history of the land we live and work on and reflect Aboriginal and Torres 
+Strait Islander identities within our workforce.
+AGL Cultures Respect and reflect the cultural identities of the communities we operate in within our workforce.
+AGL Shine Inspire a culture where LGBTQ+ people feel valued, safe and can be their best every day.
+AGL’s Shine network and supporters joined the Pride March through St Kilda as part of the 2026 Midsumma Festival.
+The P&PC recommends measurable objectives for achieving gender diversity to the Board for adoption each year and receives regular 
+reports on the progress against strategic goals. Guided by the 40:40:20 Vision, AGL strives to achieve a gender balance of 40% men, 40% 
+women and 20% any gender across our workforce. This approach was adopted for AGL's gender diversity targets for FY24-26. Progress 
+against those objectives during FY26 is set out in the table below. During FY26, the Board approved new targets for FY27-29, which are also 
+included in the table on page 18.
+AGL Energy Corporate Governance Statement 2026 17
+Diversity and Inclusion
+For personal use only
+
+--- page 31 ---
+In FY26, the target relating to female representation at the Senior Executive level was met. AGL continues to make improvements in the 
+representation of females across the AGL workforce and in the leadership pipeline through targeted initiatives. However, meeting the 
+40:40:20 Vision across AGL continues to be challenging. The energy industry is one of the most male-dominated industries in Australia, 
+with around 30% female representation.1 Our FY27-29 strategy focuses on converting established foundations into more consistent, 
+measurable outcomes, with an emphasis on addressing structural barriers and strengthening pathways for females into senior and 
+technically specialised roles.
+Objective Measure
+Status as at 
+30 June 
+2025
+30 June 
+2026 Target
+Status as 
+at 30 June 
+2026
+30 June 
+2027 Target
+30 June 
+2028 Target
+30 June 
+2029 Target
+Inclusive Culture: people 
+feel safe, respected and 
+valued for their unique 
+contribution to AGL
+Inclusion Index1 75% ≥80% 74% +2ppt 
+change 
+from FY26
++5ppt 
+change 
+from FY26 
+(FY27 
+Stretch)
+TBD 
+following 
+FY27 
+outcome
+Gender Diversity: 
+workforce composition that 
+is at least 40% women, 40% 
+men, and up to 20% of 
+any gender
+Female 
+representation (Board)2
+33% 40% 33% ≥40% ≥40% ≥40%
+Female representation 
+(Senior Executive)3
+57% ≥45% 50% ≥45% ≥45% ≥45%
+Female 
+representation (Senior 
+Leadership Pipeline)4
+36.1% ≥40% 38% ≥40% ≥40% ≥40%
+Female representation – 
+AGL workforce5
+36.2% ≥40% 37% ≥40% ≥40% ≥40%
+Diverse Workforce: 
+people and their 
+intersecting identities will 
+bring AGL to life
+Deliver on the 
+Reconciliation Action Plan 
+(RAP) and targets
+On track As per RAP As per RAP Employee 
+Retention 
+≥90%
+Employee 
+Retention 
+≥90%
+Employee 
+Retention 
+≥90%
+1. AGL's Inclusion Index is calculated on the % favourable scores to the Inclusion Factor questions in AGL's annual Employee Listening Survey.
+2. Board includes Executive and Non-Executive Directors, including the Managing Director & CEO.
+3. Senior Executive includes the Executive Team directly reporting to the Managing Director & CEO.
+4. Senior Leadership Pipeline includes Management Levels: Enterprise Leadership Team (which comprises the Executive Team and each direct report to an 
+Executive Team member), A and B, as per AGL’s Position Framework.
+5. AGL Workforce includes all permanent and maximum term employees.
+AGL has supported several priority activities during FY26 to promote diversity and inclusion at AGL. Details of key initiatives are 
+summarised below.
+1. A gender balanced and diverse workforce
+AGL acknowledges the diversity of its workforce while recognising areas where representation lags behind Australian society. In FY26, a key 
+focus continued on increasing the representation of women through inclusive talent practices and showcasing our commitment to inclusion 
+in our Employee Value Proposition.
+Our sustained commitment to gender equality in recruitment resulted in female hiring rates consistently above 40% throughout FY26.
+AGL maintained a 0% pay equity gap for comparable roles and continued regular pay equity reviews as part of our remuneration processes. 
+For the fourth consecutive year AGL reduced overall gender pay gap for total remuneration, decreasing from 26.0% in March 2025 to 24.7% 
+in March 2026.
+2. An inclusive culture
+In FY26, AGL strengthened inclusive people practices and policies across Talent Acquisition, Talent Management, Succession Planning, 
+Learning, and Workplace Behaviour - reinforcing expectations for respectful behaviour, strengthening avenues for support and early 
+intervention, and embedding a diversity and inclusion lens into key workforce and leadership decisions. AGL leaders are held accountable for 
+inclusion through a targeted leadership goal that reinforces expectations for safe and respectful teams.
+During FY26, AGL continued to build inclusive leadership capability through its Leadership Compass framework, including the ‘Inclusive 
+relationships’ capability module, supporting practices that strengthen everyday inclusion, such as how leaders seek feedback, respond to 
+concerns, and create environments where people can contribute fully and perform at their best.
+AGL continued to listen and engage through employee listening, leader ‘listen and learn’ activities and network-led engagement. Employee 
+networks and the Council continued to provide insight into lived experience, elevate inclusion priorities, and support participation in 
+enterprise initiatives and key moments across the year.
+1. Workplace Gender Equality Agency, Gender Equality Data Explorer, 2024–25 reporting year, Australian Government.
+AGL Energy Corporate Governance Statement 202618
+Diversity and InclusionFor personal use only
+
+--- page 32 ---
+AGL leveraged data, benchmarks and insights to inform priorities and to focus attention where outcomes matter most. Building on improved 
+self-identification and people analytics capability, AGL strengthened our ability to understand the composition of our workforce, track 
+progress against enterprise measures, and target actions to improve experience and representation over time.
+AGL launched the inaugural Festival of Inclusion and a new diversity and inclusion campaign – I am the I in Inclusion – at multiple AGL sites. This 
+campaign is grounded in everyday actions like listening, learning and respect – helping individuals show up as their best selves, contribute 
+ideas, support customers and play our part in the energy transition.
+AGL’s diversity and inclusion progress has been reflected in external recognition and benchmarks, including:
+Australian Financial Review 
+BOSS Best Places to Work 2026
+Gold award (Agriculture, Mining and Utilities category)
+Work180: Top 101 Employers for 
+Women in 2026
+Ranked 17th at this year’s Australian Equitable Workplace Awards. Finalists in the Representative 
+Leadership (large enterprises) and Strategic Commitments (large enterprises) categories, and 
+industry finalist in the Mining, Resources and Energy Industry category.
+Pride in Diversity Platinum Status since 2022.
+Australian Disability Network’s 
+Access and Inclusion Index 20251
+Ranked 1st out of 27 participating organisations and 1st in the Electricity, Gas and Water Supply 
+industry. We were also the most improved organisation.
+MindTribes Collective Impact Award winner at the MindTribes inaugural Business in Colour Awards 2025.
+Family Friendly Workplaces Re-certified as a Family Inclusive Workplace 2025-2027.
+1. The 2025 Access and Inclusion Index was announced in May 2026.
+3. An inclusive energy future
+In FY26, AGL contributed to broader sector progress through collaboration and shared learning focused on improving inclusion and 
+representation in the energy industry. This included continued engagement with external partners and initiatives that support gender 
+equality, safety and respectful workplaces across the sector.
+As a proud member of the Champions of Change Coalition, AGL continues to support industry-wide action on gender equality and 
+inclusion. In FY26, CEO Damien Nicks signed the Coalition’s Inclusive AI Pledge, reinforcing our commitment to using emerging technologies 
+in ways that promote fairness, inclusion and respect. We also continued to embed inclusion across workforce planning, leadership 
+accountability, talent strategies and governance, with a focus on equitable opportunities, representation, flexible work and inclusive 
+workforce transformation.
+AGL also strengthened inclusion for customers and communities through initiatives that support accessibility, energy literacy and practical 
+assistance. AGL progressed work to make information easier to understand and access for diverse customer needs, including culturally and 
+linguistically diverse communities.
+As AGL transitions to its FY27-29 strategic focus, it will continue to mature its inclusion approach by strengthening everyday inclusion through 
+employee listening, enhanced leadership accountability, targeted action and disciplined measurement of outcomes.
+AGL won the Gold award in the Agriculture, Mining and Utilities category at the 2026 Australian Financial Review BOSS Best Places to Work awards.
+AGL Energy Corporate Governance Statement 2026 19
+For personal use only
+
+--- page 33 ---
+AGL faces a wide variety of risks due to the nature of its operations. A strong risk management culture, and an effective risk management 
+framework, are critical to achieving our strategic, operational and commercial objectives.
+AGL is committed to ensuring that risk management practices are embedded into all business processes and operations in order to drive 
+consistent, effective and accountable action, decision making and management practice.
+Details of AGL's material strategic risks, including AGL's economic, environmental and social risks and how these risks are managed, are 
+set out in the Operating and Financial Review and Sustainability sections of AGL's 2026 Annual Report on pages 14 to 67 and 105 to 
+158 respectively.
+Risk Management Framework
+AGL maintains and regularly reviews a Risk Management Framework and approach that is aligned to the principles and requirements of 
+the International Standard ISO 31000:2018 Risk Management - Guidelines. The key elements of AGL’s Risk Management Framework are set 
+out below.
+The Board has adopted a Risk Management Policy that sets out AGL's objectives for risk management and clearly articulates the 
+responsibilities of all AGL's people in relation to the management of financial and non-financial risks. AGL has also adopted a Risk Appetite 
+Statement, which is approved by the Board and overseen by the ARMC.
+AGL seeks to embed risk management principles and practices into strategy development and day-to-day business processes and decision 
+making to achieve robust and responsible commercial outcomes. AGL's Risk Management model is based on the "three lines" model and is 
+illustrated in the table below.
+Third Line Roles
+(Independent and objective 
+assurance and advice)
+External Assurance Provider
+Management  
+Policies
+Advisory & 
+Support 
+Functions 
+Incident, Risk 
+& Breach 
+Procedures
+Business Unit 
+Risk & Compliance 
+Functions
+Steering & 
+Management 
+Committees
+Internal Control 
+Environment
+First Line Roles
+(Business Unit operations and activities)
+Second Line Roles
+(Enterprise level risk and 
+compliance management activities) 
+Code of 
+Conduct
+Risk Management 
+Framework 
+(FIRM)
+Business 
+Continuity Policy
+& Program
+Risk 
+Management 
+Policy
+Internal Audit Plan 
+& ActivitiesCompliance 
+Management 
+Policy & Program
+Fraud Risk 
+Control Policy 
+& Program
+Governing Bodies 
+Leadership, accountability and oversight  
+Internal Audit
+Independent Assurance
+AGL Board Board Subcommittees
+Management
+Actions to achieve organisational objectives
+Accountability, reportingKEY Delegation, direction, resources, oversight Alignment, communication, coordination, collaboration
+AGL Energy Corporate Governance Statement 202620
+Risk Management Framework and 
+Financial Reporting
+For personal use only
+
+--- page 34 ---
+AGL systematically examines all operational and financial activities to identify material risk exposures using an enterprise-wide risk program 
+aligned with ISO 31000. This program is supported by AGL's Risk Management Framework, which includes:
+• AGL's Risk Appetite Statement;
+• AGL's Risk Management Policy; and
+• AGL's Risk Management Standard, the objectives of which are to provide guidance to AGL employees on when and how to conduct risk 
+assessments, to ensure consistency in approach to risk identification, evaluation and management, to define risk escalation thresholds, 
+and to establish a common ‘risk' language across the business.
+AGL has implemented a number of other policies that support the identification and management of specific categories of risk (such as its 
+Critical Infrastructure Risk Management Program), or directly or indirectly serve to mitigate and manage risk (including the
+Securities Dealing Policy and the Market Disclosure Policy). AGL also has in place a number of business unit and/or site-based policies and 
+procedures to allow for the safe and reliable operation of power generation plants and other operating assets.
+Australia, like many international jurisdictions, is taking measures to provide investors and other stakeholders with greater transparency 
+and accountability regarding organisations' exposure and approach to climate-related issues. Under Chapter 2M of the Corporations Act 
+2001 (Cth), AGL is required to disclose information about climate-related risks and opportunities that could reasonably be expected to 
+affect our financial prospects in accordance with AASB S2 Climate-related Disclosures, which is the mandatory Australian Sustainability 
+Reporting Standard that has been issued by the Australian Accounting Standards Board. 
+AGL’s climate-related disclosures are included in the Sustainability Report on pages 105 to 158 of AGL's 2026 Annual Report.
+Our decarbonisation objectives are set out in our 2025 CTAP, and build on the commitments set in our inaugural 2022 CTAP. Our 2025 
+CTAP was approved by shareholders at the 2025 AGM.
+Roles of the Board and ARMC
+The Board is responsible for approving and monitoring the implementation of policies governing AGL's systems of internal compliance, risk 
+management and control.
+The ARMC, among other things, reviews and recommends AGL's risk management policies and material strategic risks (Tier 1 Risks) to the 
+Board for approval and reviews and monitors the implementation of policies and procedures for identifying, assessing, monitoring and 
+managing financial and non-financial risks. During FY26, the ARMC and the Board considered and approved AGL's Tier 1 Risks and Risk 
+Appetite Statement.
+The ARMC receives presentations from management on AGL's material strategic risks (both financial and non-financial) and the strategies 
+and controls in place to mitigate or manage those risks at ARMC meetings. The ARMC and the Board annually review AGL's Tier 1 Risks and 
+Risk Appetite Statement, and on an ongoing basis, monitor AGL’s performance to assess whether AGL is operating within the risk appetite 
+set by the Board. The ARMC and the Board also review AGL’s risk management framework to ensure that it continues to be sound and is 
+operating effectively. During FY26, the Board reviewed and approved AGL's risk management framework and found that the framework was 
+sound, aligned to relevant standards and appropriate for AGL's business context.
+In addition, the ARMC is responsible for overseeing the issues, incidents and risks identified by management in regular compliance and 
+risk reports, and ensuring there is clear accountability for, and effective closure of, relevant issues. The ARMC and SSC are collectively 
+responsible for the identification, assessment, prioritisation, assurance, monitoring and management of sustainability and climate-related 
+risks and opportunities.
+The ARMC receives presentations from management throughout the year on specific risk topics. Examples include the management of 
+business continuity processes, cybersecurity, plant readiness for peak period operations, treasury and trading operations, compliance 
+and insurance.
+AGL Energy Corporate Governance Statement 2026 21
+For personal use only
+
+--- page 35 ---
+Internal audit
+Group Audit is AGL's internal audit function which provides assurance over the governance, risk management and internal control 
+frameworks of AGL. Group Audit provides the Board and senior management with an independent and objective evaluation of the adequacy 
+and effectiveness of management's control over risk.
+The ARMC has responsibility for the oversight of the internal audit function and for approving the internal audit plan submitted annually by 
+Group Audit. In addition to delivering the internal audit plan, Group Audit's responsibilities include providing regular reports to the ARMC 
+and raising any significant issues with the ARMC, including management’s actions and the timeframes to address the issues identified. Any 
+overdue actions identified by Group Audit are also reported to the ARMC.
+The General Manager, Group Audit has a direct reporting line to the Chair of the ARMC and an administrative reporting line to the General 
+Counsel & Company Secretary. Group Audit is governed by a Charter which is approved by the ARMC that sets out the purpose, role, scope 
+and high-level standards for the function.
+Group Audit delivers its objectives through accessing the professional skills and capabilities of:
+• trained audit professionals who are part of the Group Audit function; and
+• services provided by external consultants in respect of specialist technical or operational areas.
+Group Audit's approach to developing the annual Audit Plan involves the consideration of existing and emerging areas of risk, as well as 
+areas of significant change, both within AGL and across the energy industry.
+Financial and other corporate reporting
+The Board receives reports from management about AGL's financial condition and operational results at each scheduled Board meeting.
+The ARMC reviews and discusses the half‑yearly and annual financial reports with management and the external auditors, including the 
+disclosures made in those reports and recommends to the Board whether the financial reports should be approved.
+Before the Board approves the financial statements for a financial period (including the full-year and half-year), the CEO and CFO provide 
+declarations to the Board that, in their opinion, the financial records of AGL have been properly maintained and that the financial statements 
+comply with the Accounting Standards and give a true and fair view of the financial position and performance of AGL. They also provide 
+confirmation that these opinions have been formed on the basis of a sound system of risk management and internal control, which is 
+operating effectively.
+AGL is committed to providing clear, concise and effective disclosure to shareholders and other stakeholders in its corporate reports. In 
+circumstances where AGL's auditor has not been required to review a periodic corporate report, AGL conducts an internal verification 
+exercise (with assistance from third party professional services firms where appropriate) to ensure that such reports are materially 
+accurate, balanced and provide investors with appropriate information to make informed investment decisions. Material statements in 
+these documents are verified by relevant business management prior to approval for release to the market.
+External auditor
+The role of the external auditor is to provide an independent opinion that AGL's financial reports are true and fair and comply with 
+applicable regulations.
+AGL's current external auditor is PricewaterhouseCoopers and Trevor Johnston is AGL's audit partner. The external auditor attends the AGM 
+each year and shareholders have the opportunity to ask the auditor written questions in advance of the AGM or to ask questions at the AGM 
+relevant to the audit.
+AGL's Auditor Independence Policy includes details of the procedures for the selection, appointment, independence and performance of the 
+external auditor.
+Under the Auditor Independence Policy, the external auditor is precluded from providing any services that might threaten their 
+independence, or conflict with their assurance and compliance role.
+Reports on the provision of auditing and related services are provided to the ARMC on a regular basis. The ARMC and the Board concluded 
+that non-audit services provided during FY26 did not compromise the external auditor's independence requirements under the Corporations 
+Act 2001 (Cth).
+The performance of the external auditor is discussed by the ARMC following completion of the full-year financial statements. The Chair of the 
+ARMC subsequently meets with the external auditor to discuss recommendations for improvements to the conduct of the audit.
+AGL Energy Corporate Governance Statement 202622
+Risk Management Framework and Financial ReportingFor personal use only
+
+--- page 36 ---
+Details of AGL's key corporate governance policies are summarised below. Copies are available on AGL's website.
+Code of Conduct
+AGL has a Code of Conduct that applies to AGL and its Directors, employees and contractors and sets out the standards of responsibility and 
+ethical conduct required of ‘our People’. The Code of Conduct was updated during FY25. AGL's commitments under the Code of Conduct are 
+as follows:
+• We are fair and honest.
+• We comply with the law, regulations and our obligations.
+• We act professionally.
+• We respect privacy and confidentiality.
+• We manage conflicts of interest.
+• We look after our People.
+• We respect our stakeholders.
+• We uphold the values and commitments outlined in the 
+Code of Conduct.
+Training on the Code of Conduct is part of the induction process for new AGL people. In addition, all AGL people complete online refresher 
+training modules on the Code of Conduct annually.
+The Code of Conduct provides a mechanism to enable AGL's people to report actual or suspected breaches, including an independent 
+service to allow for anonymous reporting. An Ethics Panel oversees the application of the Code of Conduct at AGL, including overseeing the 
+investigation of alleged breaches of the Code of Conduct where appropriate, monitoring compliance and recommending amendments to 
+the Board.
+Any material breaches of the Code of Conduct are reported to the Board and monitored until the relevant breach is considered closed.
+Whistleblowing Anti-bribery and Corruption
+AGL's Whistleblower Protection Policy encourages reporting of 
+suspected unethical, illegal or undesirable behaviour and promotes 
+a culture of honest and ethical conduct. This policy is reviewed 
+every two years (or earlier if required) and was updated 
+during FY25.
+A third party whistleblower service provider facilitates AGL's 
+employees and other stakeholders speaking up regarding any 
+concerns that AGL or its people are failing to meet ethical or 
+legal standards.
+A report on any material whistleblower incidents is provided at each 
+in-person Board meeting.
+AGL's Anti-Bribery, Corruption and Fraud Policy prohibits any AGL 
+activities that cause, support, or conceal corruption or bribery in 
+any form. This policy is reviewed every two years (or earlier if 
+required) and was updated during FY25.
+Any material breaches are reported to the Board.
+Continuous Disclosure Dealings in AGL Shares
+AGL's Market Disclosure Policy describes AGL's continuous 
+disclosure obligations and how they are managed by AGL. This 
+policy is reviewed every two years (or earlier if required) and was 
+updated during FY25.
+AGL's Market Disclosure Committee comprises the CEO, the 
+Company Secretary, the CFO and the Head of Investor Relations. 
+The Committee is responsible for monitoring compliance with the 
+policy including determining whether market sensitive information 
+should be disclosed to the ASX.
+Directors receive copies of all announcements immediately after 
+notification to the ASX. All ASX announcements are available from 
+AGL's News Centre.
+AGL's Securities Dealing Policy outlines when AGL employees may 
+deal in AGL securities, or the securities of other companies. This 
+policy is reviewed every two years (or earlier if required) and was 
+updated during FY25.
+This policy specifically prohibits AGL's Directors, Executives and 
+employees from using derivatives in relation to any unvested AGL 
+securities that have been granted under any of AGL's equity-based 
+remuneration schemes.
+Derivatives may be used in relation to AGL securities that have 
+vested, provided any dealing in those derivatives complies with the 
+other requirements of AGL's Securities Dealing Policy.
+Compliance Management Policy
+AGL is committed to maintaining a culture of compliance and ethical behaviour that is underpinned by its Purpose, Values and the AGL 
+Code of Conduct.
+AGL's Compliance Management Policy sets out AGL's compliance management objectives, AGL's compliance management approach and 
+clearly articulates responsibilities of all AGL personnel in relation to compliance. Building and maintaining a strong compliance culture is 
+critical to achieving AGL's strategic, operational and commercial objectives.
+AGL Energy Corporate Governance Statement 2026 23
+AGL’s Key Corporate 
+Governance Policies
+For personal use only
+
+--- page 37 ---
+AGL operates an investor relations program to facilitate effective two-way communication with investors. This program seeks to keep 
+shareholders informed about AGL's activities and to listen to issues or concerns raised by shareholders.
+AGL holds regular investor briefings, webcasts these events (where practicable) and provides materials, archived recordings and transcripts 
+via the AGL website.
+As well as attending broker-sponsored conferences, AGL participates at several industry conferences throughout the year.
+Copies of new and substantive investor or analyst presentations are lodged with the ASX ahead of the presentation and, where practicable, 
+shareholders are provided with the opportunity to participate in such presentations.
+AGL also regularly engages with corporate governance advisory firms, shareholder representative bodies, institutional investors, proxy 
+advisers and retail investor groups to understand market expectations on topics including governance, ESG and remuneration. The Chair of 
+the Board and the Chair of the P&PC both participate in meetings with such organisations so the Board can be in a better position to receive 
+direct feedback about the effectiveness of AGL's corporate governance arrangements.
+Fundamental to AGL's investor relations program is the management of our continuous disclosure obligations, which facilitates all 
+shareholders having access to important company information. In addition to lodging this information with the ASX, AGL uses its website to 
+make information about the company and its activities available to shareholders. The Investor Centre on AGL's website contains a wide range 
+of information relevant to shareholders including copies of past Annual Reports and ASX announcements and an Investor Calendar.
+Shareholders may elect to receive all shareholder communications, including dividend statements and announcements by email and may 
+also communicate with AGL and the Share Registry (Computershare) electronically.
+In relation to AGMs, AGL's practice is to hold a hybrid meeting to allow shareholders the opportunity to participate in person or online. 
+Shareholders are invited to submit questions before the meeting. This helps the company understand shareholder issues and concerns 
+and address key areas of shareholder feedback. The Chair also encourages shareholders to ask questions and make comments about AGL's 
+operations and the performance of the Board and senior management at the AGM. The Chair may respond directly to questions or, at their 
+discretion, refer a question to another Director, the CEO or a member of the Executive Team. All resolutions at the AGM are decided by 
+a poll.
+Shareholder meetings are webcast and analyst/media briefings in relation to half-year and full-year financial results and other significant 
+events can be heard by teleconference.
+The AGL Share Register is managed and maintained by Computershare Limited. Shareholders can access their shareholding details or make 
+enquiries about their current shareholding electronically by quoting their Shareholder Reference Number (SRN) or Personal Identification 
+Number (PIN), via www-au.computershare.com/Investor or by emailing aglenergy@computershare.com.au.
+In addition to AGL's investor relations program, AGL has a comprehensive stakeholder engagement program. AGL actively engages with 
+government, regulators and policy makers in relation to the challenges and opportunities facing AGL, the energy industry and its customers. 
+AGL also actively engages with its customers and the communities where it operates to understand the matters that are important to 
+customers and those communities. The Board receives regular updates on AGL's stakeholder engagement plans, and also meets with 
+relevant stakeholder groups during the year.
+AGL's 2026 Annual General Meeting
+This year AGL's AGM will be held at the Melbourne Convention and Exhibition Centre on 1 October 2026. Further details about the 
+AGM will be included in the Notice of Meeting.
+AGL Energy Corporate Governance Statement 202624
+AGL Energy Corporate Governance Statement 2026
+Stakeholder Engagement
+For personal use only
+
+--- page 38 ---
+agl.com.au
+For personal use only
