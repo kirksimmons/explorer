@@ -1,0 +1,95 @@
+name: AGL primary announcement fetch
+
+# Manually triggered helper for the agl-compliance screen: runs the scanner's
+# fetch+extract stages on a runner with open internet, plus a sweep of AGL's
+# investor-site PDFs, and commits the extracted text back to this branch.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests pypdf
+
+      - name: Fetch ASX announcement index and PDFs via scanner
+        working-directory: agl-compliance/scanner
+        continue-on-error: true
+        run: |
+          python scan.py fetch --ticker AGL --since 2026-05-25 --until 2026-08-25 --out out
+          python scan.py extract --out out
+
+      - name: Sweep AGL investor-site PDFs for the window
+        continue-on-error: true
+        run: |
+          mkdir -p agl-site-pdfs
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/126.0 Safari/537.36"
+          # Known primary URL from research (6 May guidance update, context for the screen)
+          urls="https://www.agl.com.au/content/dam/digital/agl/documents/about-agl/news-centre/2026/260506-macquarie-australia-conference-presentation-and-updated-fy26-guidance.pdf"
+          # Discover 2026 PDFs linked from AGL's news-centre and results pages
+          for page in \
+            "https://www.agl.com.au/about-agl/news-centre/2026/august/fy26-results-announcement-and-fy27-guidance" \
+            "https://www.agl.com.au/about-agl/investors/results-centre" \
+            "https://www.agl.com.au/about-agl/investors/annual-reports" ; do
+            found=$(curl -sL -A "$UA" -m 60 "$page" | grep -oE 'https?://[^"'"'"' ]*content/dam[^"'"'"' ]*2026[^"'"'"' ]*\.pdf' | sort -u || true)
+            urls="$urls"$'\n'"$found"
+          done
+          echo "$urls" | sort -u | while read -r u; do
+            [ -z "$u" ] && continue
+            name=$(basename "$u")
+            echo "fetching $name"
+            curl -sL -A "$UA" -m 120 -o "agl-site-pdfs/$name" "$u" || true
+          done
+          ls -la agl-site-pdfs
+
+      - name: Extract text from site PDFs
+        continue-on-error: true
+        run: |
+          python - <<'EOF'
+          from pathlib import Path
+          from pypdf import PdfReader
+          out = Path("agl-compliance/primary/site-text")
+          out.mkdir(parents=True, exist_ok=True)
+          for pdf in sorted(Path("agl-site-pdfs").glob("*.pdf")):
+              try:
+                  reader = PdfReader(str(pdf))
+                  text = "\n\n".join(
+                      f"--- page {i} ---\n" + (p.extract_text() or "")
+                      for i, p in enumerate(reader.pages, 1)
+                  )
+                  (out / (pdf.stem + ".txt")).write_text(text, encoding="utf-8")
+                  print(f"extracted {pdf.name}: {len(text)} chars")
+              except Exception as exc:
+                  print(f"FAILED {pdf.name}: {exc}")
+          EOF
+
+      - name: Stage scanner outputs
+        continue-on-error: true
+        run: |
+          mkdir -p agl-compliance/primary
+          if [ -f agl-compliance/scanner/out/register.json ]; then
+            cp agl-compliance/scanner/out/register.json agl-compliance/primary/register.json
+          fi
+          if [ -d agl-compliance/scanner/out/text ]; then
+            mkdir -p agl-compliance/primary/asx-text
+            cp agl-compliance/scanner/out/text/*.txt agl-compliance/primary/asx-text/ 2>/dev/null || true
+          fi
+          ls -laR agl-compliance/primary || true
+
+      - name: Commit extracted text back to the branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f agl-compliance/primary
+          git commit -m "Add primary announcement texts fetched by CI" || echo "nothing to commit"
+          git push
