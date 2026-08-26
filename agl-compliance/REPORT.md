@@ -1,6 +1,6 @@
 # AGL Energy (ASX: AGL) — announcement compliance screen
 
-**Window:** 25 May – 25 August 2026 · **Compiled:** 25 August 2026
+**Window:** 25 May – 25 August 2026 · **Compiled:** 25 August 2026 · **Primary-source verified:** 26 August 2026
 
 > **This is a first-pass risk screen, not legal advice.**
 >
@@ -365,6 +365,22 @@ industrial outcomes that are no longer active, and whether "low-carbon"
 fairly describes a site now running gas two years longer than the claim's
 original context.
 
+### C8 — Grok Ventures sell-down, disclosed same day — GREEN (newly surfaced)
+On 24 August, one day before this window closes and on the eve of the
+ex-dividend date, **Galipea Partnership (Cannon-Brookes' Grok Ventures)
+reduced its relevant interest by ~1%, to 9.41% of AGL**. AGL lodged its own
+announcement the same day referring to Galipea's Form 604, **attaching a
+letter from Grok explaining the change**, and marked it "Authorised for
+release by AGL's Market Disclosure Committee". Two further substantial-holding
+notices were lodged the same evening.
+
+This is the most market-relevant event the original secondary-source screen
+missed — a sell-down by the shareholder who forced AGL's 2022 strategic reset.
+On the disclosure question it reflects **well** on AGL: same-day lodgement,
+context volunteered rather than left to the bare Form 604, and a documented
+disclosure-committee authorisation. Noted because a screen that only reported
+failures would have missed evidence of the controls working.
+
 ### C6 — Coal closure commitments — GREEN
 In-window, the CEO reaffirmed "no plans to change our closure dates"
 (Bayswater 2033, Loy Yang A end-FY35). The Loy Yang date is contractually
@@ -407,16 +423,24 @@ current-quarter framing — precisely the failure mode primary-source scanning
 
 ## Limitations
 
-- **Secondary sources only.** The environment's network policy blocked
-  asx.com.au, agl.com.au and all announcement aggregators; everything above
-  derives from web-search results. No lodged PDF was read. Quotes are as
-  carried by the cited coverage.
-- **Register likely incomplete** for routine lodgements (3Ys, substantial
-  holder notices, employee-equity forms, CGS/4G).
-- **Search budget exhausted** before final verification passes (AGL churn
-  numbers; whether AGL announced the Centrepay judgment; Loy Yang episode
-  duration; live Carbon Neutral page wording; several RenewEconomy article
-  dates).
+- **Primary documents now read.** All 13 in-window announcements were
+  retrieved from the ASX and their text extracted (committed under
+  `primary/store/text/`). Quotes marked [VERIFIED] come from the lodged
+  documents; the surrounding analysis still rests on secondary sources for
+  context AGL did not itself publish (regulator actions, market data, media).
+- **The register is now complete** for the window as lodged, superseding the
+  earlier caveat about missing routine lodgements — five had in fact been
+  missed, and are now included.
+- **Not read in full:** the 271-page Annual Report and 44-page presentation
+  were searched for the specific claims at issue, not read end to end. The
+  AASB S2 climate statements (finding 5) remain **[UNVERIFIED]** in substance —
+  confirmed present and substantial (33 references to AASB S2), but their
+  scenario choices, scope 3 treatment and assurance scope need a proper read.
+- **Company-site claims remain [UNVERIFIED].** AGL's own site blocks automated
+  access (403), so the live "Carbon Neutral" product pages central to finding
+  C4 could not be captured. Those need checking by hand.
+- **Still open:** AGL churn detail, the duration of the 8 July Loy Yang coal
+  constraint, and whether the AER seeks special leave in the Centrepay matter.
 - **Single-source items** are flagged inline throughout the underlying
   research and treated as unverified.
 - Assessments apply public-record facts to the stated frameworks at screening
