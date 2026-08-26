@@ -1,0 +1,41 @@
+[
+  {
+    "id": "03129199",
+    "date": "2026-08-24",
+    "time": "6:23 pm",
+    "header": "24/08/2026 6:23 pm Substantial holder notice lodged by Galipea Partnership 2 pages 228.3KB",
+    "market_sensitive": true,
+    "pages": 2,
+    "url": "https://www.asx.com.au/asx/v2/statistics/displayAnnouncement.do?display=pdf&idsId=03129199",
+    "pdf_file": null,
+    "text_file": null,
+    "ticker": "AGL",
+    "fetch_error": "not a PDF (HTTP 200, 4730b)"
+  },
+  {
+    "id": "03129197",
+    "date": "2026-08-24",
+    "time": "6:22 pm",
+    "header": "24/08/2026 6:22 pm Becoming a substantial holder 178 pages 1.9MB",
+    "market_sensitive": true,
+    "pages": 178,
+    "url": "https://www.asx.com.au/asx/v2/statistics/displayAnnouncement.do?display=pdf&idsId=03129197",
+    "pdf_file": null,
+    "text_file": null,
+    "ticker": "AGL",
+    "fetch_error": "not a PDF (HTTP 200, 4729b)"
+  },
+  {
+    "id": "03129162",
+    "date": "2026-08-24",
+    "time": "5:23 pm",
+    "header": "24/08/2026 5:23 pm Change in substantial holding 5 pages 692.6KB",
+    "market_sensitive": true,
+    "pages": 5,
+    "url": "https://www.asx.com.au/asx/v2/statistics/displayAnnouncement.do?display=pdf&idsId=03129162",
+    "pdf_file": null,
+    "text_file": null,
+    "ticker": "AGL",
+    "fetch_error": "not a PDF (HTTP 200, 4729b)"
+  }
+]
