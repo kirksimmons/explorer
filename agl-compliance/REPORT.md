@@ -2,11 +2,15 @@
 
 **Window:** 25 May – 25 August 2026 · **Compiled:** 25 August 2026
 
-> **This is a first-pass risk screen, not legal advice.** It was compiled from
-> secondary sources (news coverage, announcement aggregators, regulator
-> publications) because the research environment could not access ASX or AGL
-> primary documents directly. Every amber finding is a *question to verify
-> against the lodged PDFs*, not an asserted breach. See Limitations.
+> **This is a first-pass risk screen, not legal advice.**
+>
+> **Status: primary-source verified (26 Aug 2026).** The screen was first
+> compiled from secondary sources, then checked against the announcements as
+> lodged with the ASX — retrieved by the scanner in `scanner/`, with the
+> extracted text committed under `primary/`. Findings below say explicitly
+> whether they are **[VERIFIED]** against the lodged document, **[CORRECTED]**
+> by it, or still **[UNVERIFIED]**. Verification changed several conclusions,
+> mostly in AGL's favour.
 
 ## Executive summary
 
@@ -20,27 +24,44 @@ one-off gains), which blunts the usual non-IFRS prominence criticism.
 
 Six **amber** items are worth verifying, in rough priority order:
 
-1. **Silence on the 19 Aug Full Court Centrepay win.** The Full Federal Court
-   quashed the $25m AER penalty (the largest ever under national energy laws)
-   and the AER must repay it — a week after AGL signed FY26 accounts. No AGL
-   ASX announcement was found. Probably defensible on materiality (~4% of
-   underlying NPAT), but the accounting treatment and the disclosure decision
-   deserve a look.
+1. **[VERIFIED — strengthened] Silence on the 19 Aug Full Court Centrepay
+   win.** The Full Federal Court quashed the $25m AER penalty (the largest ever
+   under national energy laws) and the AER must repay it — seven days after AGL
+   signed its FY26 accounts. The ASX record confirms **no announcement was
+   lodged**. The Annual Report books the penalty as a significant item
+   ("$25 million pre-tax … related to the Court ordered penalty in legal
+   proceedings initiated by the Australian Energy Regulator (AER) in relation
+   to Centrepay payments") but **the word "appeal" appears nowhere in its 271
+   pages**, and the subsequent-events note is a nil statement. So the accounts
+   disclose the penalty without disclosing the live appeal that reversed it a
+   week later. Still likely defensible on materiality (~4% of underlying NPAT),
+   and a contingent asset need not be disclosed unless an inflow is probable —
+   but this is now a documented gap, not an inference.
 2. **Silence on the 8 Jul Loy Yang "coal shortfall" episode.** Unit trips and
    coal-conservation rebids across Loy Yang A during a >$300/MWh evening spike,
    with no market announcement, and results messaging a month later emphasising
    a "mild winter." Likely transient and immaterial — but verify duration.
-3. **"On track" renewables-pipeline claims vs the wind gap.** AGL reiterated it
-   is on track for 12 GW of new renewable and firming capacity by end-2035
-   (6 GW by FY30) while building no new wind and facing sector-wide "wind
-   drought" criticism. Forward-looking-statement (s 769C) reasonable-grounds
-   question; the batteries are real and delivering, the wind leg is the risk.
-4. **"Carbon Neutral" retail products after the Climate Active exit.** AGL
-   withdrew from Climate Active effective 3 Feb 2026, yet carbon-neutral
-   product pages remained live through the window and third-party references to
-   Climate Active certification persist. If on-page claims still trade on the
-   certification, that is classic ACL s 18/29 territory (compare
-   EnergyAustralia's product withdrawal and apology).
+3. **[CORRECTED — largely cleared] "On track" renewables-pipeline claims.**
+   The premise was wrong. "12 GW" appears nowhere in the results release or
+   presentation; the release states a narrower dated target of "6 GW of
+   renewable and firming capacity by 2030" and discloses the wind position
+   concretely (two 15-year Tilt PPAs, operations targeted 2028; a 2GW+
+   partnership "progressing"). Qualified and dated — no s 769C concern on the
+   face of the documents.
+4. **[VERIFIED — now the sharpest item] "Carbon Neutral" products and the
+   Climate Active claim.** The Annual Report states AGL **"maintained Climate
+   Active certification for products and services including Carbon Neutral
+   electricity, gas, residential solar systems and solar batteries"** — a
+   present-tense certification claim in a lodged document. Independent sources
+   record AGL among the large participants that *withdrew* from Climate Active
+   during FY26 (alongside EnergyAustralia, Westpac, ANZ, CBA), while its
+   CY2024 product disclosure was still being filed in June 2026 and ~173,000
+   services sit on these products. The scheme itself is being wound up
+   (certification ends 30 June 2027). These need reconciling: if the corporate
+   withdrawal and the product certifications are distinct, the claim may be
+   accurate and simply needs unpacking; if not, a certification claim in the
+   Annual Report and on live product pages is ACL s 18/29 and s 1041H
+   territory. **This is the item to put in front of counsel first.**
 5. **First mandatory AASB S2 climate statements** (in the 12 Aug Annual
    Report). Nothing adverse found — but this is AGL's highest-stakes new
    disclosure document, published into an active ASIC review cycle, and only
@@ -62,30 +83,80 @@ The screen also caught and corrected **two false positives** produced by
 initial search synthesis — a reminder of why amber findings here need primary
 verification (see "Corrections" below).
 
+
+## What primary-source verification changed
+
+Retrieving the lodged documents corrected the screen in four ways:
+
+**The register was materially incomplete.** The secondary-source register had
+8 entries; the ASX record shows **13** in the window. Missing were the
+Appendix 4G and Corporate Governance Statement (12 Aug), a notification of
+cessation of securities (30 Jun), AGL's own Notice of Initial Substantial
+Holder in Aussie Broadband (15 Jun), and three substantial-holding notices
+lodged on 24 Aug — including one by the **Galipea Partnership**
+(Cannon-Brookes' Grok Ventures, AGL's largest shareholder). The gap was
+exactly where the report predicted it would be: low-visibility routine
+lodgements that aggregators don't cover.
+
+**Two findings were softened by the primary text.**
+
+- *Non-IFRS prominence (RG 230).* The lodged release leads its highlights
+  with **"Statutory Profit after tax: $756 million, up $644 million from
+  FY25"** — statutory first, before underlying — and labels both underlying
+  measures **"in line with guidance"**. The Directors' Report also carries a
+  dedicated non-IFRS section. This is better practice than the screen assumed;
+  the RG 230 concern falls away.
+- *"On track" pipeline claims.* The phrase "12 GW" does not appear in the
+  results release or the presentation at all; the release states the narrower,
+  dated target of **"6 GW of renewable and firming capacity by 2030"**, and
+  discloses the wind position concretely (two 15-year Tilt PPAs with
+  commercial operations targeted 2028, a 2GW+ partnership described as
+  "progressing"). Qualified and dated, not an unsupported "on track" claim.
+  The 12 GW figure appears only in the Annual Report's longer-horizon
+  material, which is the right place for it.
+
+**One quoted statement was a media paraphrase, not AGL's words.** The screen
+quoted the CEO citing "a very mild May and June". The lodged release says:
+*"Our strong result reflected excellent business performance across AGL. The
+strength of our integrated business helped mitigate the impact of softer
+market conditions."* It attributes low volatility to "milder weather, strong
+NEM-wide renewable generation and coal fleet availability, battery capacity
+growth, and lower transmission constraints" — disclosed, but not in the words
+the screen attributed to him.
+
+**One finding got sharper, and is now the most substantive item.** See C1 and
+C4 below.
+
 ---
 
 ## Announcements register (25 May – 25 Aug 2026)
 
-| Date | Announcement | Market-sensitive | Rating |
-|---|---|---|---|
-| 2026-07-21 | FY26 results date / webcast details | no | GREEN |
-| 2026-08-12 | FY26 Results Announcement and FY27 Guidance | yes | GREEN |
-| 2026-08-12 | FY26 Results Presentation | yes | AMBER |
-| 2026-08-12 | Appendix 4E and Annual Report 2026 (incl. first AASB S2 climate statements) | yes | AMBER |
-| 2026-08-12 | Dividend/Distribution — final 26c fully franked | no | GREEN |
-| 2026-08-14 | Notice of 2026 Annual General Meeting | no | GREEN |
-| Aug 2026 (day unconfirmed) | Appendix 3Y — Damien Nicks (LTIP vesting, deferred STI, on-market acquisition) | no | GREEN* |
-| Aug 2026 (day unconfirmed) | Appendix 3Y — Betsy Donaghey (on-market purchase, 6,500 shares) | no | GREEN* |
+| Date | Announcement | Pages | Sensitive | Text retrieved | Rating |
+|---|---|---|---|---|---|
+| 2026-08-24 | Substantial holder notice lodged by Galipea Partnership | 2 | yes | pending | GREEN |
+| 2026-08-24 | Becoming a substantial holder | 178 | yes | pending | GREEN |
+| 2026-08-24 | Change in substantial holding | 5 | yes | pending | GREEN |
+| 2026-08-17 | Appendix 3Y - Elizabeth Donaghey | 2 | no | yes | GREEN |
+| 2026-08-14 | Notice of 2026 Annual General Meeting | 24 | no | yes | GREEN |
+| 2026-08-12 | Appendix 4G and 2026 Corporate Governance Statement | 38 | no | yes | GREEN |
+| 2026-08-12 | FY26 Results Presentation | 44 | yes | yes | GREEN |
+| 2026-08-12 | FY26 Results Announcement and FY27 Guidance | 5 | yes | yes | GREEN |
+| 2026-08-12 | Dividend/Distribution - AGL | 4 | no | yes | GREEN |
+| 2026-08-12 | Appendix 4E and 2026 Annual Report | 271 | yes | yes | AMBER |
+| 2026-07-21 | Webcast & conference call details for FY26 results | 1 | no | yes | GREEN |
+| 2026-06-30 | Notification of cessation of securities - AGL | 4 | no | yes | GREEN |
+| 2026-06-15 | Notice of Initial Substantial Holder - Aussie Broadband Ltd | 29 | no | yes | GREEN |
 
-\* Provisional: lodgement dates could not be pinned; confirm each was within 5
-business days of the trade (LR 3.19A/3.19B).
+Retrieved from the ASX by `scanner/`; extracted text is committed under
+`primary/store/text/`. This replaces the earlier secondary-source register,
+which had 8 entries and missed 5 lodgements.
 
-**Register completeness caveat:** low-visibility routine lodgements (further
-Appendix 3Y notices, substantial-holder notices, Appendix 2A/3H employee-equity
-forms, the Corporate Governance Statement/Appendix 4G customarily lodged with
-the Annual Report) are the most likely gaps — aggregator coverage of these is
-thin and the ASX announcements platform was not directly accessible. The
-scanner in `scanner/` closes this gap when run with network access.
+**Confirmed by the ASX record — two absences that matter.** There is **no AGL
+announcement on 19 August** (the Full Court Centrepay judgment; the record
+jumps 17 Aug → 24 Aug) and **none on 8 July** (the Loy Yang coal-shortfall
+episode; 30 Jun → 21 Jul). Both were previously "not found in search"; they are
+now verified absences from the lodgement record, which is what findings C1 and
+C2 turn on.
 
 **Events in the window with no AGL ASX lodgement found** (assessed under
 cross-cutting findings): Tilt Renewables completion proceeds received (~May,
