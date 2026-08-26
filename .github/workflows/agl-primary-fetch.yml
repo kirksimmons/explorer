@@ -5,6 +5,11 @@ name: AGL primary announcement fetch
 # investor-site PDFs, and commits the extracted text back to this branch.
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - claude/agl-announcements-compliance-tbj17l
+    paths:
+      - agl-compliance/.ci-fetch-trigger
 
 permissions:
   contents: write
