@@ -1,7 +1,7 @@
 name: AGL source probe
 
-# Diagnostic: probes candidate primary-source endpoints from a runner with open
-# internet and reports what is actually reachable. Commits nothing.
+# Diagnostic: inspects the structure of reachable index sources so the fetcher
+# can be built against them. Commits nothing.
 on:
   push:
     branches:
@@ -13,36 +13,64 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - name: Probe candidate sources
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - name: Inspect index source structure
         run: |
-          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
-          probe () {
-            label="$1"; url="$2"; shift 2
-            out=$(mktemp)
-            code=$(curl -sL -o "$out" -w '%{http_code}' -m 45 -A "$UA" \
-                   -H 'Accept: text/html,application/xhtml+xml,application/json,application/pdf,*/*' \
-                   -H 'Accept-Language: en-AU,en;q=0.9' "$@" "$url" 2>/dev/null || echo "ERR")
-            size=$(wc -c < "$out")
-            head=$(head -c 60 "$out" | tr -d '\0' | tr '\n' ' ')
-            printf '%-34s %-6s %-9s %s\n' "$label" "$code" "${size}b" "$head"
-            rm -f "$out"
-          }
-          echo "=== ASX index endpoints ==="
-          probe "asx-legacy-v1"    "https://www.asx.com.au/asx/1/company/AGL/announcements?count=20&market_sensitive=false"
-          probe "markitdigital"    "https://asx.api.markitdigital.com/asx-research/1.0/companies/AGL/announcements?access_token=83ff96335c2d45a094df02a206a39ff4"
-          probe "md-header"        "https://asx.api.markitdigital.com/asx-research/1.0/companies/AGL/header?access_token=83ff96335c2d45a094df02a206a39ff4"
-          probe "asx-v2-statistics" "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=AGL&timeframe=Y&year=2026"
-          probe "asx-announce-home" "https://www.asx.com.au/markets/trade-our-cash-market/announcements.AGL"
-          echo "=== Direct announcement PDFs ==="
-          probe "asxpdf-known-abb"  "https://announcements.asx.com.au/asxpdf/20260615/pdf/070mdngvmxms08.pdf"
-          probe "weblink-abb-pdf"   "https://wcsecure.weblink.com.au/pdf/ABB/03055165.pdf"
-          echo "=== AGL own site ==="
-          probe "agl-results-centre" "https://www.agl.com.au/about-agl/investors/results-centre"
-          probe "agl-pdf-direct"     "https://www.agl.com.au/content/dam/digital/agl/documents/about-agl/news-centre/2026/260506-macquarie-australia-conference-presentation-and-updated-fy26-guidance.pdf"
-          probe "agl-pdf-referer"    "https://www.agl.com.au/content/dam/digital/agl/documents/about-agl/news-centre/2026/260506-macquarie-australia-conference-presentation-and-updated-fy26-guidance.pdf" -H "Referer: https://www.agl.com.au/about-agl/investors/results-centre"
-          echo "=== Archives and aggregators ==="
-          probe "wayback-api-agl-pdf" "https://archive.org/wayback/available?url=agl.com.au/content/dam/digital/agl/documents/about-agl/news-centre/2026/260506-macquarie-australia-conference-presentation-and-updated-fy26-guidance.pdf"
-          probe "wayback-api-aglsite" "https://archive.org/wayback/available?url=www.agl.com.au/about-agl/investors/results-centre"
-          probe "marketindex"         "https://www.marketindex.com.au/asx/agl/announcements"
-          probe "listcorp"            "https://www.listcorp.com/asx/agl/agl-energy-limited/news"
-          echo "=== done ==="
+          python - <<'EOF'
+          import json, re, requests
+          UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+                "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
+          S = requests.Session()
+          S.headers.update({"User-Agent": UA, "Accept": "*/*", "Accept-Language": "en-AU,en;q=0.9"})
+
+          def show(title, body):
+              print("\n" + "=" * 70)
+              print(title)
+              print("=" * 70)
+              print(body)
+
+          # 1. MarkitDigital announcements
+          for path in ["companies/AGL/announcements",
+                       "companies/AGL/announcements?count=50&pageSize=50",
+                       "companies/AGL/announcements/full?pageSize=50"]:
+              url = f"https://asx.api.markitdigital.com/asx-research/1.0/{path}"
+              sep = "&" if "?" in url else "?"
+              try:
+                  r = S.get(url + sep + "access_token=83ff96335c2d45a094df02a206a39ff4", timeout=45)
+                  txt = json.dumps(r.json(), indent=1)[:1800] if "json" in r.headers.get("content-type","") else r.text[:600]
+                  show(f"MD {path} -> {r.status_code}", txt)
+              except Exception as e:
+                  show(f"MD {path} FAILED", str(e))
+
+          # 2. ASX v2 statistics page - look for announcement links
+          try:
+              r = S.get("https://www.asx.com.au/asx/v2/statistics/announcements.do"
+                        "?by=asxCode&asxCode=AGL&timeframe=Y&year=2026", timeout=45)
+              links = re.findall(r'href="([^"]*(?:displayAnnouncement|asxpdf)[^"]*)"', r.text)
+              rows = re.findall(r'<tr[^>]*>(.*?)</tr>', r.text, re.S)[:6]
+              show(f"ASX v2 statistics -> {r.status_code}; {len(links)} announcement links",
+                   "\n".join(links[:10]) + "\n\n--- sample rows ---\n" +
+                   "\n\n".join(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' | ', x))[:300] for x in rows))
+          except Exception as e:
+              show("ASX v2 statistics FAILED", str(e))
+
+          # 3. ASX announcements page for AGL - embedded data?
+          try:
+              r = S.get("https://www.asx.com.au/markets/trade-our-cash-market/announcements.AGL", timeout=45)
+              apis = sorted(set(re.findall(r'https?://[^\s"\'<>]*(?:api|announcement)[^\s"\'<>]*', r.text)))[:15]
+              show(f"ASX announcements.AGL -> {r.status_code}", "\n".join(apis) or "(no api-ish urls found)")
+          except Exception as e:
+              show("ASX announcements.AGL FAILED", str(e))
+
+          # 4. Listcorp news page - announcement links + dates
+          try:
+              r = S.get("https://www.listcorp.com/asx/agl/agl-energy-limited/news", timeout=45)
+              items = re.findall(r'href="(/asx/agl/[^"]*/news/[^"]+)"[^>]*>(.{0,120}?)<', r.text)[:20]
+              show(f"Listcorp -> {r.status_code}; {len(items)} items",
+                   "\n".join(f"{h}  ::  {re.sub(r'\s+',' ',t).strip()}" for h, t in items) or r.text[:500])
+          except Exception as e:
+              show("Listcorp FAILED", str(e))
+          EOF
