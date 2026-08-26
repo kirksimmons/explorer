@@ -1,0 +1,48 @@
+name: AGL source probe
+
+# Diagnostic: probes candidate primary-source endpoints from a runner with open
+# internet and reports what is actually reachable. Commits nothing.
+on:
+  push:
+    branches:
+      - claude/agl-announcements-compliance-tbj17l
+    paths:
+      - agl-compliance/.ci-probe-trigger
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe candidate sources
+        run: |
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+          probe () {
+            label="$1"; url="$2"; shift 2
+            out=$(mktemp)
+            code=$(curl -sL -o "$out" -w '%{http_code}' -m 45 -A "$UA" \
+                   -H 'Accept: text/html,application/xhtml+xml,application/json,application/pdf,*/*' \
+                   -H 'Accept-Language: en-AU,en;q=0.9' "$@" "$url" 2>/dev/null || echo "ERR")
+            size=$(wc -c < "$out")
+            head=$(head -c 60 "$out" | tr -d '\0' | tr '\n' ' ')
+            printf '%-34s %-6s %-9s %s\n' "$label" "$code" "${size}b" "$head"
+            rm -f "$out"
+          }
+          echo "=== ASX index endpoints ==="
+          probe "asx-legacy-v1"    "https://www.asx.com.au/asx/1/company/AGL/announcements?count=20&market_sensitive=false"
+          probe "markitdigital"    "https://asx.api.markitdigital.com/asx-research/1.0/companies/AGL/announcements?access_token=83ff96335c2d45a094df02a206a39ff4"
+          probe "md-header"        "https://asx.api.markitdigital.com/asx-research/1.0/companies/AGL/header?access_token=83ff96335c2d45a094df02a206a39ff4"
+          probe "asx-v2-statistics" "https://www.asx.com.au/asx/v2/statistics/announcements.do?by=asxCode&asxCode=AGL&timeframe=Y&year=2026"
+          probe "asx-announce-home" "https://www.asx.com.au/markets/trade-our-cash-market/announcements.AGL"
+          echo "=== Direct announcement PDFs ==="
+          probe "asxpdf-known-abb"  "https://announcements.asx.com.au/asxpdf/20260615/pdf/070mdngvmxms08.pdf"
+          probe "weblink-abb-pdf"   "https://wcsecure.weblink.com.au/pdf/ABB/03055165.pdf"
+          echo "=== AGL own site ==="
+          probe "agl-results-centre" "https://www.agl.com.au/about-agl/investors/results-centre"
+          probe "agl-pdf-direct"     "https://www.agl.com.au/content/dam/digital/agl/documents/about-agl/news-centre/2026/260506-macquarie-australia-conference-presentation-and-updated-fy26-guidance.pdf"
+          probe "agl-pdf-referer"    "https://www.agl.com.au/content/dam/digital/agl/documents/about-agl/news-centre/2026/260506-macquarie-australia-conference-presentation-and-updated-fy26-guidance.pdf" -H "Referer: https://www.agl.com.au/about-agl/investors/results-centre"
+          echo "=== Archives and aggregators ==="
+          probe "wayback-api-agl-pdf" "https://archive.org/wayback/available?url=agl.com.au/content/dam/digital/agl/documents/about-agl/news-centre/2026/260506-macquarie-australia-conference-presentation-and-updated-fy26-guidance.pdf"
+          probe "wayback-api-aglsite" "https://archive.org/wayback/available?url=www.agl.com.au/about-agl/investors/results-centre"
+          probe "marketindex"         "https://www.marketindex.com.au/asx/agl/announcements"
+          probe "listcorp"            "https://www.listcorp.com/asx/agl/agl-energy-limited/news"
+          echo "=== done ==="
