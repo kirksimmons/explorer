@@ -23,11 +23,13 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import re
 import json
 import shutil
 import sys
 from pathlib import Path
 
+import asx_web
 import extract
 import fetch
 import report
@@ -78,13 +80,24 @@ def stage_fetch(args) -> tuple[list[dict], list[dict]]:
         raise SystemExit("index returned nothing for any ticker — treating as a fetch failure")
 
     merged, new_entries = fetch.merge_register(existing, fresh)
+    # Retry anything previously recorded whose download failed, otherwise a
+    # transient failure (or a bug since fixed) would leave a permanent hole.
+    retries = [e for e in merged if e not in new_entries and not e.get("pdf_file")]
+    if retries:
+        print(f"retrying {len(retries)} announcement(s) that failed previously")
+        for entry in retries:
+            entry.pop("fetch_error", None)
+            # Re-parse stale rows recorded before a parser fix.
+            if re.match(r"\d{2}/\d{2}/\d{4}", entry.get("header", "")):
+                entry["header"] = asx_web._clean_headline(entry["header"])
+    todo = new_entries + retries
     print(f"{len(new_entries)} new announcement(s) since last run")
-    if new_entries:
-        fetch.download_pdfs(new_entries, out / "pdfs")
-        got = sum(1 for e in new_entries if e.get("pdf_file"))
-        print(f"downloaded {got}/{len(new_entries)} PDFs")
+    if todo:
+        fetch.download_pdfs(todo, out / "pdfs")
+        got = sum(1 for e in todo if e.get("pdf_file"))
+        print(f"downloaded {got}/{len(todo)} PDFs")
     fetch.save_register(merged, out)
-    return merged, new_entries
+    return merged, todo
 
 
 def stage_extract(args, entries: list[dict], todo: list[dict]) -> None:
