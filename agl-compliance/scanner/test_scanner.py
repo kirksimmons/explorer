@@ -128,6 +128,65 @@ def test_register_merge_is_incremental() -> None:
     assert none_new == [], none_new
 
 
+def test_real_row_shape_from_asx() -> None:
+    """Regression: the row shape the live ASX page actually returns.
+
+    The headline link carries the date, time, page count and size alongside the
+    title, and every row carries a format icon. An earlier version returned the
+    whole row as the headline and flagged every announcement price-sensitive.
+    """
+    import asx_web
+
+    row = (
+        '<tr class="datarow"><td>'
+        '<a href="/asx/v2/statistics/displayAnnouncement.do?display=pdf&amp;idsId=03129199">'
+        "24/08/2026 6:23 pm Substantial holder notice lodged by Galipea Partnership "
+        "2 pages 228.3KB</a></td>"
+        '<td><img src="/images/pdf_icon.gif" alt="PDF"></td></tr>'
+    )
+    entry = asx_web.parse_statistics_page(row)[0]
+    assert entry["header"] == "Substantial holder notice lodged by Galipea Partnership", entry
+    assert entry["market_sensitive"] is False, "format icon must not flag sensitivity"
+    assert entry["pages"] == 2 and entry["date"] == "2026-08-24"
+
+    sensitive = row.replace('src="/images/pdf_icon.gif" alt="PDF"',
+                            'src="/images/pricesens.gif" alt="price sensitive"')
+    assert asx_web.parse_statistics_page(sensitive)[0]["market_sensitive"] is True
+
+
+def test_terms_interstitial_is_accepted() -> None:
+    """The PDF endpoint serves a terms form; submitting it returns the document."""
+    import asx_web
+
+    class Resp:
+        def __init__(self, content): self.content, self.status_code = content, 200
+        @property
+        def text(self): return self.content.decode()
+
+    class Session:
+        posted = None
+        def post(self, url, data=None, timeout=None):
+            Session.posted = (url, data)
+            return Resp(b"%PDF-1.6 document")
+        def get(self, url, **kw): return Resp(b"<HTML>not the pdf</HTML>")
+
+    terms = (
+        '<HTML><body><form action="/asx/v2/statistics/displayAnnouncement.do" method="post">'
+        '<input type="hidden" name="display" value="pdf">'
+        '<input type="hidden" name="idsId" value="03129199">'
+        '<input type="submit" name="accept" value="Agree and proceed">'
+        "</form></body></HTML>"
+    )
+    got = asx_web.accept_terms(
+        Session(),
+        "https://www.asx.com.au/asx/v2/statistics/displayAnnouncement.do?display=pdf&idsId=03129199",
+        terms,
+    )
+    assert got and got.startswith(b"%PDF"), got
+    _, data = Session.posted
+    assert data == {"display": "pdf", "idsId": "03129199", "accept": "Agree and proceed"}, data
+
+
 if __name__ == "__main__":
     failures = 0
     for name, fn in sorted(globals().items()):

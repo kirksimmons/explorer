@@ -41,6 +41,10 @@ DATE_RE = re.compile(r"(\d{2})/(\d{2})/(\d{4})")
 IDS_RE = re.compile(r"idsId=(\d+)")
 TAG_RE = re.compile(r"<[^>]+>")
 PAGES_RE = re.compile(r"(\d+)\s*page", re.I)
+SENSITIVE_RE = re.compile(
+    r"<img[^>]*(?:src|alt|title)=\"[^\"]*(?:sensitiv|exclam|asterisk|pricesens)[^\"]*\"",
+    re.I,
+)
 
 
 def make_session() -> requests.Session:
@@ -80,15 +84,38 @@ def _row_text(row_html: str) -> str:
     return html.unescape(TAG_RE.sub(" ", row_html))
 
 
+# The headline shares its cell with the release date/time and the document's
+# page count and size, so strip those off whatever text we recover.
+NOISE_RES = [
+    re.compile(r"^\s*\d{2}/\d{2}/\d{4}\b"),
+    re.compile(r"^\s*\d{1,2}:\d{2}\s*[ap]\.?m\.?\b", re.I),
+    re.compile(r"\b\d+\s*pages?\b", re.I),
+    re.compile(r"\b[\d.]+\s*(?:KB|MB|GB|bytes)\b", re.I),
+]
+
+
+def _clean_headline(text: str) -> str:
+    text = " ".join(text.split())
+    for _ in range(4):  # date/time lead, then size/page trailers
+        before = text
+        for noise in NOISE_RES:
+            text = noise.sub(" ", text)
+        text = " ".join(text.split())
+        if text == before:
+            break
+    return text.strip(" -|")
+
+
 def _headline(row_html: str) -> str:
-    """The headline is the anchor text of the announcement link."""
-    for match in re.finditer(r"<a[^>]*>(.*?)</a>", row_html, re.S | re.I):
-        text = " ".join(_row_text(match.group(1)).split())
-        # Skip the "PDF"/"HTML" format links and page-count noise.
-        if len(text) > 12 and not PAGES_RE.search(text):
-            return text
-    text = " ".join(_row_text(row_html).split())
-    return text[:200]
+    """The headline is the announcement link's text, minus row furniture."""
+    candidates = [
+        _clean_headline(_row_text(m.group(1)))
+        for m in re.finditer(r"<a[^>]*>(.*?)</a>", row_html, re.S | re.I)
+    ]
+    candidates = [c for c in candidates if len(c) > 12]
+    if candidates:
+        return max(candidates, key=len)[:250]
+    return _clean_headline(_row_text(row_html))[:250]
 
 
 def parse_statistics_page(page_html: str) -> list[dict]:
@@ -115,8 +142,9 @@ def parse_statistics_page(page_html: str) -> list[dict]:
                 if re.search(r"\d{1,2}:\d{2}\s*[ap]m", text, re.I)
                 else "",
                 "header": _headline(row_html),
-                # The site marks price-sensitive rows with an icon image.
-                "market_sensitive": bool(re.search(r"<img[^>]+", row_html, re.I)),
+                # Only the price-sensitive marker counts - every row carries
+                # format icons, so any-image matching over-flags.
+                "market_sensitive": bool(SENSITIVE_RE.search(row_html)),
                 "pages": int(pages_match.group(1)) if pages_match else None,
                 "url": f"{PDF_URL}?display=pdf&idsId={ids_id}",
                 "pdf_file": None,
@@ -182,6 +210,47 @@ def cross_check_sensitivity(ticker: str, entries: list[dict],
             entry["sensitivity_source"] = "markitdigital"
 
 
+def accept_terms(session: requests.Session, page_url: str, page_html: str) -> bytes | None:
+    """Clear ASX's terms-acceptance interstitial and return the PDF bytes.
+
+    The interstitial is a form the reader submits to agree to ASX's terms of
+    use; submitting it with its own hidden fields returns the document. Falls
+    back to any direct document link on the page.
+    """
+    from urllib.parse import urljoin
+
+    form = re.search(r"<form[^>]*>(.*?)</form>", page_html, re.S | re.I)
+    if form:
+        head = re.match(r"<form[^>]*>", form.group(0), re.I).group(0)
+        action = re.search(r'action="([^"]*)"', head, re.I)
+        target = urljoin(page_url, html.unescape(action.group(1))) if action else page_url
+        data = {}
+        for tag in re.findall(r"<input[^>]*>", form.group(1), re.I):
+            name = re.search(r'name="([^"]+)"', tag, re.I)
+            if not name:
+                continue
+            value = re.search(r'value="([^"]*)"', tag, re.I)
+            data[name.group(1)] = html.unescape(value.group(1)) if value else ""
+        for attempt in (
+            lambda: session.post(target, data=data, timeout=90),
+            lambda: session.get(target, params=data, timeout=90),
+        ):
+            try:
+                got = attempt()
+                if got.content.startswith(b"%PDF"):
+                    return got.content
+            except requests.RequestException:
+                continue
+
+    link = re.search(r'href="([^"]*(?:asxpdf|\.pdf)[^"]*)"', page_html, re.I)
+    if link:
+        href = urljoin(page_url, html.unescape(link.group(1)))
+        got = get_with_retries(session, href)
+        if got.content.startswith(b"%PDF"):
+            return got.content
+    return None
+
+
 def download_pdfs(entries: list[dict], out_dir, session: requests.Session | None = None) -> None:
     """Download each announcement PDF, updating entries in place."""
     from pathlib import Path
@@ -200,13 +269,7 @@ def download_pdfs(entries: list[dict], out_dir, session: requests.Session | None
         resp = get_with_retries(session, entry["url"])
         content = resp.content
         if not content.startswith(b"%PDF"):
-            # Terms-acceptance interstitial: follow the PDF link it contains.
-            link = re.search(rb'href="([^"]*(?:asxpdf|displayAnnouncement)[^"]*)"', content)
-            if link:
-                href = html.unescape(link.group(1).decode("utf-8", "replace"))
-                if href.startswith("/"):
-                    href = "https://www.asx.com.au" + href
-                content = get_with_retries(session, href).content
+            content = accept_terms(session, entry["url"], resp.text) or content
         if not content.startswith(b"%PDF"):
             entry["pdf_file"] = None
             entry["fetch_error"] = f"not a PDF (HTTP {resp.status_code}, {len(content)}b)"

@@ -53,12 +53,20 @@ jobs:
       - name: Fetch and extract announcements
         working-directory: agl-compliance/scanner
         env:
-          TICKERS: ${{ github.event.inputs.tickers || 'AGL' }}
-          MODE: ${{ github.event.inputs.mode || 'incremental' }}
-          SINCE: ${{ github.event.inputs.since || '2026-05-25' }}
-          UNTIL: ${{ github.event.inputs.until || '2026-08-25' }}
+          IN_TICKERS: ${{ github.event.inputs.tickers }}
+          IN_MODE: ${{ github.event.inputs.mode }}
+          IN_SINCE: ${{ github.event.inputs.since }}
+          IN_UNTIL: ${{ github.event.inputs.until }}
         run: |
           set -o pipefail
+          # A push can't carry workflow inputs, so the trigger file may specify
+          # the run: "mode=backfill tickers=AGL,ORG since=... until=...".
+          TRIGGER=../.ci-watch-trigger
+          get () { [ -f "$TRIGGER" ] && sed -n "s/.*\b$1=\([^ ]*\).*/\1/p" "$TRIGGER" | head -1; }
+          MODE="${IN_MODE:-$(get mode)}";       MODE="${MODE:-incremental}"
+          TICKERS="${IN_TICKERS:-$(get tickers)}"; TICKERS="${TICKERS:-AGL}"
+          SINCE="${IN_SINCE:-$(get since)}";     SINCE="${SINCE:-2026-05-25}"
+          UNTIL="${IN_UNTIL:-$(get until)}";     UNTIL="${UNTIL:-2026-08-25}"
           if [ "$MODE" = "backfill" ]; then
             echo "Backfill $SINCE..$UNTIL for $TICKERS"
             python scan.py fetch --tickers "$TICKERS" --since "$SINCE" --until "$UNTIL" \
