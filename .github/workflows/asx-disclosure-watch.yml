@@ -1,0 +1,99 @@
+name: ASX disclosure watch
+
+# Periodic continuous-disclosure monitoring. Each run looks back a few days
+# across the watchlist, records only announcements not already in the register,
+# downloads and extracts those, and commits the result. Small, frequent runs
+# build a timestamped record of what each company disclosed and when — which is
+# the evidence a Listing Rule 3.1 timeliness question actually turns on.
+on:
+  schedule:
+    # 08:00 UTC = 18:00 AEST, after the ASX announcements day closes.
+    - cron: "0 8 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      tickers:
+        description: "Comma-separated ASX codes"
+        default: "AGL"
+      mode:
+        description: "incremental or backfill"
+        default: "incremental"
+      since:
+        description: "Backfill start (YYYY-MM-DD)"
+        default: "2026-05-25"
+      until:
+        description: "Backfill end (YYYY-MM-DD)"
+        default: "2026-08-25"
+  push:
+    branches:
+      - claude/agl-announcements-compliance-tbj17l
+    paths:
+      - agl-compliance/.ci-watch-trigger
+
+concurrency:
+  group: asx-disclosure-watch
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r agl-compliance/scanner/requirements.txt
+
+      - name: Self-test the scanner before trusting a run
+        working-directory: agl-compliance/scanner
+        run: python test_scanner.py
+
+      - name: Fetch and extract announcements
+        working-directory: agl-compliance/scanner
+        env:
+          TICKERS: ${{ github.event.inputs.tickers || 'AGL' }}
+          MODE: ${{ github.event.inputs.mode || 'incremental' }}
+          SINCE: ${{ github.event.inputs.since || '2026-05-25' }}
+          UNTIL: ${{ github.event.inputs.until || '2026-08-25' }}
+        run: |
+          set -o pipefail
+          if [ "$MODE" = "backfill" ]; then
+            echo "Backfill $SINCE..$UNTIL for $TICKERS"
+            python scan.py fetch --tickers "$TICKERS" --since "$SINCE" --until "$UNTIL" \
+              --out ../primary/store
+            python scan.py extract --tickers "$TICKERS" --since "$SINCE" --until "$UNTIL" \
+              --out ../primary/store
+          else
+            echo "Incremental watch for $TICKERS"
+            python scan.py fetch --tickers "$TICKERS" --incremental --lookback-days 7 \
+              --out ../primary/store
+            python scan.py extract --tickers "$TICKERS" --incremental --out ../primary/store
+          fi
+
+      - name: Summarise the register
+        run: |
+          python - <<'EOF'
+          import json, pathlib
+          reg = pathlib.Path("agl-compliance/primary/store/register.json")
+          entries = json.loads(reg.read_text()) if reg.exists() else []
+          print(f"register holds {len(entries)} announcements")
+          for e in entries[:25]:
+              flag = "SENSITIVE" if e.get("market_sensitive") else "         "
+              txt = "text" if e.get("text_file") else "NO-TEXT"
+              print(f"  {e.get('date')}  {flag}  {txt:8}  {e.get('header','')[:70]}")
+          EOF
+
+      - name: Commit register and extracted text
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f agl-compliance/primary
+          if git diff --cached --quiet; then
+            echo "no changes — nothing new disclosed since last run"
+          else
+            git commit -m "ASX disclosure watch: update register and extracted text"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

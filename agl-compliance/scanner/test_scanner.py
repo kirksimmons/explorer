@@ -80,6 +80,54 @@ def test_dry_run_pipeline() -> None:
         assert "Underlying EBITDA led" in report_text
 
 
+def test_statistics_page_parsing() -> None:
+    """Parse the row shape the ASX statistics page actually returns."""
+    import asx_web
+
+    page = """
+    <tr><td>24/08/2026</td><td>6:23 pm</td><td></td>
+      <td><a href="/asx/v2/statistics/displayAnnouncement.do?display=pdf&amp;idsId=03129199">
+      Substantial holder notice lodged by Galipea Partnership</a></td>
+      <td>2 pages</td></tr>
+    <tr><td>12/08/2026</td><td>9:01 am</td>
+      <td><img src="/images/pricesens.gif" alt="price sensitive"></td>
+      <td><a href="/asx/v2/statistics/displayAnnouncement.do?display=pdf&amp;idsId=03119001">
+      FY26 Results Announcement and FY27 Guidance</a></td>
+      <td>18 pages</td></tr>
+    <tr><td>nothing parseable here</td></tr>
+    """
+    entries = asx_web.parse_statistics_page(page)
+    assert len(entries) == 2, entries
+    first, second = entries
+    assert first["date"] == "2026-08-24"
+    assert first["header"].startswith("Substantial holder notice"), first["header"]
+    assert first["pages"] == 2 and first["market_sensitive"] is False
+    assert first["url"].endswith("idsId=03129199")
+    assert second["market_sensitive"] is True, second
+    assert second["header"] == "FY26 Results Announcement and FY27 Guidance"
+
+
+def test_register_merge_is_incremental() -> None:
+    """A second run must not re-process announcements already recorded."""
+    import fetch as fetch_mod
+
+    existing = [{"ticker": "AGL", "id": "1", "date": "2026-08-12", "header": "old"}]
+    fresh = [
+        {"ticker": "AGL", "id": "1", "date": "2026-08-12", "header": "old"},
+        {"ticker": "AGL", "id": "2", "date": "2026-08-14", "header": "new"},
+        {"ticker": "ORG", "id": "1", "date": "2026-08-13", "header": "other company"},
+    ]
+    merged, new_entries = fetch_mod.merge_register(existing, fresh)
+    assert len(merged) == 3, merged
+    assert [e["id"] for e in new_entries] == ["2", "1"], new_entries
+    assert {e["ticker"] for e in new_entries} == {"AGL", "ORG"}
+    # Same id on a different ticker is a distinct announcement.
+    assert [e["date"] for e in merged] == ["2026-08-14", "2026-08-13", "2026-08-12"]
+    # Re-running with nothing new yields no work.
+    _, none_new = fetch_mod.merge_register(merged, fresh)
+    assert none_new == [], none_new
+
+
 if __name__ == "__main__":
     failures = 0
     for name, fn in sorted(globals().items()):
